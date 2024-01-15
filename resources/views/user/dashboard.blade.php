@@ -148,11 +148,16 @@
 </head>
 
 <body>
+    <x-alert />
     <header>
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
         <div id="web-name">{{ env('APP_NAME') }}</div>
         <div class="top-bar-icons">
-            <i class="fas fa-user"></i>
+            <span>
+                <a href="{{ route('profile.edit') }}" style="text-decoration: none;color:white">
+                    <i class="fas fa-user"></i>
+                </a>
+            </span>
             <i class="fas fa-bell"></i>
         </div>
     </header>
@@ -168,7 +173,7 @@
                 @csrf
                 <button type="submit" class="btn btn-danger">Logout</button>
             </form>
-            @else
+        @else
             <a href="{{ route('login') }}" class="sidebar-link">Login</a>
         @endif
     </div>
@@ -178,18 +183,18 @@
         <section>
             <div class="card shodow-lg" style="border: 1px solid rgba(0, 0, 0, 0.1)">
                 <h2>Current Balance</h2>
-                <p>$500.00</p>
+                <p>{{ auth()->user()->balance }}</p>
             </div>
 
             <div class="card shodow-lg" style="border: 2px solid rgba(0, 0, 0, 0.1)">
                 <h2>Withdraw</h2>
-                <p>$100.00</p>
+                <p>{{ total_withdraw() }}</p>
             </div>
             <div class="button-container mb-3">
-                <button><a href="#" style="color: #FFFFFF;"><span style="margin-right:5px"><i
+                <button><a href="{{ route('User.Withdraw') }}" style="color: #FFFFFF;"><span style="margin-right:5px"><i
                                 class="fas fa-money-bill-wave"></i></span>Withdraw Now</a></button>
-                <button><a href="#" style="color: #FFFFFF;"><span style="margin-right:5px"><i
-                                class="fas fa-history"></i></span>View History</a></button>
+                <button><a href="{{ route('User.Withdraw.History') }}" style="color: #FFFFFF;"><span
+                            style="margin-right:5px"><i class="fas fa-history"></i></span>View History</a></button>
             </div>
 
             <div id="chart">
@@ -225,8 +230,10 @@
     </div>
 
     <footer>
-        <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Earn No</a>
-        <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Daily Reward</a>
+        <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Earn
+            No</a>
+        <a href="#" class="btn btn-light text-danger"><span
+                style="font-size: 16px;margin-right:5px;">$</span>Daily Reward</a>
     </footer>
 
     <!-- Add Bootstrap JS and Popper.js links -->

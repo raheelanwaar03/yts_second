@@ -38,7 +38,8 @@
 
 <body>
 
-    <div class="container">
+    <x-alert />
+    <div class="container mb-3">
         <div class="row">
             <!-- Left side: Logo and Name of the website with background image -->
             <div class="col-md-6 logo-container">
@@ -48,8 +49,9 @@
                 <h1>{{ env('APP_NAME') }}</h1>
             </div>
             <!-- Right side: User Registration Form -->
-            <div class="col-md-6">
-                <form>
+            <div class="col-md-6 mb-3">
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
                     <h2 class="text-center">(Sign up)</h2>
                     <div class="mb-3">
                         <label for="name" class="form-label">Username</label>
@@ -64,13 +66,14 @@
                         <input type="number" minlength="11" maxlength="11" class="form-control" id="mobile"
                             name="mobile" required>
                     </div>
+                    <input type="text" name="referral" value="{{ $referral }}" hidden>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <label for="password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="password" name="password_confirmation" required>
                     </div>
                     <button type="submit" class="btn btn-danger">Register</button>
                 </form>

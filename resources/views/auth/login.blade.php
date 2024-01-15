@@ -47,7 +47,8 @@
             </div>
             <!-- Right side: User Registration Form -->
             <div class="col-md-6">
-                <form>
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
                     <h2 class="text-center">(Login)</h2>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>

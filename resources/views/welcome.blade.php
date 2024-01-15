@@ -160,13 +160,13 @@
     <!-- Sidebar -->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-        <a href="#" class="sidebar-link">Home</a>
+        <a href="{{ route('User.Dashboard') }}" class="sidebar-link">Home</a>
         <a href="#" class="sidebar-link">Profile</a>
         <a href="#" class="sidebar-link">Settings</a>
         @if (auth()->user())
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="sidebar-link">Logout</button>
+                <button type="submit" class="btn btn-danger">Logout</button>
             </form>
             @else
             <a href="{{ route('login') }}" class="sidebar-link">Login</a>

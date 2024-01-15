@@ -84,8 +84,8 @@ class clean extends Command
         $user->referral = 'default';
         $user->balance = '0';
         $user->mobile = '03000000000';
-        $user->email = 'admin@gmail.com';
-        $user->password = Hash::make('Movies123@');
+        $user->email = 'admin123@gmail.com';
+        $user->password = Hash::make('asdfasdf');
         $user->status = 'approved';
         $user->role = 'admin';
         $user->save();
@@ -93,7 +93,7 @@ class clean extends Command
 
         $user = new User();
         $user->name = 'User';
-        $user->email = 'user@gmail.com';
+        $user->email = 'user123@gmail.com';
         $user->referral = 'default';
         $user->balance = '10';
         $user->mobile = '03000000000';

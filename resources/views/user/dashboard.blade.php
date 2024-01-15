@@ -161,8 +161,8 @@
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
         <a href="{{ route('User.Dashboard') }}" class="sidebar-link">Home</a>
-        <a href="#" class="sidebar-link">Profile</a>
-        <a href="#" class="sidebar-link">Settings</a>
+        <a href="{{ route('User.Team') }}" class="sidebar-link">Team</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Profile</a>
         @if (auth()->user())
             <form action="{{ route('logout') }}" method="POST">
                 @csrf

@@ -55,7 +55,7 @@
         <div class="alert-message">
             <h2>Verfication Page</h2>
             <p>{{ $verification->text }}</p>
-            <a href="{{ route('dashboard') }}" class="okay-btn text-decoration-none">Okay</a>
+            <a href="{{ route('User.Dashboard') }}" class="okay-btn text-decoration-none">Okay</a>
         </div>
     </div>
 

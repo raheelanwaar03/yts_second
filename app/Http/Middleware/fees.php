@@ -21,7 +21,7 @@ class fees
         if (auth()->user()->status == 'rejected') {
             return redirect()->route('Registeration.Fees')->with('error', 'Your account has been rejected give us correct information');
         } else {
-            return redirect()->url('/')->with('error', 'Your Account is Pending wait for Approval');
+            return redirect()->route('Welcome')->with('error', 'Your Account is Pending wait for Approval');
         }
     }
 }

@@ -231,7 +231,8 @@
 
     <footer>
         <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Earn
-            No</a>
+            Now</a>
+            |
         <a href="#" class="btn btn-light text-danger"><span
                 style="font-size: 16px;margin-right:5px;">$</span>Daily Reward</a>
     </footer>

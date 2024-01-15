@@ -121,25 +121,24 @@
             <div class="col-md-6">
                 <div class="form-container">
                     <h1>Select Package</h1>
-                    <form action="{{ route('Store/Fees/Details') }}" method="POST">
+                    <form action="{{ route('Store/Fees/Details') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="package-cards">
-                            <div class="package-card" onclick="selectCard(this)">
-                                <h2>Basic Package</h2>
-                                <p>Price: $19.99/month</p>
-                                <p>Features:</p>
-                                <ul>
-                                    <li>Feature 1</li>
-                                    <li>Feature 2</li>
-                                    <li>Feature 3</li>
-                                </ul>
-                            </div>
+                            <select name="plan" class="form-control">
+                                <option value="silver">
+                                    <h2>Silver</h2>
+                                </option>
+                                <option value="gold">
+                                    <h2>Gold</h2>
+                                </option>
+                                <option value="dimond">
+                                    <h2>Dimond</h2>
+                                </option>
+                            </select>
                         </div>
                 </div>
             </div>
-
             <div class="col-md-6">
-
                 <div class="bank-details">
                     <h2>Admin Bank Details</h2>
                     <p>Account Number: <span id="bankNumber">1234 5678 9012 3456</span> <span class="copy-icon"
@@ -147,16 +146,28 @@
                     <p>Bank Name: Your Bank</p>
                     <p>Account Holder: Admin Name</p>
                 </div>
+            </div>
+
+            <div class="col-lg-12 col-md-6">
+
 
                 <div class="form-container">
                     <h1>Confirm Payment</h1>
                     <div class="mb-3">
+                        <div class="mb-3">
+                            <label for="sender_name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="sender_name" name="sender_name" required>
+                        </div>
                         <label for="transactionId" class="form-label">Transaction ID</label>
-                        <input type="text" class="form-control" id="transactionId" name="transactionId" required>
+                        <input type="number" class="form-control" id="transactionId" name="trx_id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sender_number" class="form-label">Your Number</label>
+                        <input type="number" class="form-control" id="sender_number" name="sender_number" required>
                     </div>
                     <div class="upload-container">
                         <label for="paymentScreenshot">Payment Screenshot</label>
-                        <input type="file" class="form-control" id="paymentScreenshot" name="paymentScreenshot"
+                        <input type="file" class="form-control" id="paymentScreenshot" name="screen_shot"
                             accept="image/*" style="display:none" onchange="displayFileName(this)">
                         <button type="button" class="add-proof-btn"
                             onclick="document.getElementById('paymentScreenshot').click()">Add Proof</button>
@@ -173,17 +184,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function selectCard(card) {
-            // Deselect all cards
-            let allCards = document.querySelectorAll('.package-card');
-            allCards.forEach((c) => {
-                c.classList.remove('selected-card');
-            });
-
-            // Select the clicked card
-            card.classList.add('selected-card');
-        }
-
         function copyBankNumber() {
             let bankNumber = document.getElementById('bankNumber').innerText;
             navigator.clipboard.writeText(bankNumber);

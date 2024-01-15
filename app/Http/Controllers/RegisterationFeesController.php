@@ -49,8 +49,8 @@ class RegisterationFeesController extends Controller
         $tidChecks = UserPlans::get();
         if ($tidChecks != null) {
             foreach ($tidChecks as $tidCheck) {
-                $tidCheck = $tidCheck->tid;
-                if ($validated['tid'] == $tidCheck)
+                $tidCheck = $tidCheck->trx_id;
+                if ($validated['trx_id'] == $tidCheck)
                     return redirect()->back()->with('error', 'This tid is used before');
             }
         }

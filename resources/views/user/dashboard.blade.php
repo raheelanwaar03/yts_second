@@ -150,7 +150,7 @@
 <body>
     <header>
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-        <div id="web-name">Your Web Name</div>
+        <div id="web-name">{{ env('APP_NAME') }}</div>
         <div class="top-bar-icons">
             <i class="fas fa-user"></i>
             <i class="fas fa-bell"></i>

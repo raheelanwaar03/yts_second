@@ -67,7 +67,7 @@
 
     <div class="top-bar">
         <i class="fas fa-arrow-left navigation-icon" style="color: #ff5757" onclick="goBack()"></i>
-        <h1>{{ auth()->user()->name }}</h1>
+        <h1>Total Team: ({{ total_team() }})</h1>
         <p>Referral Link: <span class="referral-link"
                 onclick="copyReferralLink()">{{ route('register', ['referral' => Auth::user()->email]) }}</span> <span
                 class="copy-icon" onclick="copyReferralLink()">📋</span></p>
@@ -75,30 +75,14 @@
 
     <div class="container">
         <div class="tree-container">
-            <div class="user-node">
-                <h3 class="user-name">User</h3>
-                <p>Email: mainuser@gmail.com</p>
+            @forelse ($referrals as $user)
                 <div class="user-node">
-                    <h4 class="user-name">User1</h4>
-                    <p>Email: user1@gmail.com</p>
+                    <h3 class="user-name">Name: {{ $user->name }}</h3>
+                    <p>Email: {{ $user->email }}</p>
                 </div>
-                <div class="user-node">
-                    <h4 class="user-name">User2</h4>
-                    <p>Email: user2@gmail.com</p>
-                    <div class="user-node">
-                        <h5 class="user-name">User3</h5>
-                        <p>Email: user3@gmail.com</p>
-                    </div>
-                    <div class="user-node">
-                        <h5 class="user-name">User4</h5>
-                        <p>Email: user4@gmail.com</p>
-                    </div>
-                </div>
-                <div class="user-node">
-                    <h4 class="user-name">User5</h4>
-                    <p>Email: user5@gmail.com</p>
-                </div>
-            </div>
+            @empty
+                <h3 class="text-center">Team Member Yet!</h3>
+            @endforelse
         </div>
     </div>
 

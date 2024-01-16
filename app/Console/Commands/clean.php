@@ -85,8 +85,15 @@ class clean extends Command
         $task->title = 'Read the latest blog post on web development trends.';
         $task->link = 'https://www.w3schools.com/';
         $task->level = 'Level 0';
+        $task->price = '10';
         $task->save();
 
+        $task = new Task();
+        $task->title = 'Read the latest blog post on web development trends.';
+        $task->link = 'https://www.facebook.com/';
+        $task->level = 'Level 0';
+        $task->price = '15';
+        $task->save();
 
         $user = new User();
         $user->name = 'Admin';

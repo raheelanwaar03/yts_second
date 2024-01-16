@@ -80,6 +80,7 @@
                     <a href="{{ route('User.Get.Task.Reward', $task->id) }}" class="link-btn text-decoration-none"
                         onclick="window.open('{{ $task->link }}', '_blank')">Get Reward</a>
                 </div>
+                <br>
             @endforeach
         </div>
     </div>

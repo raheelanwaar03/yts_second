@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\Task;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\user\Withdraw;
@@ -79,7 +80,6 @@ class UserDashboardController extends Controller
         $history = Withdraw::where('user_id',auth()->user()->id)->get();
         return view('user.withdraw_history',compact('history'));
     }
-
 
 
 }

@@ -232,8 +232,8 @@
     <footer>
         <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Earn
             Now</a>
-            |
-        <a href="#" class="btn btn-light text-danger"><span
+        |
+        <a href="{{ route('User.All.Tasks') }}" class="btn btn-light text-danger"><span
                 style="font-size: 16px;margin-right:5px;">$</span>Daily Reward</a>
     </footer>
 

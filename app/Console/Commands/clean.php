@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\admin\Task;
 use App\Models\User;
 use App\Models\EasyPaisaMangement;
 use App\Models\ReferralLevel;
@@ -77,6 +78,14 @@ class clean extends Command
         $level->level10 = 10;
         $level->status = 1;
         $level->save();
+
+        // adding some tesing tasks
+
+        $task = new Task();
+        $task->title = 'Read the latest blog post on web development trends.';
+        $task->link = 'https://www.w3schools.com/';
+        $task->level = 'Level 0';
+        $task->save();
 
 
         $user = new User();

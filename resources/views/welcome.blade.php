@@ -144,13 +144,39 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            border: 1px solid #000;
+            padding: 3px;
+            width: 300px;
+            box-shadow: #000;
+            margin: 0 auto;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marqueeAnimation 15s linear infinite;
+            color: #fff;
+        }
+
+        @keyframes marqueeAnimation {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
     </style>
 </head>
 
 <body>
     <header>
         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-        <div id="web-name">Your Web Name</div>
+        <div id="web-name">{{ env('APP_NAME') }}</div>
         <div class="top-bar-icons">
             <i class="fas fa-user"></i>
             <i class="fas fa-bell"></i>
@@ -178,18 +204,26 @@
         <section>
             <div class="card shodow-lg" style="border: 1px solid rgba(0, 0, 0, 0.1)">
                 <h2>Current Balance</h2>
-                <p>$500.00</p>
+                <p>500.00</p>
             </div>
 
             <div class="card shodow-lg" style="border: 2px solid rgba(0, 0, 0, 0.1)">
                 <h2>Withdraw</h2>
-                <p>$100.00</p>
+                <p>100.00</p>
             </div>
             <div class="button-container mb-3">
-                <button><a href="#" style="color: #FFFFFF;"><span style="margin-right:5px"><i
+                <button><a href="#" style="color: #FFFFFF;font-size:12px;"><span style="margin-right:5px"><i
                                 class="fas fa-money-bill-wave"></i></span>Withdraw Now</a></button>
-                <button><a href="#" style="color: #FFFFFF;"><span style="margin-right:5px"><i
+                <button><a href="#" style="color: #FFFFFF;font-size:12px;"><span style="margin-right:5px"><i
                                 class="fas fa-history"></i></span>View History</a></button>
+            </div>
+
+            <div class="marquee-container" style="background-color: #ff0000;">
+                <div class="marquee-content">
+                    <p>
+                        Very good platform to invest your time and money. It is a real earning platform. Refere this to your friends and family.
+                    </p>
+                </div>
             </div>
 
             <div id="chart">

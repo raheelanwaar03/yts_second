@@ -144,6 +144,31 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            border: 1px solid #000;
+            padding: 3px;
+            width: 300px;
+            box-shadow: #000;
+            margin: 0 auto;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marqueeAnimation 15s linear infinite;
+            color: #fff;
+        }
+
+        @keyframes marqueeAnimation {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 
@@ -191,10 +216,18 @@
                 <p>{{ total_withdraw() }}</p>
             </div>
             <div class="button-container mb-3">
-                <button><a href="{{ route('User.Withdraw') }}" style="color: #FFFFFF;"><span style="margin-right:5px"><i
+                <button><a href="{{ route('User.Withdraw') }}" style="color: #FFFFFF;font-size:12px;"><span style="margin-right:5px"><i
                                 class="fas fa-money-bill-wave"></i></span>Withdraw Now</a></button>
-                <button><a href="{{ route('User.Withdraw.History') }}" style="color: #FFFFFF;"><span
+                <button><a href="{{ route('User.Withdraw.History') }}" style="color: #FFFFFF;font-size:12px;"><span
                             style="margin-right:5px"><i class="fas fa-history"></i></span>View History</a></button>
+            </div>
+
+            <div class="marquee-container" style="background-color: #ff0000;">
+                <div class="marquee-content">
+                    <p>
+                        Very good platform to invest your time and money. It is a real earning platform. Refere this to your friends and family.
+                    </p>
+                </div>
             </div>
 
             <div id="chart">

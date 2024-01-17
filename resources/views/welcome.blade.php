@@ -221,7 +221,7 @@
             <div class="marquee-container" style="background-color: #ff0000;">
                 <div class="marquee-content">
                     <p>
-                        Very good platform to invest your time and money. It is a real earning platform. Refere this to your friends and family.
+                      {{ env('APP_NAME') }} is Very good platform to invest your time and money. It is a real earning platform. Refere this to your friends and family.
                     </p>
                 </div>
             </div>

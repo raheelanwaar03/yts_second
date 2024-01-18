@@ -245,10 +245,10 @@
                             <span class="nav-text">Users</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Today User</a></li>
-                            <li><a href="#">Pending User</a></li>
-                            <li><a href="#">Approved User</a></li>
-                            <li><a href="#">Rejected User</a></li>
+                            <li><a href="{{ route('Admin.Todays.Users') }}">Today User</a></li>
+                            <li><a href="{{ route('Admin.Pending.Users') }}">Pending User</a></li>
+                            <li><a href="{{ route('Admin.Approved.Users') }}">Approved User</a></li>
+                            <li><a href="{{ route('Admin.Rejected.Users') }}">Rejected User</a></li>
                         </ul>
                     </li>
                     <li class="menu-title">OUR FEATURES</li>
@@ -293,8 +293,8 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('Admin.Withdraw.Pending.Requests') }}">Pending</a></li>
-                            <li><a href="auto-write.html">Approved</a></li>
-                            <li><a href="auto-write.html">Rejected</a></li>
+                            <li><a href="{{ route('Admin.Withdraw.Approved.Requests') }}">Approved</a></li>
+                            <li><a href="{{ route('Admin.Withdraw.Rejected.Requests') }}">Rejected</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">

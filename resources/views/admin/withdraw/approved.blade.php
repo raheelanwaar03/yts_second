@@ -18,7 +18,7 @@
                                 <div class="card dz-card" id="accordion-one">
                                     <div class="card-header flex-wrap">
                                         <div>
-                                            <h4 class="card-title">Users Pending Withdraw's Requests</h4>
+                                            <h4 class="card-title">Users Approved Withdraw's Requests</h4>
                                         </div>
                                     </div>
                                     <!--tab-content-->
@@ -48,8 +48,8 @@
                                                                     <td>{{ $item->total_team }}</td>
                                                                     <td>{{ $item->pre_withdraw }}</td>
                                                                     <td>
-                                                                        <a href="{{ route('Admin.Make.Withdraw.Approve', $item->id) }}"
-                                                                            class="btn btn-sm btn-success">Approve</a>
+                                                                        <a href="{{ route('Admin.Make.Withdraw.Pending', $item->id) }}"
+                                                                            class="btn btn-sm btn-primary">Pending</a>
                                                                         <a href="{{ route('Admin.Make.Withdraw.Reject', $item->id) }}"
                                                                             class="btn btn-sm btn-danger">Reject</a>
                                                                     </td>
@@ -72,10 +72,8 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                            <!-- /Default accordion -->
                                         </div>
                                     </div>
-                                    <!--/tab-content-->
                                 </div>
                             </div>
                         </div>

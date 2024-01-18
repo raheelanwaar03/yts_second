@@ -14,6 +14,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'id';
+
+    function trxIds()
+    {
+        return $this->hasOne(UserPlans::class, 'user_id');
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

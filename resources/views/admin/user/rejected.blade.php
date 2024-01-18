@@ -18,7 +18,7 @@
                                 <div class="card dz-card" id="accordion-one">
                                     <div class="card-header flex-wrap">
                                         <div>
-                                            <h4 class="card-title">Users Pending Withdraw's Requests</h4>
+                                            <h4 class="card-title">Rejected Users</h4>
                                         </div>
                                     </div>
                                     <!--tab-content-->
@@ -29,24 +29,33 @@
                                                     <table id="example" class="display table">
                                                         <thead>
                                                             <tr>
-                                                                <th>Title</th>
-                                                                <th>Amount</th>
-                                                                <th>Account</th>
-                                                                <th>Bank</th>
-                                                                <th>Team</th>
-                                                                <th>Pre Withdraw</th>
+                                                                <th>Name</th>
+                                                                <th>Email</th>
+                                                                <th>Balance</th>
+                                                                <th>Referral</th>
+                                                                <th>Plan</th>
+                                                                <th>Sender Name</th>
+                                                                <th>Sender Number</th>
+                                                                <th>Trx Id</th>
+                                                                <th>Screen Shot</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @forelse ($withdraws as $item)
+                                                            @forelse ($users as $item)
                                                                 <tr>
-                                                                    <td>{{ $item->title }}</td>
-                                                                    <td>{{ $item->amount }}</td>
-                                                                    <td>{{ $item->account }}</td>
-                                                                    <td>{{ $item->bank }}</td>
-                                                                    <td>{{ $item->total_team }}</td>
-                                                                    <td>{{ $item->pre_withdraw }}</td>
+                                                                    <td>{{ $item->name }}</td>
+                                                                    <td>{{ $item->email }}</td>
+                                                                    <td>{{ $item->balance }}</td>
+                                                                    <td>{{ $item->referral }}</td>
+                                                                    <td>{{ $item->trxIds->plan }}</td>
+                                                                    <td>{{ $item->trxIds->sender_name }}</td>
+                                                                    <td>{{ $item->trxIds->sender_number }}</td>
+                                                                    <td>{{ $item->trxIds->trx_id }}</td>
+                                                                    <td>
+                                                                        <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
+                                                                            class="img-fluid" height="100px" width="100px">
+                                                                    </td>
                                                                     <td>
                                                                         <a href="{{ route('Admin.Make.Withdraw.Approve', $item->id) }}"
                                                                             class="btn btn-sm btn-success">Approve</a>
@@ -60,22 +69,23 @@
                                                         </tbody>
                                                         <tfoot>
                                                             <tr>
-                                                                <th>Title</th>
-                                                                <th>Amount</th>
-                                                                <th>Account</th>
-                                                                <th>Bank</th>
-                                                                <th>Team</th>
-                                                                <th>Pre Withdraw</th>
+                                                                <th>Name</th>
+                                                                <th>Email</th>
+                                                                <th>Balance</th>
+                                                                <th>Referral</th>
+                                                                <th>Plan</th>
+                                                                <th>Sender Name</th>
+                                                                <th>Sender Number</th>
+                                                                <th>Trx Id</th>
+                                                                <th>Screen Shot</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </tfoot>
                                                     </table>
                                                 </div>
                                             </div>
-                                            <!-- /Default accordion -->
                                         </div>
                                     </div>
-                                    <!--/tab-content-->
                                 </div>
                             </div>
                         </div>

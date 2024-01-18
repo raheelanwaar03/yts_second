@@ -187,8 +187,12 @@
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
         <a href="{{ route('User.Dashboard') }}" class="sidebar-link">Home</a>
-        <a href="{{ route('User.Team') }}" class="sidebar-link">Team</a>
-        <a href="{{ route('profile.edit') }}" class="sidebar-link">Profile</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Account Profile</a>
+        <a href="{{ route('User.Team') }}" class="sidebar-link">My Team</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Promote Channal</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Invite Team</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Setting</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Contact Us</a>
         @if (auth()->user())
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -254,12 +258,11 @@
                     });
                 </script>
             </div>
-
         </section>
     </div>
 
     <footer>
-        <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Earn No</a>
+        <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Earn Now</a>
         <a href="#" class="btn btn-light text-danger"><span style="font-size: 16px;margin-right:5px;">$</span>Daily Reward</a>
     </footer>
 

@@ -11,7 +11,11 @@ class RegisterationFeesController extends Controller
 {
     public function registerationFees()
     {
-        return view('auth.payment');
+        if (auth()->user()->status == 'approved') {
+            return redirect()->route('User.Dashboard');
+        } else {
+            return view('auth.payment');
+        }
     }
 
     public function verificationPage()

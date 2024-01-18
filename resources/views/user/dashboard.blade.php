@@ -165,6 +165,7 @@
             from {
                 transform: translateX(100%);
             }
+
             to {
                 transform: translateX(-100%);
             }
@@ -191,8 +192,12 @@
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
         <a href="{{ route('User.Dashboard') }}" class="sidebar-link">Home</a>
-        <a href="{{ route('User.Team') }}" class="sidebar-link">Team</a>
-        <a href="{{ route('profile.edit') }}" class="sidebar-link">Profile</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Account Profile</a>
+        <a href="{{ route('User.Team') }}" class="sidebar-link">My Team</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Promote Channal</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Invite Team</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Setting</a>
+        <a href="{{ route('profile.edit') }}" class="sidebar-link">Contact Us</a>
         @if (auth()->user())
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -216,8 +221,9 @@
                 <p>{{ total_withdraw() }}</p>
             </div>
             <div class="button-container mb-3">
-                <button><a href="{{ route('User.Withdraw') }}" style="color: #FFFFFF;font-size:12px;"><span style="margin-right:5px"><i
-                                class="fas fa-money-bill-wave"></i></span>Withdraw Now</a></button>
+                <button><a href="{{ route('User.Withdraw') }}" style="color: #FFFFFF;font-size:12px;"><span
+                            style="margin-right:5px"><i class="fas fa-money-bill-wave"></i></span>Withdraw
+                        Now</a></button>
                 <button><a href="{{ route('User.Withdraw.History') }}" style="color: #FFFFFF;font-size:12px;"><span
                             style="margin-right:5px"><i class="fas fa-history"></i></span>View History</a></button>
             </div>
@@ -225,7 +231,8 @@
             <div class="marquee-container" style="background-color: #ff0000;">
                 <div class="marquee-content">
                     <p>
-                        {{ env('APP_NAME') }} is Very good platform to invest your time and money. It is a real earning platform. Refere this to your friends and family.
+                        {{ env('APP_NAME') }} is Very good platform to invest your time and money. It is a real earning
+                        platform. Refere this to your friends and family.
                     </p>
                 </div>
             </div>

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('account');
             $table->string('bank');
+            $table->string('total_team');
+            $table->string('pre_withdraw');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

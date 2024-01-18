@@ -16,6 +16,12 @@ class RegisterationFeesController extends Controller
         } else {
             return view('auth.payment');
         }
+
+        if (auth()->user()->role == 'admin') {
+            return redirect()->route('Admin.Dashboard');
+        } else {
+            return view('auth.payment');
+        }
     }
 
     public function verificationPage()

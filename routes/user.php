@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\user\UserDashboardController;
 use App\Http\Controllers\user\UserTaskController;
+use App\Http\Controllers\user\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,9 +11,11 @@ Route::name('User.')->prefix('User')->middleware('user', 'auth', 'fees')->group(
 
     Route::get('/Dashboard', [UserDashboardController::class, 'dashboard'])->name('Dashboard');
     Route::get('/Team', [UserDashboardController::class, 'team'])->name('Team');
-    Route::get('/Withdraw', [UserDashboardController::class, 'withdraw'])->name('Withdraw');
-    Route::get('/Withdraw/History', [UserDashboardController::class, 'withdraw_history'])->name('Withdraw.History');
-    Route::post('/Store/Withdraw', [UserDashboardController::class, 'store_withdraw'])->name('Store.Withdraw');
+    // Withdraw routes
+    Route::get('/Withdraw', [WithdrawController::class, 'withdraw'])->name('Withdraw');
+    Route::get('/Withdraw/History', [WithdrawController::class, 'withdraw_history'])->name('Withdraw.History');
+    Route::post('/Store/Withdraw', [WithdrawController::class, 'store_withdraw'])->name('Store.Withdraw');
+    // task and reward
     Route::get('/All/Tasks', [UserTaskController::class, 'all_tasks'])->name('All.Tasks');
     Route::get('/Get/Reward/{id}', [UserTaskController::class, 'get_reward'])->name('Get.Task.Reward');
 

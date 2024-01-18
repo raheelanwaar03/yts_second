@@ -11,7 +11,7 @@ function total_team()
 
 function total_withdraw()
 {
-    $withdraw = Withdraw::where('user_id',auth()->user()->id)->get();
+    $withdraw = Withdraw::where('user_id',auth()->user()->id)->where('status','approved')->get();
     $total_withdraw = 0;
     foreach($withdraw as $amount)
     {

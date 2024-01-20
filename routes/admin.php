@@ -19,7 +19,8 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Make/User/Rejected/{id}', [UserStatusController::class, 'rejected_user'])->name('Make.User.Rejected');
     Route::get('/Make/User/Pending/{id}', [UserStatusController::class, 'pending_user'])->name('Make.User.Pending');
     // task
-    // Route::post('/Store/Task',[TaskController::class,'store_task'])->name('Store.Task');
+    Route::get('/Add/Task',[TaskController::class,'add_task'])->name('Add.Task');
+    Route::post('/Store/Task',[TaskController::class,'store_task'])->name('Store.Task');
     // Withdraw Routes
     Route::get('/Pending/Withdraw', [AdminWithdrawController::class, 'pending_withdraw'])->name('Withdraw.Pending.Requests');
     Route::get('/Approved/Withdraw', [AdminWithdrawController::class, 'approved_withdraw'])->name('Withdraw.Approved.Requests');

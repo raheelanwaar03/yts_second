@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->float('balance', 10, 2)->default(0);
             $table->string('mobile');
-            $table->string('level')->default('Level 0');
+            $table->string('level')->default('Level 1');
             $table->string('status')->default('pending');
             $table->string('referral')->default('default');
             $table->string('role')->default('user');

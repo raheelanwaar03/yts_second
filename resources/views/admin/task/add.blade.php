@@ -29,6 +29,7 @@
                                             <th>Price</th>
                                             <th>Title</th>
                                             <th>Link</th>
+                                            <th>Level</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -45,6 +46,9 @@
                                                 </td>
                                                 <td>
                                                     <h6>{{ $item->link }}</h6>
+                                                </td>
+                                                <td>
+                                                    <h6>{{ $item->level }}</h6>
                                                 </td>
                                             </tr>
                                         @empty

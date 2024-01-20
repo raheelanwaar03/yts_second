@@ -28,4 +28,8 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Make/Approved/Withdraw/{id}', [AdminWithdrawController::class, 'make_approve'])->name('Make.Withdraw.Approve');
     Route::get('/Make/Pending/Withdraw/{id}', [AdminWithdrawController::class, 'make_pending'])->name('Make.Withdraw.Pending');
     Route::get('/Make/Reject/Withdraw/{id}', [AdminWithdrawController::class, 'make_reject'])->name('Make.Withdraw.Reject');
+    // setting routes
+    // Route::get('')
+
+
 });

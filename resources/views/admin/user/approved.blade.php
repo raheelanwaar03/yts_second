@@ -64,13 +64,12 @@
                                                                         @endif
                                                                     </td>
                                                                     <td>
-                                                                        <a href="{{ route('Admin.Make.Withdraw.Approve', $item->id) }}"
-                                                                            class="btn btn-sm btn-success">Approve</a>
-                                                                        <a href="{{ route('Admin.Make.Withdraw.Reject', $item->id) }}"
+                                                                        <a href="{{ route('Admin.Make.User.Pending', $item->id) }}"
+                                                                            class="btn btn-sm btn-primary">Pending</a>
+                                                                        <a href="{{ route('Admin.Make.User.Rejected', $item->id) }}"
                                                                             class="btn btn-sm btn-danger">Reject</a>
                                                                     </td>
                                                                 </tr>
-
                                                             @empty
                                                             @endforelse
                                                         </tbody>

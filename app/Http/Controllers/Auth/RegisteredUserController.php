@@ -20,7 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create($referral = 'default'): View
     {
-        return view('auth.register',compact('referral'));
+        return view('auth.register', compact('referral'));
     }
 
     /**
@@ -31,9 +31,9 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'mobile' => ['required','min:11','max:11'],
+            'name' => ['required', 'string', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'mobile' => ['required', 'min:11', 'max:11'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

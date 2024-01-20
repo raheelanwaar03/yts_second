@@ -69,7 +69,7 @@
         <i class="fas fa-arrow-left navigation-icon" style="color: #ff5757" onclick="goBack()"></i>
         <h1>Total Team: ({{ total_team() }})</h1>
         <p>Referral Link: <span class="referral-link"
-                onclick="copyReferralLink()">{{ route('register', ['referral' => Auth::user()->email]) }}</span> <span
+                onclick="copyReferralLink()">{{ route('register', ['referral' => Auth::user()->name]) }}</span> <span
                 class="copy-icon" onclick="copyReferralLink()">📋</span></p>
     </div>
 

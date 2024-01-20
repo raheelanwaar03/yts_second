@@ -57,10 +57,14 @@
                                                                             class="img-fluid" height="100px" width="100px">
                                                                     </td>
                                                                     <td>
-                                                                        <a href="{{ route('Admin.Make.Withdraw.Approve', $item->id) }}"
+                                                                        <a href="{{ route('Admin.Make.User.Approve', $item->id) }}"
                                                                             class="btn btn-sm btn-success">Approve</a>
-                                                                        <a href="{{ route('Admin.Make.Withdraw.Reject', $item->id) }}"
+                                                                        <a href="{{ route('Admin.Make.User.Rejected', $item->id) }}"
                                                                             class="btn btn-sm btn-danger">Reject</a>
+                                                                        <a href="{{ route('Admin.Make.User.Pending', $item->id) }}"
+                                                                            class="btn btn-primary">
+                                                                            Pending
+                                                                        </a>
                                                                     </td>
                                                                 </tr>
 

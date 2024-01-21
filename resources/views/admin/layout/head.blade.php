@@ -311,15 +311,18 @@
                             <span class="nav-text">Settings</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="content.html">Referral</a></li>
-                            <li><a href="content.html">Bank Details</a></li>
-                            <li><a href="content.html">Verfication Page</a></li>
-                            <li><a href="content.html">Level Setting</a></li>
+                            <li><a href="{{ route('Admin.Referral.Setting') }}">Referral</a></li>
+                            <li><a href="{{ route('Admin.Bank.Details') }}">Bank Details</a></li>
+                            <li><a href="{{ route('Admin.Verification.Page') }}">Verfication Page</a></li>
+                            <li><a href="{{ route('Admin.Level.Page') }}">Level Setting</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="help-desk">
-                    <a href="javascript:void(0)" class="btn btn-primary">Help Desk</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminDashboardController;
+use App\Http\Controllers\admin\AdminSettingcontroller;
 use App\Http\Controllers\admin\AdminWithdrawController;
 use App\Http\Controllers\admin\TaskController;
 use App\Http\Controllers\admin\UserStatusController;
@@ -19,8 +20,8 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Make/User/Rejected/{id}', [UserStatusController::class, 'rejected_user'])->name('Make.User.Rejected');
     Route::get('/Make/User/Pending/{id}', [UserStatusController::class, 'pending_user'])->name('Make.User.Pending');
     // task
-    Route::get('/Add/Task',[TaskController::class,'add_task'])->name('Add.Task');
-    Route::post('/Store/Task',[TaskController::class,'store_task'])->name('Store.Task');
+    Route::get('/Add/Task', [TaskController::class, 'add_task'])->name('Add.Task');
+    Route::post('/Store/Task', [TaskController::class, 'store_task'])->name('Store.Task');
     // Withdraw Routes
     Route::get('/Pending/Withdraw', [AdminWithdrawController::class, 'pending_withdraw'])->name('Withdraw.Pending.Requests');
     Route::get('/Approved/Withdraw', [AdminWithdrawController::class, 'approved_withdraw'])->name('Withdraw.Approved.Requests');
@@ -29,7 +30,12 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Make/Pending/Withdraw/{id}', [AdminWithdrawController::class, 'make_pending'])->name('Make.Withdraw.Pending');
     Route::get('/Make/Reject/Withdraw/{id}', [AdminWithdrawController::class, 'make_reject'])->name('Make.Withdraw.Reject');
     // setting routes
-    // Route::get('')
-
-
+    Route::get('/Referral/Setting', [AdminSettingcontroller::class, 'referral_setting'])->name('Referral.Setting');
+    Route::post('/Referral/Setting/Update/{id}', [AdminSettingcontroller::class, 'update_referral_setting'])->name('Update.Referral.Setting');
+    Route::get('/Bank/Details', [AdminSettingcontroller::class, 'bank_details'])->name('Bank.Details');
+    Route::post('/Update/Bank/Details/{id}', [AdminSettingcontroller::class, 'update_bank_details'])->name('Update.Bank.Details');
+    Route::get('/Verification/Page', [AdminSettingcontroller::class, 'verification_page'])->name('Verification.Page');
+    Route::post('/Update/Verification/Page/{id}', [AdminSettingcontroller::class, 'update_verification_page'])->name('Update.Verification.Text');
+    Route::get('/Level/Page', [AdminSettingcontroller::class, 'level_page'])->name('Level.Page');
+    Route::post('/Update/Level/Page/{id}', [AdminSettingcontroller::class, 'update_level'])->name('Update.Level');
 });

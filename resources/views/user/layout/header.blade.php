@@ -65,10 +65,11 @@
         <div class="header-bottom">
             <div class="container">
                 <div class="header-bottom-area">
-                    <div class="logo"><a href="{{ route('login') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a></div>
+                    <div class="logo"><a href="{{ route('login') }}"><img
+                                src="{{ asset('assets/images/logo.png') }}" alt="logo"></a></div>
                     <ul class="menu">
                         <li>
-                            <a href="{{ route('login') }}">Home</a>
+                            <a href="{{ url('/') }}">Home</a>
                         </li>
                         <li>
                             <a href="{{ route('User.Plan.Details') }}">Plan</a>
@@ -80,12 +81,20 @@
                         <li class="d-none d-lg-block">
                             <a href="#0" class="search--btn"><i class="fas fa-search"></i></a>
                         </li>
-
                         <li class="p-0 d-lg-none mt-3 mt-lg-0">
-                            <div class="button__wrapper">
-                                <a href="{{ route('register') }}" class="cmn--btn">Register</a>
-                                <a href="{{ route('login') }}" class="cmn--btn">Login</a>
-                            </div>
+                            @if (auth()->user())
+                                <div class="button__wrapper">
+                                    <a href="{{ route('register') }}" class="cmn--btn">Register</a>
+                                    <a href="{{ route('login') }}" class="cmn--btn">Login</a>
+                                </div>
+                            @else
+                                <div class="button__wrapper">
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="cmn--btn">Logout</button>
+                                    </form>
+                                </div>
+                            @endif
                         </li>
                     </ul> <!-- Menu End -->
 

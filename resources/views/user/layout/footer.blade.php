@@ -15,26 +15,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-6">
+                <div class="col-xl-6 col-lg-6 col-sm-8">
                     <div class="footer__widget">
                         <h3 class="widget-title">Useful Links</h3>
                         <ul class="footer-links">
-                            <li><a href="plan.html">{{ env('APP_NAME') }} Plan</a></li>
-                            <li><a href="privacy-policy.html">Privacy & Policy</a></li>
-                            <li><a href="dashboard.html">Dashboard</a></li>
-                            <li><a href="sign-in.html">Login Account</a></li>
-                            <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h3 class="widget-title">Company</h3>
-                        <ul class="footer-links">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="dashboard.html">User Dashboard</a></li>
-                            <li><a href="faq.html">Faq</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="{{ route('User.Plan.Details') }}">{{ env('APP_NAME') }} Plan</a></li>
+                            <li><a href="{{ route('User.Contact') }}">Contact Us</a></li>
+                            <li><a href="{{ route('User.Dashboard') }}">Dashboard</a></li>
+                            <li><a href="{{ route('login') }}">Login Account</a></li>
                         </ul>
                     </div>
                 </div>

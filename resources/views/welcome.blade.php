@@ -1,6 +1,29 @@
 @extends('user.layout.app')
 
 @section('content')
+    <section class="banner-section overflow-hidden">
+        <div class="container">
+            <div class="banner__wrapper d-flex align-items-center justify-content-between">
+                <div class="banner__content">
+                    <h1 class="title">Best {{ env('APP_NAME') }} Investment Platform</h1>
+                    <p>
+                        {{ env('APP_NAME') }} Earn is a platform where you can earn daily profit by doing simple tasks.
+                    </p>
+                    <a href="sign-in.html" class="cmn--btn">Get Started</a>
+                </div>
+                <div class="banner__thumb d-none d-lg-block">
+                    <img src="{{ asset('assets/images/banner/thumb.png') }}" alt="banner">
+                    <div class="shapes">
+                        <img src="{{ asset('assets/images/banner/big-coin.png') }}" alt="banner" class="shape shape1">
+                        <img src="{{ asset('assets/images/banner/light.png') }}" alt="banner" class="shape shape2">
+                        <img src="{{ asset('assets/images/banner/sm-coin.png') }}" alt="banner" class="shape shape3">
+                        <img src="{{ asset('assets/images/banner/sm-coin.png') }}" alt="banner" class="shape shape4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="choose-us padding-top padding-bottom">
         <div class="container">
             <div class="row align-items-center">

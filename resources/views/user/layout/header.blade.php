@@ -53,8 +53,8 @@
                         <select name="language" class="nice-select custom--scrollbar">
                             <option>English</option>
                         </select>
-                        <a href="dashboard.html" class="user__thumb ms-3 me-3 me-lg-0">
-                            <img src="assets/images/dashboard/user.png" alt="dashboard">
+                        <a href="{{ route('login') }}" class="user__thumb ms-3 me-3 me-lg-0">
+                            <img src="{{ asset('assets/images/dashboard/user.png') }}" alt="dashboard">
                         </a>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
         <div class="header-bottom">
             <div class="container">
                 <div class="header-bottom-area">
-                    <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="logo"></a></div>
+                    <div class="logo"><a href="{{ route('login') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a></div>
                     <ul class="menu">
                         <li>
                             <a href="{{ route('login') }}">Home</a>
@@ -90,10 +90,19 @@
                         </li>
                     </ul> <!-- Menu End -->
 
-                    <div class="button__wrapper d-none d-lg-block">
-                        <a href="{{ route('register') }}" class="cmn--btn">Register</a>
-                        <a href="{{ route('login') }}" class="cmn--btn">Login</a>
-                    </div>
+                    @if (auth()->user())
+                        <div class="button__wrapper d-none d-lg-block">
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="cmn--btn">Logout</button>
+                            </form>
+                        </div>
+                    @else
+                        <div class="button__wrapper d-none d-lg-block">
+                            <a href="{{ route('register') }}" class="cmn--btn">Register</a>
+                            <a href="{{ route('login') }}" class="cmn--btn">Login</a>
+                        </div>
+                    @endif
 
 
                     <div class="header-trigger-wrapper d-flex d-lg-none align-items-center">
@@ -118,26 +127,3 @@
             <button class="btn-close btn-close-white"></button>
         </div>
     </div>
-
-    <section class="banner-section overflow-hidden">
-        <div class="container">
-            <div class="banner__wrapper d-flex align-items-center justify-content-between">
-                <div class="banner__content">
-                    <h1 class="title">Best {{ env('APP_NAME') }} Investment Platform</h1>
-                    <p>
-                        {{ env('APP_NAME') }} Earn is a platform where you can earn daily profit by doing simple tasks.
-                    </p>
-                    <a href="sign-in.html" class="cmn--btn">Get Started</a>
-                </div>
-                <div class="banner__thumb d-none d-lg-block">
-                    <img src="assets/images/banner/thumb.png" alt="banner">
-                    <div class="shapes">
-                        <img src="assets/images/banner/big-coin.png" alt="banner" class="shape shape1">
-                        <img src="assets/images/banner/light.png" alt="banner" class="shape shape2">
-                        <img src="assets/images/banner/sm-coin.png" alt="banner" class="shape shape3">
-                        <img src="assets/images/banner/sm-coin.png" alt="banner" class="shape shape4">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>

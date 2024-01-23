@@ -1,89 +1,76 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Your Website</title>
-    <!-- Add Bootstrap CSS link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: red;
-            color: white;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        .logo-container {
-            background-image: url({{ asset('assets/bg/bg.jpg') }});
-            /* Replace with the path to your background image */
-            background-size: cover;
-            background-position: center;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .logo img {
-            width: 50px;
-            /* Adjust the width of the image as needed */
-            height: auto;
-            margin-right: 10px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <x-alert />
-    <div class="container mb-3">
-        <div class="row">
-            <!-- Left side: Logo and Name of the website with background image -->
-            <div class="col-md-6 logo-container">
-                <div class="logo">
-
-                </div>
-                <h1>{{ env('APP_NAME') }}</h1>
+@extends('user.layout.app')
+@section('content')
+    <div class="inner-banner section-bg overflow-hidden">
+        <div class="container">
+            <div class="inner__banner__content text-center">
+                <h2 class="title">Sign Up Account</h2>
+                <ul class="breadcums d-flex flex-wrap justify-content-center">
+                    <li><a href="{{ url('/') }}">Home</a>//</li>
+                    <li>Sign Up</li>
+                </ul>
             </div>
-            <!-- Right side: User Registration Form -->
-            <div class="col-md-6 mb-3">
-                <form action="{{ route('register') }}" method="POST">
-                    @csrf
-                    <h2 class="text-center">(Sign up)</h2>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="shapes">
+            <img src="{{ asset('assets/images/banner/inner-bg.png') }}" alt="banner" class="shape shape1">
+            <img src="{{ asset('assets/images/banner/inner-thumb.png') }}" alt="banner"
+                class="shape shape2 d-none d-lg-block">
+        </div>
+    </div>
+    <!-- Banner Section Ends Here -->
+
+
+    <!-- Account Section Starts Here -->
+    <div class="account-section padding-top padding-bottom">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 col-xl-5 d-none d-lg-block">
+                    <div class="section__thumb rtl me-5">
+                        <img src="{{ asset('assets/images/account/thumb.png') }}" alt="account">
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="col-lg-6 col-xl-5">
+                    <div class="account__form__wrapper">
+                        <h3 class="title">Create your account</h3>
+                        <form class="form account__form" method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" class="form-control form--control" name="name"
+                                    placeholder="Your Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form--control" name="email"
+                                    placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control form--control" name="mobile"
+                                    placeholder="Your Mobile Number">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control form--control"
+                                    placeholder="Password">
+                                <span class="eye-icon"><i class="las la-eye"></i></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password_confirmation" class="form-control form--control"
+                                    placeholder="Password">
+                                <span class="eye-icon"><i class="las la-eye"></i></span>
+                            </div>
+                            <input type="text" name="referral" value="{{ $referral }}" hidden>
+                            <div class=" d-flex flex-wrap align-items-center">
+                                <div class="form--check me-4">
+                                    <input type="checkbox" name="remember" id="rem-me">
+                                    <label for="rem-me">Remember Me</label>
+                                </div>
+                                <a href="#" class="forgot-pass text--base">Forgot Password</a>
+                            </div>
+                            <button type="submit" class="btn cmn--btn mt-4">Sign Up</button>
+                        </form>
+                        <p class="mt-4">Don't have on Account yet? <a class="ms-2 text--base"
+                                href="{{ route('register') }}">Create
+                                Account</a></p>
                     </div>
-                    <div class="mb-3">
-                        <label for="mobile" class="form-label">Mobile</label>
-                        <input type="number" minlength="11" maxlength="11" class="form-control" id="mobile"
-                            name="mobile" required>
-                    </div>
-                    <input type="text" name="referral" value="{{ $referral }}" hidden>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="password" name="password_confirmation" required>
-                    </div>
-                    <button type="submit" class="btn btn-danger">Register</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Add Bootstrap JS and Popper.js scripts (optional but recommended) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
+@endsection

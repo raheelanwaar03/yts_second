@@ -96,55 +96,61 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="plan__item">
-                            <div class="plan__item-header">
-                                <h2 class="plan-parcent">Gold</h2>
-                                <p class="plan-parcent-info">Daily Profit</p>
-                            </div>
-                            <div class="plan__item-body">
-                                <ul class="plan__info">
-                                    <li>
-                                        <span class="title">Tasks:</span>
-                                        <span class="value">10</span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Referral Commission :</span>
-                                        <span class="value">(accourding to plan)</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="plan__item-footer">
-                                <a href="{{ route('login') }}" class="btn btn-warning">
-                                    <p class="footer-info"> Invest</p>
-                                </a>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6">
+                    <div class="plan__item">
+                        <div class="plan__item-header">
+                            <h2 class="plan-parcent">Gold</h2>
+                            <p class="plan-parcent-info">Daily Profit</p>
                         </div>
-                        <div class="plan__item">
-                            <div class="plan__item-header">
-                                <h2 class="plan-parcent">Dimond</h2>
-                                <p class="plan-parcent-info">Daily Profit</p>
-                            </div>
-                            <div class="plan__item-body">
-                                <ul class="plan__info">
-                                    <li>
-                                        <span class="title">Tasks:</span>
-                                        <span class="value"> 15</span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Referral Commission :</span>
-                                        <span class="value">(accourding to plan)</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="plan__item-footer">
-                                <a href="{{ route('login') }}" class="btn btn-warning">
-                                    <p class="footer-info"> Invest</p>
-                                </a>
-                            </div>
+                        <div class="plan__item-body">
+                            <ul class="plan__info">
+                                <li>
+                                    <span class="title">Tasks:</span>
+                                    <span class="value">10</span>
+                                </li>
+                                <li>
+                                    <span class="title">Referral Commission :</span>
+                                    <span class="value">(accourding to plan)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="plan__item-footer">
+                            <a href="{{ route('login') }}" class="btn btn-warning">
+                                <p class="footer-info"> Invest</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6">
+                    <div class="plan__item">
+                        <div class="plan__item-header">
+                            <h2 class="plan-parcent">Dimond</h2>
+                            <p class="plan-parcent-info">Daily Profit</p>
+                        </div>
+                        <div class="plan__item-body">
+                            <ul class="plan__info">
+                                <li>
+                                    <span class="title">Tasks:</span>
+                                    <span class="value"> 15</span>
+                                </li>
+                                <li>
+                                    <span class="title">Referral Commission :</span>
+                                    <span class="value">(accourding to plan)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="plan__item-footer">
+                            <a href="{{ route('login') }}" class="btn btn-warning">
+                                <p class="footer-info"> Invest</p>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
     </section>
     <section class="feature-section padding-bottom overflow-hidden">

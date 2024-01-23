@@ -71,13 +71,10 @@
                             <a href="{{ route('login') }}">Home</a>
                         </li>
                         <li>
-                            <a href="#">About</a>
+                            <a href="{{ route('User.Plan.Details') }}">Plan</a>
                         </li>
                         <li>
-                            <a href="#">Plan</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
+                            <a href="{{ route('User.Contact') }}">Contact</a>
                         </li>
 
                         <li class="d-none d-lg-block">

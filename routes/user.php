@@ -11,6 +11,7 @@ Route::name('User.')->prefix('User')->middleware('user', 'auth', 'fees')->group(
 
     Route::get('/Dashboard', [UserDashboardController::class, 'dashboard'])->name('Dashboard');
     Route::get('/Team', [UserDashboardController::class, 'team'])->name('Team');
+    Route::get('/Referral', [UserDashboardController::class, 'link'])->name('Referral.Link');
     // Withdraw routes
     Route::get('/Withdraw', [WithdrawController::class, 'withdraw'])->name('Withdraw');
     Route::get('/Withdraw/History', [WithdrawController::class, 'withdraw_history'])->name('Withdraw.History');

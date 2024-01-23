@@ -36,14 +36,11 @@
                         </div>
                         <ul class="dashbard__tab tags">
                             <li><a href="#" class="active">Overview</a></li>
-                            <li><a href="#">Max Deposit</a></li>
-                            <li><a href="#">Withdraw Fund</a></li>
-                            <li><a href="#">Deposit List</a></li>
-                            <li><a href="#">Deposit History</a></li>
-                            <li><a href="#">Earnings History</a></li>
-                            <li><a href="#">Referral Link</a></li>
-                            <li><a href="#">Account Settings</a></li>
-                            <li><a href="#">Security Settings</a></li>
+                            <li><a href="{{ route('User.Dashboard') }}">Dashboard</a></li>
+                            <li><a href="{{ route('User.Withdraw') }}">Withdraw</a></li>
+                            <li><a href="{{ route('User.Withdraw.History') }}">Withdraw History</a></li>
+                            <li><a href="{{ route('User.Referral.Link') }}">Referral Link</a></li>
+                            <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -74,8 +71,8 @@
                                         <i class="las la-money-bill-alt"></i>
                                     </div>
                                     <div class="dashboard__card-content">
-                                        <p class="info">Earning Total</p>
-                                        <h3 class="title">587 pkr</h3>
+                                        <p class="info">Total Team</p>
+                                        <h3 class="title">{{ total_team() }} pkr</h3>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +83,7 @@
                                     </div>
                                     <div class="dashboard__card-content">
                                         <p class="info">Pending Withdraw</p>
-                                        <h3 class="title">587 pkr</h3>
+                                        <h3 class="title">{{ pending_withdraw() }} pkr</h3>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +94,7 @@
                                     </div>
                                     <div class="dashboard__card-content">
                                         <p class="info">Approved Withdraw</p>
-                                        <h3 class="title">587 pkr</h3>
+                                        <h3 class="title">{{ total_withdraw() }} pkr</h3>
                                     </div>
                                 </div>
                             </div>

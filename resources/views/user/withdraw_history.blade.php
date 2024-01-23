@@ -4,17 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Withdrawal Transactions</title>
+    <title>User Team Tree</title>
     <!-- Add Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add Font Awesome CSS link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #212529;
+            background-color: #00001c;
             color: white;
         }
 
         .top-bar {
-            background-color: #343a40;
+            background-color: #00001c;
             padding: 10px;
             display: flex;
             justify-content: space-between;
@@ -23,55 +25,40 @@
 
         .container {
             margin-top: 20px;
-            text-align: center;
         }
 
-        .transaction-list {
-            background-color: #343a40;
+        .tree-container {
+            background-color: #e2af28;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             margin-bottom: 20px;
         }
 
-        .transaction-item {
+        .user-node {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #495057;
-            border-radius: 5px;
+            margin-bottom: 20px;
         }
 
-        .transaction-info {
-            flex: 1;
-            margin-right: 10px;
+        .user-name {
+            font-size: 18px;
+            margin-bottom: 5px;
         }
 
-        .back-btn {
-            background-color: #ff5757;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+        .referral-link {
             cursor: pointer;
+            color: #e2af28;
+            text-decoration: underline;
+            margin-top: 5px;
         }
 
-        /* Styles based on transaction status */
-        .status-pending {
-            color: #ff5757;
-            /* Red */
-        }
-
-        .status-approved {
-            color: #28a745;
-            /* Green */
-        }
-
-        .status-rejected {
-            color: #ffcc00;
-            /* Your favorite color */
+        .copy-icon {
+            cursor: pointer;
+            margin-left: 5px;
+            color: #e2af28;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -79,7 +66,8 @@
 <body>
 
     <div class="top-bar">
-        <h1>History</h1>
+        <i class="fas fa-arrow-left navigation-icon" style="color: #e2af28" onclick="goBack()"></i>
+        <h1>Total Team: ({{ total_team() }})</h1>
     </div>
 
     <div class="container">
@@ -106,8 +94,26 @@
 
     <!-- Add Bootstrap JS and Popper.js scripts (optional but recommended) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Add Font Awesome JS script (optional but recommended) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
     <script>
+        function copyReferralLink() {
+            let referralLink = document.querySelector('.referral-link').innerText;
+            navigator.clipboard.writeText(referralLink);
+
+            // Show tooltip
+            let tooltip = document.createElement('span');
+            tooltip.innerHTML = 'Copied!';
+            tooltip.classList.add('text-success');
+            document.querySelector('.copy-icon').appendChild(tooltip);
+
+            // Remove tooltip after 2 seconds
+            setTimeout(() => {
+                tooltip.remove();
+            }, 2000);
+        }
+
         function goBack() {
             // Implement your navigation logic here
             // For demo purposes, it will simply navigate back in the browser history

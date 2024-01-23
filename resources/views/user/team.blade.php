@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #212529;
+            background-color: #00001c;
             color: white;
         }
 
         .top-bar {
-            background-color: #343a40;
+            background-color: #00001c;
             padding: 10px;
             display: flex;
             justify-content: space-between;
@@ -28,7 +28,7 @@
         }
 
         .tree-container {
-            background-color: #343a40;
+            background-color: #e2af28;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -49,7 +49,7 @@
 
         .referral-link {
             cursor: pointer;
-            color: #ff5757;
+            color: #e2af28;
             text-decoration: underline;
             margin-top: 5px;
         }
@@ -57,7 +57,7 @@
         .copy-icon {
             cursor: pointer;
             margin-left: 5px;
-            color: #ff5757;
+            color: #e2af28;
             font-size: 18px;
         }
     </style>
@@ -66,11 +66,8 @@
 <body>
 
     <div class="top-bar">
-        <i class="fas fa-arrow-left navigation-icon" style="color: #ff5757" onclick="goBack()"></i>
+        <i class="fas fa-arrow-left navigation-icon" style="color: #e2af28" onclick="goBack()"></i>
         <h1>Total Team: ({{ total_team() }})</h1>
-        <p>Referral Link: <span class="referral-link"
-                onclick="copyReferralLink()">{{ route('register', ['referral' => Auth::user()->name]) }}</span> <span
-                class="copy-icon" onclick="copyReferralLink()">📋</span></p>
     </div>
 
     <div class="container">

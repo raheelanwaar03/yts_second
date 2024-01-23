@@ -36,6 +36,8 @@
     </div>
     <div class="overlay"></div>
 
+    <x-alert />
+
     <!-- Header Section Starts Here -->
     <div class="header">
         <div class="header-top">

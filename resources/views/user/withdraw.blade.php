@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #212529;
+            background-color: #00001c;
             color: white;
         }
 
         .top-bar {
-            background-color: #343a40;
+            background-color: #00001c;
             padding: 10px;
             display: flex;
             justify-content: space-between;
@@ -28,7 +28,7 @@
         }
 
         .balance-card {
-            background-color: #343a40;
+            background-color: #e2af28;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -36,14 +36,14 @@
         }
 
         .withdrawal-form-container {
-            background-color: #343a40;
+            background-color: #e2af28;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
 
         .withdraw-btn {
-            background-color: #ff5757;
+            background-color: #00001c;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -52,20 +52,20 @@
         }
 
         .error-modal {
-            color: #ff5757;
+            color: #00001c;
             text-align: center;
             font-size: 18px;
         }
 
         .modal-header,
         .modal-body {
-            background-color: #343a40;
+            background-color: #e2af28;
             color: white;
         }
 
         .back-icon {
             cursor: pointer;
-            color: #ff5757;
+            color: #e4f21c;
             font-size: 18px;
         }
     </style>

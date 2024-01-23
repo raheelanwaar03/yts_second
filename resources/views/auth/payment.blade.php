@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #212529;
+            background-color: #00001c;
             color: white;
         }
 
@@ -18,7 +18,7 @@
         }
 
         .form-container {
-            background-color: #343a40;
+            background-color: #00001c;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -26,7 +26,7 @@
         }
 
         .form-container h1 {
-            color: #ff5757;
+            color: #e2af28;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -36,7 +36,7 @@
         }
 
         .form-container button {
-            background-color: #ff5757;
+            background-color: #e2af28;
             border: none;
         }
 
@@ -49,7 +49,7 @@
             color: white;
             padding: 20px;
             border-radius: 10px;
-            border: 2px solid #ff5757;
+            border: 2px solid #e2af28;
             margin-bottom: 20px;
             cursor: pointer;
             transition: transform 0.2s;
@@ -60,8 +60,8 @@
         }
 
         .selected-card {
-            background-color: #ff5757;
-            border-color: #ff5757;
+            background-color: #e2af28;
+            border-color: #e2af28;
         }
 
         .upload-container {
@@ -73,7 +73,7 @@
         }
 
         .upload-container label {
-            color: #ff5757;
+            color: #e2af28;
             margin-bottom: 10px;
             display: block;
         }
@@ -83,7 +83,7 @@
         }
 
         .add-proof-btn {
-            background-color: #ff5757;
+            background-color: #e2af28;
             color: white;
             padding: 10px;
             border: none;
@@ -91,11 +91,11 @@
         }
 
         .add-proof-btn:hover {
-            background-color: #cc4646;
+            background-color: #e2af28;
         }
 
         .bank-details {
-            background-color: #343a40;
+            background-color: #00001c;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -103,7 +103,7 @@
         }
 
         .bank-details h2 {
-            color: #ff5757;
+            color: #e2af28;
             margin-bottom: 20px;
         }
 

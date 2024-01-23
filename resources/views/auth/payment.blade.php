@@ -91,7 +91,7 @@
         }
 
         .add-proof-btn:hover {
-            background-color: #e2af28;
+            background-color: #00001c;
         }
 
         .bank-details {

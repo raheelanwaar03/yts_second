@@ -38,6 +38,7 @@
                             <li><a href="#" class="active">Overview</a></li>
                             <li><a href="{{ route('User.Dashboard') }}">Dashboard</a></li>
                             <li><a href="{{ route('User.Withdraw') }}">Withdraw</a></li>
+                            <li><a href="{{ route('User.All.Tasks') }}">Task</a></li>
                             <li><a href="{{ route('User.Withdraw.History') }}">Withdraw History</a></li>
                             <li><a href="{{ route('User.Referral.Link') }}">Referral Link</a></li>
                             <li><a href="{{ route('profile.edit') }}">Profile</a></li>

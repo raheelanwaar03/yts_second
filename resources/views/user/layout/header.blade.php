@@ -77,7 +77,28 @@
                         <li>
                             <a href="{{ route('User.Contact') }}">Contact</a>
                         </li>
-
+                        @if (auth()->user())
+                            <li>
+                                <a href="#0">User</a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="{{ route('User.Dashboard') }}">User Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('User.Team') }}">My Team</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('User.Referral.Link') }}">Promote Chanel Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('User.Contact') }}">Account Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="error-page.html">404</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
                         <li class="d-none d-lg-block">
                             <a href="#0" class="search--btn"><i class="fas fa-search"></i></a>
                         </li>

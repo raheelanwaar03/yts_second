@@ -82,18 +82,18 @@
                             <li>
                                 <a href="#0">User</a>
                                 <ul class="sub-menu">
+                                    <li><a href="{{ route('User.Dashboard') }}">Dashboard</a></li>
+                                    <li><a href="{{ route('User.Withdraw') }}">Withdraw</a></li>
+                                    <li><a href="{{ route('User.Withdraw.History') }}">Withdraw History</a></li>
+                                    <li><a href="{{ route('User.Team') }}">My Team</a></li>
+                                    <li><a href="{{ route('User.All.Tasks') }}">Task</a></li>
+                                    <li><a href="{{ route('User.Referral.Link') }}">Invite Team</a></li>
+                                    <li><a href="{{ route('profile.edit') }}">Setting</a></li>
                                     <li>
-                                        <a href="{{ route('User.Dashboard') }}">User Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('User.Team') }}">My Team</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('User.Referral.Link') }}"><small>Promote Chanel
-                                                Link</small></a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('User.Contact') }}">Account Profile</a>
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-warning">Sign Out</button>
+                                        </form>
                                     </li>
                                 </ul>
                             </li>

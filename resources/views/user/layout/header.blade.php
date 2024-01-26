@@ -88,13 +88,10 @@
                                         <a href="{{ route('User.Team') }}">My Team</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('User.Referral.Link') }}">Promote Chanel Link</a>
+                                        <a href="{{ route('User.Referral.Link') }}"><small>Promote Chanel Link</small></a>
                                     </li>
                                     <li>
                                         <a href="{{ route('User.Contact') }}">Account Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="error-page.html">404</a>
                                     </li>
                                 </ul>
                             </li>

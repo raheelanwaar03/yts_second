@@ -61,12 +61,12 @@
                                         <i class="las la-wallet"></i>
                                     </div>
                                     <div class="dashboard__card-content">
-                                        <p class="info">Total Balance</p>
+                                        <p class="info">Current Balance</p>
                                         <h3 class="title">{{ auth()->user()->balance }} pkr</h3>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-xxl-4 col-lg-6 col-md-6">
+                            {{-- <div class="col-xl-6 col-xxl-4 col-lg-6 col-md-6">
                                 <div class="dashboard__card">
                                     <div class="dashboard__card-icon">
                                         <i class="las la-money-bill-alt"></i>
@@ -87,20 +87,31 @@
                                         <h3 class="title">{{ pending_withdraw() }} pkr</h3>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-xl-6 col-xxl-4 col-lg-6 col-md-6">
                                 <div class="dashboard__card">
                                     <div class="dashboard__card-icon">
                                         <i class="las la-file-invoice-dollar"></i>
                                     </div>
                                     <div class="dashboard__card-content">
-                                        <p class="info">Approved Withdraw</p>
+                                        <p class="info">Recived Withdraw</p>
                                         <h3 class="title">{{ total_withdraw() }} pkr</h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    {{-- buttons --}}
+                    <div class="d-flex justify-content-around align-items-center mt-5">
+                        <a href="" class="btn btn-warning">Withdraw Now</a>
+                        <a href="" class="btn btn-warning">Statment</a>
+                    </div>
+
+                    {{-- chart --}}
+
+
+
                 </div>
             </div>
         </div>

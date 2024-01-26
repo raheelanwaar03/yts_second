@@ -23,7 +23,7 @@
     <!-- Dashboard Section Starts Here -->
     <div class="dashbaord-section padding-top padding-bottom">
         <div class="container">
-            <div class="row">
+            <div class="row sm">
                 <div class="col-lg-4 col-xl-4 col-xxl-3 col-xl-4">
                     <div class="sidebar dashboard__sidebar">
                         <div class="dashboard-user text-center">
@@ -38,10 +38,11 @@
                             <li><a href="#" class="active">Overview</a></li>
                             <li><a href="{{ route('User.Dashboard') }}">Dashboard</a></li>
                             <li><a href="{{ route('User.Withdraw') }}">Withdraw</a></li>
-                            <li><a href="{{ route('User.All.Tasks') }}">Task</a></li>
                             <li><a href="{{ route('User.Withdraw.History') }}">Withdraw History</a></li>
-                            <li><a href="{{ route('User.Referral.Link') }}">Referral Link</a></li>
-                            <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                            <li><a href="{{ route('User.Team') }}">My Team</a></li>
+                            <li><a href="{{ route('User.All.Tasks') }}">Task</a></li>
+                            <li><a href="{{ route('User.Referral.Link') }}">Invite Team</a></li>
+                            <li><a href="{{ route('profile.edit') }}">Setting</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
@@ -104,14 +105,44 @@
 
                     {{-- buttons --}}
                     <div class="d-flex justify-content-around align-items-center mt-5">
-                        <a href="" class="btn btn-warning">Withdraw Now</a>
-                        <a href="" class="btn btn-warning">Statment</a>
+                        <a href="{{ route('User.Withdraw') }}" class="btn btn-warning"><small>Withdraw Now</small></a>
+                        <a href="{{ route('User.Withdraw.History') }}" class="btn btn-warning">Statment</a>
                     </div>
-
                     {{-- chart --}}
+                    <div class="mt-5">
+                        <canvas id="earningChart" width="400" height="200"></canvas>
 
+                        <script>
+                            // Add your data here
+                            var earningsData = {
+                                labels: ['user1', 'User2', 'User3', 'User4', 'User5'],
+                                datasets: [{
+                                    label: 'Earnings',
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    borderWidth: 1,
+                                    data: [100, 200, 300, 400, 500],
+                                }]
+                            };
 
+                            // Get the canvas element
+                            var ctx = document.getElementById('earningChart').getContext('2d');
 
+                            // Create the chart
+                            var myBarChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: earningsData,
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-around align-items-center">
+                        <a href="{{ route('User.All.Tasks') }}" class="btn btn-warning">Daily Earn</a>
+                        <a href="#" class="btn btn-warning">Plan & Earn</a>
+                    </div>
                 </div>
             </div>
         </div>

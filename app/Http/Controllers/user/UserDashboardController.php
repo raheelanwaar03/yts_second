@@ -8,6 +8,7 @@ use App\Models\Setting;
 use App\Models\User;
 use App\Models\user\Withdraw;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserDashboardController extends Controller
 {
@@ -43,4 +44,25 @@ class UserDashboardController extends Controller
     {
         return view('user.contact');
     }
+
+    public function spin()
+    {
+        return view('user.spin');
+    }
+
+    public function spinWheel(Request $request)
+    {
+        $winningAmount = $request->input('amount');
+
+        Log::info("Received winning amount: $winningAmount");
+
+
+        $user = User::find(auth()->user()->id);
+        $user->balance += $winningAmount;
+        $user->save();
+        return redirect()->route('User.Dashboard')->with('success','You have won {{ $winningAmount }}');
+
+    }
+
+
 }

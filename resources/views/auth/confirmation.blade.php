@@ -9,12 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #212529;
+            background-color: #00001c;
             color: white;
         }
 
         .top-bar {
-            background-color: #343a40;
+            background-color: #e2af28;
             padding: 10px;
             display: flex;
             justify-content: space-between;
@@ -27,7 +27,7 @@
         }
 
         .alert-message {
-            background-color: #343a40;
+            background-color: #e2af28;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -35,7 +35,7 @@
         }
 
         .okay-btn {
-            background-color: #ff5757;
+            background-color: #00001c;
             color: white;
             border: none;
             padding: 10px 20px;

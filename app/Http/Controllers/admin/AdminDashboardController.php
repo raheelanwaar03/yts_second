@@ -17,7 +17,7 @@ class AdminDashboardController extends Controller
 
     public function pending_users()
     {
-        $users = User::has('trxIds')
+        $users = User::where('status', 'pending')->has('trxIds')
             ->whereHas('trxIds', function ($query) {
                 $query->whereNotNull('trx_id')->whereNotNull('screen_shot')
                     ->whereNotNull('sender_name')->whereNotNull('sender_number');
@@ -28,18 +28,17 @@ class AdminDashboardController extends Controller
 
     public function approved_users()
     {
-        $users = User::has('trxIds')
+        $users = User::where('status', 'approved')->has('trxIds')
             ->whereHas('trxIds', function ($query) {
                 $query->whereNotNull('trx_id')->whereNotNull('screen_shot')
                     ->whereNotNull('sender_name')->whereNotNull('sender_number');
             })->get();
-
         return view('admin.user.approved', compact('users'));
     }
 
     public function rejected_users()
     {
-        $users = User::has('trxIds')
+        $users = User::where('status', 'rejected')->has('trxIds')
             ->whereHas('trxIds', function ($query) {
                 $query->whereNotNull('trx_id')->whereNotNull('screen_shot')
                     ->whereNotNull('sender_name')->whereNotNull('sender_number');
@@ -50,12 +49,26 @@ class AdminDashboardController extends Controller
 
     public function today_users()
     {
-        $users = User::has('trxIds')
+        $users = User::whereDate('created_at', Carbon::today())->has('trxIds')
             ->whereHas('trxIds', function ($query) {
                 $query->whereNotNull('trx_id')->whereNotNull('screen_shot')
                     ->whereNotNull('sender_name')->whereNotNull('sender_number');
             })->get();
 
         return view('admin.user.today', compact('users'));
+    }
+
+    public function edit_user($id)
+    {
+        $user = User::find($id);
+        return view('admin.user.edit', compact('user'));
+    }
+
+    public function update_user(Request $request, $id)
+    {
+        $user =  User::find($id);
+        $user->balance = $request->balance;
+        $user->save();
+        return redirect()->back()->with('success', 'User Details Updated');
     }
 }

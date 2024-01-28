@@ -48,26 +48,23 @@
                                                                     <td>{{ $item->email }}</td>
                                                                     <td>{{ $item->balance }}</td>
                                                                     <td>{{ $item->referral }}</td>
-                                                                    <td>{{ $item->trxIds->plan ?? 'UnPaid' }}</td>
-                                                                    <td>{{ $item->trxIds->sender_name ?? 'UnPaid' }}
+                                                                    <td>{{ $item->trxIds->plan }}</td>
+                                                                    <td>{{ $item->trxIds->sender_name }}
                                                                     </td>
-                                                                    <td>{{ $item->trxIds->sender_number ?? 'UnPaid' }}
+                                                                    <td>{{ $item->trxIds->sender_number }}
                                                                     </td>
-                                                                    <td>{{ $item->trxIds->trx_id ?? 'UnPaid' }}</td>
+                                                                    <td>{{ $item->trxIds->trx_id }}</td>
                                                                     <td>
-                                                                        @if ($item->profile && $item->trxIds->screen_shot)
-                                                                            <img src="{{ asset('images/' . $item->trxIds->screen_shot ?? 'UnPaid') }}"
-                                                                                class="img-fluid" height="100px"
-                                                                                width="100px" alt="UnPaid">
-                                                                        @else
-                                                                            <p>NO Image</p>
-                                                                        @endif
+                                                                        <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
+                                                                            class="img-fluid" height="100px" width="100px">
                                                                     </td>
                                                                     <td>
                                                                         <a href="{{ route('Admin.Make.User.Pending', $item->id) }}"
                                                                             class="btn btn-sm btn-primary">Pending</a>
                                                                         <a href="{{ route('Admin.Make.User.Rejected', $item->id) }}"
                                                                             class="btn btn-sm btn-danger">Reject</a>
+                                                                        <a href="{{ route('Admin.Edit.User', $item->id) }}"
+                                                                            class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>
                                                                 </tr>
                                                             @empty

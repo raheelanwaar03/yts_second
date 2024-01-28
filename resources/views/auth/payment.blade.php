@@ -126,13 +126,13 @@
                         <div class="package-cards">
                             <select name="plan" class="form-control">
                                 <option value="silver">
-                                    <h2>Silver</h2>
+                                    <h2>Silver(520)</h2>
                                 </option>
                                 <option value="gold">
-                                    <h2>Gold</h2>
+                                    <h2>Gold(1220)</h2>
                                 </option>
                                 <option value="dimond">
-                                    <h2>Dimond</h2>
+                                    <h2>Dimond(1820)</h2>
                                 </option>
                             </select>
                         </div>

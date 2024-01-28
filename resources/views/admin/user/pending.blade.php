@@ -61,6 +61,8 @@
                                                                             class="btn btn-sm btn-success">Approve</a>
                                                                         <a href="{{ route('Admin.Make.User.Rejected', $item->id) }}"
                                                                             class="btn btn-sm btn-danger">Reject</a>
+                                                                        <a href="{{ route('Admin.Edit.User', $item->id) }}"
+                                                                            class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>
                                                                 </tr>
 

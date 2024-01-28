@@ -52,13 +52,9 @@ class UserDashboardController extends Controller
 
     public function spinWheel(Request $request)
     {
-        $winningAmount = $request->input('amount');
-
-        Log::info("Received winning amount: $winningAmount");
-
-
+        $prizeAmount = $request->query('prizeAmount');
         $user = User::find(auth()->user()->id);
-        $user->balance += $winningAmount;
+        $user->balance += $prizeAmount;
         $user->save();
         return redirect()->route('User.Dashboard')->with('success','You have won {{ $winningAmount }}');
 

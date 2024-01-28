@@ -11,10 +11,10 @@ const mySpinValues = [
     { minDegree: 151, maxDegree: 180, value: 1000 },
     { minDegree: 121, maxDegree: 150, value: 1100 },
     { minDegree: 91, maxDegree: 120, value: 1200 },
-  ];
+];
 
-  const mySize = [15, 20, 10, 15, 10, 25, 15, 10, 20, 15, 10, 20]; // Customize the size of each sector
-  const mySpinColors = [
+const mySize = [15, 20, 10, 15, 10, 25, 15, 10, 20, 15, 10, 20]; // Customize the size of each sector
+const mySpinColors = [
     "#3498db",
     "#e74c3c",
     "#27ae60",
@@ -27,39 +27,61 @@ const mySpinValues = [
     "#e74c3c",
     "#1abc9c",
     "#f39c12",
-  ]; // Customize the colors of each sector
+]; // Customize the colors of each sector
 
-  let mySpinChart = new Chart(document.getElementById("spinWheel"), {
+let mySpinChart = new Chart(document.getElementById("spinWheel"), {
     plugins: [ChartDataLabels],
     type: "pie",
     data: {
-      labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
-      datasets: [
-        {
-          backgroundColor: mySpinColors,
-          data: mySize,
-        },
-      ],
+        labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+        datasets: [
+            {
+                backgroundColor: mySpinColors,
+                data: mySize,
+            },
+        ],
     },
     options: {
-      responsive: true,
-      animation: { duration: 0 },
-      plugins: {
-        tooltip: false,
-        legend: {
-          display: false,
+        responsive: true,
+        animation: { duration: 0 },
+        plugins: {
+            tooltip: false,
+            legend: {
+                display: false,
+            },
+            datalabels: {
+                rotation: 90,
+                color: "#ffffff",
+                formatter: (_, context) => context.chart.data.labels[context.dataIndex],
+                font: { size: 24 },
+            },
         },
-        datalabels: {
-          rotation: 90,
-          color: "#ffffff",
-          formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-          font: { size: 24 },
-        },
-      },
     },
-  });
+});
 
-  const generateValue = (angleValue) => {
+function sendWinningRequest(winningAmount) {
+    // Assuming you have a Laravel route named 'save-winning' for handling the request
+    const url = '/User/spin-wheel';
+
+    // Use fetch API to send the request
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        },
+        body: JSON.stringify({ winningAmount: winningAmount }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response if needed
+            console.log(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+const generateValue = (angleValue) => {
     for (let i of mySpinValues) {
       if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
         let winningAmount = i.value;
@@ -76,33 +98,8 @@ const mySpinValues = [
   };
 
 
-  const sendWinningRequest = (winningAmount) => {
-  // Make an AJAX request to Laravel controller
-  // Modify the URL and data according to your Laravel route and controller logic
-  $.ajax({
-    url: '/User/spin-wheel', // Replace this with your Laravel route URL
-    type: 'POST',
-    data: {
-      amount: winningAmount,
-      _token: $('meta[name="csrf-token"]').attr('content'), // Add CSRF token in data
-    },
-    success: function (response) {
-      // Handle the success response if needed
-      console.log('Request sent successfully');
-      // Redirect to user dashboard after 2 seconds
-      setTimeout(() => {
-        window.location.href = '/User/Dashboard'; // Replace with your actual dashboard URL
-      }, 2000);
-    },
-    error: function (error) {
-      // Handle the error response if needed
-      console.error('Error sending request', error);
-    },
-  });
-};
 
-
-  document.getElementById("spin_btn").addEventListener("click", () => {
+document.getElementById("spin_btn").addEventListener("click", () => {
     document.getElementById("spin_btn").disabled = true;
     document.getElementById("text").innerHTML = `<p>Best Of Luck!</p>`;
 
@@ -110,19 +107,19 @@ const mySpinValues = [
     let startTime = new Date().getTime();
 
     function spinWheel() {
-      let currentTime = new Date().getTime();
-      let elapsedTime = currentTime - startTime;
+        let currentTime = new Date().getTime();
+        let elapsedTime = currentTime - startTime;
 
-      if (elapsedTime < 5000) {
-        // Spin the wheel
-        mySpinChart.options.rotation += 3; // Adjust the rotation speed as needed
-        mySpinChart.update();
-        requestAnimationFrame(spinWheel);
-      } else {
-        // Stop spinning after 5 seconds
-        generateValue(randomDegree);
-        document.getElementById("spin_btn").disabled = false;
-      }
+        if (elapsedTime < 5000) {
+            // Spin the wheel
+            mySpinChart.options.rotation += 3; // Adjust the rotation speed as needed
+            mySpinChart.update();
+            requestAnimationFrame(spinWheel);
+        } else {
+            // Stop spinning after 5 seconds
+            generateValue(randomDegree);
+            document.getElementById("spin_btn").disabled = false;
+        }
     }
     spinWheel();
-  });
+});

@@ -249,6 +249,8 @@
                             <li><a href="{{ route('Admin.Pending.Users') }}">Pending User</a></li>
                             <li><a href="{{ route('Admin.Approved.Users') }}">Approved User</a></li>
                             <li><a href="{{ route('Admin.Rejected.Users') }}">Rejected User</a></li>
+                            {{-- <li><a href="{{ route('Admin.Add.Top.Users') }}">Add Top Users</a></li>
+                            <li><a href="{{ route('Admin.All.Top.Users') }}">All Top Users</a></li> --}}
                         </ul>
                     </li>
                     <li class="menu-title">OUR FEATURES</li>

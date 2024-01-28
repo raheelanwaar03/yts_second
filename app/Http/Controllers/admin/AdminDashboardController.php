@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\TopUsers;
 use App\Models\User;
 use App\Models\user\Withdraw;
 use Carbon\Carbon;
@@ -70,5 +71,32 @@ class AdminDashboardController extends Controller
         $user->balance = $request->balance;
         $user->save();
         return redirect()->back()->with('success', 'User Details Updated');
+    }
+
+    public function add_top_user()
+    {
+        return view('admin.user.top_user');
+    }
+
+    public function store_top_user(Request $request)
+    {
+        $top_user = new TopUsers();
+        $top_user->user_name = $request->user_name;
+        $top_user->points = $request->points;
+        $top_user->save();
+        return redirect()->back()->with('success', 'User Added to Top users list');
+    }
+
+    public function all_top_user()
+    {
+        $users = TopUsers::get();
+        return view('admin.user.all_top', compact('users'));
+    }
+
+    public function delete_top_user($id)
+    {
+        $user = TopUsers::find($id);
+        $user->delete();
+        return redirect()->back()->with('success', 'User Deleted');
     }
 }

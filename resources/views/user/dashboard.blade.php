@@ -115,13 +115,14 @@
                         <script>
                             // Add your data here
                             var earningsData = {
-                                labels: ['user1', 'User2', 'User3', 'User4', 'User5'],
+                                labels: ['Ali Raza', 'Muhammad Hassan', 'Zeshan khan', 'Skindar', 'Hamza'],
                                 datasets: [{
                                     label: 'Earnings',
                                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                                     borderColor: 'rgba(75, 192, 192, 1)',
                                     borderWidth: 1,
-                                    data: [100, 200, 300, 400, 500],
+                                    data: [
+                                        100, 200, 300, 400, 500],
                                 }]
                             };
 

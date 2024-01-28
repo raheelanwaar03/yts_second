@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Task;
+use App\Models\admin\TopUsers;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\user\Withdraw;
@@ -20,7 +21,6 @@ class UserDashboardController extends Controller
 
     public function dashboard()
     {
-
         return view('user.dashboard');
     }
 

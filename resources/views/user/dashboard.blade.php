@@ -17,6 +17,10 @@
                 class="shape shape2 d-none d-lg-block">
         </div>
     </div>
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+        {{ env('APP_NAME') }} is a very good platform to invest your time and money. Contact Us on this number
+        (0346-7805896) if any query. It is a real earning platform. Refere this to your friends and family.
+    </marquee>
     <!-- Banner Section Ends Here -->
 
 
@@ -30,8 +34,8 @@
                             <div class="thumb"><img src="{{ asset('assets/images/dashboard/cc2.png') }}" alt="dashboard">
                             </div>
                             <div class="content mt-3">
-                                <h3 class="name">User</h3>
-                                <p class="text-white">email@gmail.com</p>
+                                <h3 class="name">{{ auth()->user()->name }}</h3>
+                                <p class="text-white">{{ auth()->user()->email }}</p>
                             </div>
                         </div>
                         <ul class="dashbard__tab tags">
@@ -117,12 +121,13 @@
                             var earningsData = {
                                 labels: ['Ali Raza', 'Muhammad Hassan', 'Zeshan khan', 'Skindar', 'Hamza'],
                                 datasets: [{
-                                    label: 'Earnings',
-                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    label: 'Last Weak Top Users',
+                                    backgroundColor: '#ffc107',
+                                    borderColor: '#ffc106',
                                     borderWidth: 1,
                                     data: [
-                                        100, 200, 300, 400, 500],
+                                        100, 200, 300, 400, 500
+                                    ],
                                 }]
                             };
 

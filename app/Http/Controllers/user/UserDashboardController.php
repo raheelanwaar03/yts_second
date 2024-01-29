@@ -7,7 +7,10 @@ use App\Models\admin\Task;
 use App\Models\admin\TopUsers;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\user\SpinWin;
+use App\Models\user\SpinWithdraw;
 use App\Models\user\Withdraw;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -50,15 +53,50 @@ class UserDashboardController extends Controller
         return view('user.spin');
     }
 
-    public function spinWheel(Request $request)
+    public function spinWheel($amount)
     {
-        $prizeAmount = $request->query('prizeAmount');
-        $user = User::find(auth()->user()->id);
-        $user->balance += $prizeAmount;
-        $user->save();
-        return redirect()->route('User.Dashboard')->with('success','You have won {{ $winningAmount }}');
+        // check if user spin it already
+        $spin = SpinWin::where('user_id', auth()->user()->id)->whereDate('created_at', Carbon::today())->first();
+        if ($spin != null) {
+            return redirect(route('User.Dashboard'))->with('error', 'You get today reward already');
+        }
 
+        $spin = new SpinWin();
+        $spin->user_id = auth()->user()->id;
+        $spin->amount = $amount;
+        $spin->save();
+        return redirect()->back()->with('success', 'Claimed');
     }
 
+    public function spinWithdraw()
+    {
+        return view('user.spinWithdraw');
+    }
 
+    public function storeSpinWithdraw(Request $request)
+    {
+        if (auth()->user()->level != 'Level 7') {
+            return redirect(route('User.Dashboard'))->with('error', 'Your level must be on Level 7');
+        }
+
+        // check if already requested
+        $spin_withdraw = SpinWithdraw::where('user_id', auth()->user()->id)->whereDate('created_at', Carbon::today())->first();
+        if ($spin_withdraw != null) {
+            return redirect()->route('User.Dashboard')->with('error', 'Already Requested');
+        }
+
+
+        if (total_reward() < $request->amount) {
+            return redirect()->back()->with('error', 'Not enough balance');
+        }
+
+        $spin_withdraw = new SpinWithdraw();
+        $spin_withdraw->user_id = auth()->user()->id;
+        $spin_withdraw->amount = $request->amount;
+        $spin_withdraw->title = $request->title;
+        $spin_withdraw->bank = $request->bank;
+        $spin_withdraw->account = $request->account;
+        $spin_withdraw->save();
+        return redirect(route('User.Dashboard'))->with('success', 'Successfully Requested');
+    }
 }

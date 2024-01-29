@@ -69,8 +69,9 @@ let spinChart = new Chart(spinWheel, {
 const generateValue = (angleValue) => {
   for (let i of spinValues) {
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-      text.innerHTML = `<p>Congratulations, You Have Won $${i.value} ! </p>`;
+      text.innerHTML = `<p>Congratulations, You Have Won ${i.value} ! </p>`;
       spinBtn.disabled = false;
+      window.location.href = "/User/spin-wheel/"+ i.value;
       break;
     }
   }

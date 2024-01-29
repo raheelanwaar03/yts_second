@@ -1,125 +1,100 @@
-const mySpinValues = [
-    { minDegree: 61, maxDegree: 90, value: 100 },
-    { minDegree: 31, maxDegree: 60, value: 200 },
-    { minDegree: 0, maxDegree: 30, value: 300 },
-    { minDegree: 331, maxDegree: 360, value: 400 },
-    { minDegree: 301, maxDegree: 330, value: 500 },
-    { minDegree: 271, maxDegree: 300, value: 600 },
-    { minDegree: 241, maxDegree: 270, value: 700 },
-    { minDegree: 211, maxDegree: 240, value: 800 },
-    { minDegree: 181, maxDegree: 210, value: 900 },
-    { minDegree: 151, maxDegree: 180, value: 1000 },
-    { minDegree: 121, maxDegree: 150, value: 1100 },
-    { minDegree: 91, maxDegree: 120, value: 1200 },
+/* --------------- Spin Wheel  --------------------- */
+const spinWheel = document.getElementById("spinWheel");
+const spinBtn = document.getElementById("spin_btn");
+const text = document.getElementById("text");
+/* --------------- Minimum And Maximum Angle For A value  --------------------- */
+const spinValues = [
+  { minDegree: 61, maxDegree: 90, value: 100 },
+  { minDegree: 31, maxDegree: 60, value: 200 },
+  { minDegree: 0, maxDegree: 30, value: 300 },
+  { minDegree: 331, maxDegree: 360, value: 400 },
+  { minDegree: 301, maxDegree: 330, value: 500 },
+  { minDegree: 271, maxDegree: 300, value: 600 },
+  { minDegree: 241, maxDegree: 270, value: 700 },
+  { minDegree: 211, maxDegree: 240, value: 800 },
+  { minDegree: 181, maxDegree: 210, value: 900 },
+  { minDegree: 151, maxDegree: 180, value: 1000 },
+  { minDegree: 121, maxDegree: 150, value: 1100 },
+  { minDegree: 91, maxDegree: 120, value: 1200 },
 ];
-
-const mySize = [15, 20, 10, 15, 10, 25, 15, 10, 20, 15, 10, 20]; // Customize the size of each sector
-const mySpinColors = [
-    "#3498db",
-    "#e74c3c",
-    "#27ae60",
-    "#f39c12",
-    "#2c3e50",
-    "#9b59b6",
-    "#e67e22",
-    "#3498db",
-    "#2ecc71",
-    "#e74c3c",
-    "#1abc9c",
-    "#f39c12",
-]; // Customize the colors of each sector
-
-let mySpinChart = new Chart(document.getElementById("spinWheel"), {
-    plugins: [ChartDataLabels],
-    type: "pie",
-    data: {
-        labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
-        datasets: [
-            {
-                backgroundColor: mySpinColors,
-                data: mySize,
-            },
-        ],
+/* --------------- Size Of Each Piece  --------------------- */
+const size = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+/* --------------- Background Colors  --------------------- */
+var spinColors = [
+  "#E74C3C",
+  "#7D3C98",
+  "#2E86C1",
+  "#138D75",
+  "#F1C40F",
+  "#D35400",
+  "#138D75",
+  "#F1C40F",
+  "#b163da",
+  "#E74C3C",
+  "#7D3C98",
+  "#138D75",
+];
+/* --------------- Chart --------------------- */
+/* --------------- Guide : https://chartjs-plugin-datalabels.netlify.app/guide/getting-started.html --------------------- */
+let spinChart = new Chart(spinWheel, {
+  plugins: [ChartDataLabels],
+  type: "pie",
+  data: {
+    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    datasets: [
+      {
+        backgroundColor: spinColors,
+        data: size,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    animation: { duration: 0 },
+    plugins: {
+      tooltip: false,
+      legend: {
+        display: false,
+      },
+      datalabels: {
+        rotation: 90,
+        color: "#ffffff",
+        formatter: (_, context) => context.chart.data.labels[context.dataIndex],
+        font: { size: 24 },
+      },
     },
-    options: {
-        responsive: true,
-        animation: { duration: 0 },
-        plugins: {
-            tooltip: false,
-            legend: {
-                display: false,
-            },
-            datalabels: {
-                rotation: 90,
-                color: "#ffffff",
-                formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-                font: { size: 24 },
-            },
-        },
-    },
+  },
 });
-
-function sendWinningRequest(winningAmount) {
-    // Assuming you have a Laravel route named 'save-winning' for handling the request
-    const url = '/User/spin-wheel';
-
-    // Use fetch API to send the request
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-        },
-        body: JSON.stringify({ winningAmount: winningAmount }),
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response if needed
-            console.log(data);
-        })
-        .catch(error => console.error('Error:', error));
-}
-
-
+/* --------------- Display Value Based On The Angle --------------------- */
 const generateValue = (angleValue) => {
-    for (let i of mySpinValues) {
-      if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-        let winningAmount = i.value;
-
-        // Display winning message
-        document.getElementById("text").innerHTML = `<p>Congratulations, You Have Won ${winningAmount} ! </p>`;
-
-        // Send AJAX request to Laravel controller
-        sendWinningRequest(winningAmount);
-
-        break;
-      }
+  for (let i of spinValues) {
+    if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+      text.innerHTML = `<p>Congratulations, You Have Won $${i.value} ! </p>`;
+      spinBtn.disabled = false;
+      break;
     }
-  };
-
-
-
-document.getElementById("spin_btn").addEventListener("click", () => {
-    document.getElementById("spin_btn").disabled = true;
-    document.getElementById("text").innerHTML = `<p>Best Of Luck!</p>`;
-
-    let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
-    let startTime = new Date().getTime();
-
-    function spinWheel() {
-        let currentTime = new Date().getTime();
-        let elapsedTime = currentTime - startTime;
-
-        if (elapsedTime < 5000) {
-            // Spin the wheel
-            mySpinChart.options.rotation += 3; // Adjust the rotation speed as needed
-            mySpinChart.update();
-            requestAnimationFrame(spinWheel);
-        } else {
-            // Stop spinning after 5 seconds
-            generateValue(randomDegree);
-            document.getElementById("spin_btn").disabled = false;
-        }
+  }
+};
+/* --------------- Spinning Code --------------------- */
+let count = 0;
+let resultValue = 101;
+spinBtn.addEventListener("click", () => {
+  spinBtn.disabled = true;
+  text.innerHTML = `<p>Best Of Luck!</p>`;
+  let randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+  let rotationInterval = window.setInterval(() => {
+    spinChart.options.rotation = spinChart.options.rotation + resultValue;
+    spinChart.update();
+    if (spinChart.options.rotation >= 360) {
+      count += 1;
+      resultValue -= 5;
+      spinChart.options.rotation = 0;
+    } else if (count > 15 && spinChart.options.rotation == randomDegree) {
+      generateValue(randomDegree);
+      clearInterval(rotationInterval);
+      count = 0;
+      resultValue = 101;
     }
-    spinWheel();
+  }, 10);
 });
+/* --------------- End Spin Wheel  --------------------- */

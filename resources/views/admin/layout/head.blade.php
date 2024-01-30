@@ -30,18 +30,8 @@
 
 </head>
 
-<body data-typography="poppins" data-theme-version="light" data-layout="vertical" data-nav-headerbg="black"
-    data-headerbg="color_1">
+<body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="lds-ripple">
-            <div></div>
-            <div></div>
-        </div>
-    </div>
     <!--*******************
         Preloader end
     ********************-->

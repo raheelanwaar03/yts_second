@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\user\Withdraw;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminDashboardController extends Controller
 {
@@ -57,6 +58,19 @@ class AdminDashboardController extends Controller
             })->get();
 
         return view('admin.user.today', compact('users'));
+    }
+
+    public function change_password($id)
+    {
+        $user = User::find($id);
+        return view('admin.user.changePassword',compact('user'));
+    }
+
+    public function update_password(Request $request,$id)
+    {
+        $user = User::find($id);
+        $user->password = Hash::make($request->password);
+        return redirect()->route('Admin.Approved.Users')->with('success','Password Changed');
     }
 
     public function edit_user($id)

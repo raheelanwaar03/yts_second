@@ -87,15 +87,15 @@
                         <li class="p-0 d-lg-none mt-3 mt-lg-0">
                             @if (auth()->user())
                                 <div class="button__wrapper">
-                                    <a href="{{ route('register') }}" class="cmn--btn">Register</a>
-                                    <a href="{{ route('login') }}" class="cmn--btn">Login</a>
-                                </div>
-                            @else
-                                <div class="button__wrapper">
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="cmn--btn">Logout</button>
                                     </form>
+                                </div>
+                            @else
+                                <div class="button__wrapper">
+                                    <a href="{{ route('register') }}" class="cmn--btn">Register</a>
+                                    <a href="{{ route('login') }}" class="cmn--btn">Login</a>
                                 </div>
                             @endif
                         </li>

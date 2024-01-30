@@ -17,6 +17,8 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Todays/Users', [AdminDashboardController::class, 'today_users'])->name('Todays.Users');
     Route::get('/Edit/User/{id}', [AdminDashboardController::class, 'edit_user'])->name('Edit.User');
     Route::post('/Update/User/{id}', [AdminDashboardController::class, 'update_user'])->name('Update.User');
+    Route::get('/Change/Password/{id}', [AdminDashboardController::class, 'change_password'])->name('Change.Password');
+    Route::post('/Update/Password/{id}', [AdminDashboardController::class, 'update_password'])->name('Update.Password');
     Route::get('/Add/Top/Users/', [AdminDashboardController::class, 'add_top_user'])->name('Add.Top.Users');
     Route::post('/Store/Top/Users/', [AdminDashboardController::class, 'store_top_user'])->name('Store.Top.Users');
     Route::get('/All/Top/Users/', [AdminDashboardController::class, 'all_top_user'])->name('All.Top.Users');

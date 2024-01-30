@@ -21,7 +21,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="basic-form">
-                                            <form action="{{ route('Admin.Update.User', $user->id) }}" method="POST">
+                                            <form action="{{ route('Admin.Update.Password', $user->id) }}" method="POST">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="mb-3 col-md-6">
@@ -34,15 +34,10 @@
                                                         <input type="text" name="Email" class="form-control"
                                                             value="{{ $user->email }}" readonly>
                                                     </div>
-                                                    <div class="mb-3 col-md-6">
-                                                        <label class="form-label">Balance</label>
-                                                        <input type="text" name="balance" class="form-control"
-                                                            value="{{ $user->balance }}">
-                                                    </div>
-                                                    <div class="mb-3 col-md-6">
-                                                        <label class="form-label">Level</label>
-                                                        <input type="text" name="balance" class="form-control"
-                                                            value="{{ $user->level }}">
+                                                    <div class="mb-3 col-md-12">
+                                                        <label class="form-label">Password</label>
+                                                        <input type="text" name="password" class="form-control"
+                                                            value="{{ $user->password }}">
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Update</button>

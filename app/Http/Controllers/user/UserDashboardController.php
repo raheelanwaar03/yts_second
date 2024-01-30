@@ -63,41 +63,14 @@ class UserDashboardController extends Controller
 
         $spin = new SpinWin();
         $spin->user_id = auth()->user()->id;
-        $spin->amount = $amount;
+        $spin->amount += $amount;
         $spin->save();
         return redirect()->back()->with('success', 'Claimed');
     }
 
     public function spinWithdraw()
     {
-        return view('user.spinWithdraw');
-    }
-
-    public function storeSpinWithdraw(Request $request)
-    {
-        if (auth()->user()->level != 'Level 7') {
-            return redirect(route('User.Dashboard'))->with('error', 'Your level must be on Level 8');
-        }
-
-        // check if already requested
-        $spin_withdraw = SpinWithdraw::where('user_id', auth()->user()->id)->whereDate('created_at', Carbon::today())->first();
-        if ($spin_withdraw != null) {
-            return redirect()->route('User.Dashboard')->with('error', 'Already Requested');
-        }
-
-
-        if (total_reward() < $request->amount) {
-            return redirect()->back()->with('error', 'Not enough balance');
-        }
-
-        $spin_withdraw = new SpinWithdraw();
-        $spin_withdraw->user_id = auth()->user()->id;
-        $spin_withdraw->amount = $request->amount;
-        $spin_withdraw->title = $request->title;
-        $spin_withdraw->bank = $request->bank;
-        $spin_withdraw->account = $request->account;
-        $spin_withdraw->save();
-        return redirect(route('User.Dashboard'))->with('success', 'Successfully Requested');
+        return redirect()->route('User.Dashboard')->with('error', 'You must have Level 8 to request withdraw');
     }
 
     public function promote()

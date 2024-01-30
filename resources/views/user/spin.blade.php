@@ -1,44 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Source Code Of Spin Wheel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!---------------  CSS  --------------------->
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <!---------------  Font Aewsome  --------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!---------------  Chart JS  --------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js">
-    </script>
+    <!---------------  Chart JS Plugin  --------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
 </head>
-
 <body>
-    <h1>JACKPOT</h1>
-    <div class="container">
-        <div class="wheel_box">
-            <canvas id="spinWheel"></canvas>
-            <button id="spin_btn" class="hiddenButton"><small style="font-size: 15px;">Spin</small></button>
-            <i class="fa-solid fa-location-arrow"></i>
-        </div>
-        <div id="text">
-            <p>Spin and Win</p>
-        </div>
-        <div class="d-flex justify-content-around align-items-center">
-            <h2 class="text-white">Reward:
-                ({{ total_reward() }})</h2>
-            <a href="{{ route('User.Spin.Withdraw') }}" class="btn btn-warning">Withdraw</a>
-        </div>
+    <x-alert/>
+
+  <h1>JACKPOT</h1>
+  <div class="container">
+     <div class="wheel_box">
+      <canvas id="spinWheel"></canvas>
+      <button id="spin_btn">Spin</button>
+      <i class="fa-solid fa-location-arrow"></i>
+     </div>
+    <div id="text"><p>Wheel Of Fortune</p></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h2 style="color: white">Reward:
+            ({{ total_reward() }})</h2>
+        <a href="{{ route('User.Spin.Withdraw') }}" style="text-decoration:none;border-radius:12px;padding:12px;background-color:yellow;">Withdraw</a>
     </div>
-
-
-    <!---------------  SCRIPT  --------------------->
-    <script src="{{ asset('assets/script.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+  </div>
+  <!---------------  SCRIPT  --------------------->
+  <script src="{{ asset('assets/script.js') }}"></script>
 </body>
-
 </html>

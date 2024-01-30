@@ -100,10 +100,6 @@
                     <div class="profile-label">Plan</div>
                     <div class="profile-value">{{ $user->trxIds->plan ?? 'null'}}</div>
                 </div>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="edit-profile-btn">Logout</button>
-                </form>
             </div>
         </div>
     </div>

@@ -65,6 +65,9 @@
                                                                             class="btn btn-sm btn-danger">Reject</a>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
+                                                                        <a href="{{ route('Admin.Change.Password', $item->id) }}"
+                                                                            class="btn btn-sm btn-info">Change
+                                                                            Password</a>
                                                                     </td>
                                                                 </tr>
                                                             @empty

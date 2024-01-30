@@ -76,12 +76,11 @@
                             <li>
                                 <a href="#0">User</a>
                                 <ul class="sub-menu">
-                                    <li><a href="{{ route('User.Withdraw') }}">Withdraw</a></li>
-                                    <li><a href="{{ route('User.Withdraw.History') }}">Withdraw History</a></li>
+                                    <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                                     <li><a href="{{ route('User.Team') }}">My Team</a></li>
-                                    <li><a href="{{ route('User.All.Tasks') }}">Task</a></li>
                                     <li><a href="{{ route('User.Referral.Link') }}">Invite Team</a></li>
-                                    <li><a href="{{ route('profile.edit') }}">Setting</a></li>
+                                    <li><a href="{{ route('User.Setting.Password') }}">Setting</a></li>
+                                    <li><a href="{{ route('User.Promote.Channel') }}">Promote Channel</a></li>
                                 </ul>
                             </li>
                         @endif

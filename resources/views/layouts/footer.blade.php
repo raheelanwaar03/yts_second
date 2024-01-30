@@ -15,17 +15,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-sm-8">
-                    <div class="footer__widget">
-                        <h3 class="widget-title">Useful Links</h3>
-                        <ul class="footer-links">
-                            <li><a href="{{ route('User.Plan.Details') }}">{{ env('APP_NAME') }} Plan</a></li>
-                            <li><a href="{{ route('User.Contact') }}">Contact Us</a></li>
-                            <li><a href="{{ route('User.Dashboard') }}">Dashboard</a></li>
-                            <li><a href="{{ route('login') }}">Login Account</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

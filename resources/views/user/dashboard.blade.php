@@ -2,25 +2,16 @@
 
 @section('content')
     <div class="inner-banner section-bg overflow-hidden">
-        <div class="container">
-            <div class="inner__banner__content text-center">
-                <h2 class="title">User Dashboard</h2>
-                <ul class="breadcums d-flex flex-wrap justify-content-center">
-                    <li><a href="{{ route('User.Dashboard') }}">Home</a>//</li>
-                    <li>Dashboard</li>
-                </ul>
-            </div>
-        </div>
         <div class="shapes">
             <img src="{{ asset('assets/images/banner/inner-bg.png') }}" alt="banner" class="shape shape1">
             <img src="{{ asset('assets/images/banner/inner-thumb.png') }}" alt="banner"
                 class="shape shape2 d-none d-lg-block">
         </div>
+        <marquee behavior="scroll" class="bg-warning text-dark p-2" style="font-size: 16px;" direction="left" scrollamount="7">
+            {{ env('APP_NAME') }} is a very good platform to invest your time and money. Contact Us on this number
+            (0346-7805896) if any query. It is a real earning platform. Refere this to your friends and family.
+        </marquee>
     </div>
-    <marquee behavior="scroll" direction="left" scrollamount="5">
-        {{ env('APP_NAME') }} is a very good platform to invest your time and money. Contact Us on this number
-        (0346-7805896) if any query. It is a real earning platform. Refere this to your friends and family.
-    </marquee>
     <!-- Banner Section Ends Here -->
 
 

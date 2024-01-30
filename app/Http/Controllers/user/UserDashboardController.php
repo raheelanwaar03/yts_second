@@ -76,7 +76,7 @@ class UserDashboardController extends Controller
     public function storeSpinWithdraw(Request $request)
     {
         if (auth()->user()->level != 'Level 7') {
-            return redirect(route('User.Dashboard'))->with('error', 'Your level must be on Level 7');
+            return redirect(route('User.Dashboard'))->with('error', 'Your level must be on Level 8');
         }
 
         // check if already requested
@@ -98,5 +98,21 @@ class UserDashboardController extends Controller
         $spin_withdraw->account = $request->account;
         $spin_withdraw->save();
         return redirect(route('User.Dashboard'))->with('success', 'Successfully Requested');
+    }
+
+    public function promote()
+    {
+        return view('user.promote');
+    }
+
+    public function success(Request $request)
+    {
+        return redirect(route('User.Dashboard'))->with('success', 'Your Link submited successfully');
+    }
+
+    public function edit()
+    {
+        $user = User::where('id', auth()->user()->id)->with('trxIds')->first();
+        return view('profile.edit', compact('user'));
     }
 }

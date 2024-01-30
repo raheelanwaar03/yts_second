@@ -115,6 +115,7 @@
 </head>
 
 <body>
+    <x-alert />
 
     <div class="container">
         <div class="row">

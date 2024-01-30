@@ -36,7 +36,8 @@
                             <li><a href="{{ route('User.Team') }}">My Team</a></li>
                             <li><a href="{{ route('User.All.Tasks') }}">Task</a></li>
                             <li><a href="{{ route('User.Referral.Link') }}">Invite Team</a></li>
-                            <li><a href="{{ route('profile.edit') }}">Setting</a></li>
+                            <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                            <li><a href="{{ route('User.Setting.Password') }}">Setting</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf

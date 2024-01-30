@@ -71,7 +71,7 @@
 
     <div class="top-bar">
         <i class="fas fa-arrow-left back-icon" onclick="goBack()"></i>
-        <h1 class="earn-now-heading">Earn Now</h1>
+        <h1 class="text-center">Earn Now</h1>
     </div>
 
     <div class="container">

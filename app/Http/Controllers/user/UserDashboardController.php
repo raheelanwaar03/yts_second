@@ -35,6 +35,11 @@ class UserDashboardController extends Controller
         return view('user.team', compact('referrals'));
     }
 
+    public function setting()
+    {
+        return view('user.setting');
+    }
+
     public function link()
     {
         return view('user.referral');

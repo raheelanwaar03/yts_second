@@ -28,7 +28,7 @@ Route::name('User.')->prefix('User')->middleware('user', 'auth', 'fees')->group(
     Route::post('/Store/Spin/Withdraw',[UserDashboardController::class,'storeSpinWithdraw'])->name('Store.Spin.Withdraw');
     // promote Channel
     Route::get('Promote/Channel',[UserDashboardController::class,'promote'])->name('Promote.Channel');
-    Route::post('Success',[UserDashboardController::class,'success'])->name('Success');
-    Route::get('Setting',[UserDashboardController::class,'setting'])->name('Setting.Password');
+    Route::post('/Success',[UserDashboardController::class,'success'])->name('Success');
+    Route::get('/Setting',[UserDashboardController::class,'setting'])->name('Setting.Password');
 
 });

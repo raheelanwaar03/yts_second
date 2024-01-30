@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\TopUsers;
 use App\Models\User;
 use App\Models\user\Withdraw;
+use App\Models\UserPlans;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -63,19 +64,19 @@ class AdminDashboardController extends Controller
     public function change_password($id)
     {
         $user = User::find($id);
-        return view('admin.user.changePassword',compact('user'));
+        return view('admin.user.changePassword', compact('user'));
     }
 
-    public function update_password(Request $request,$id)
+    public function update_password(Request $request, $id)
     {
         $user = User::find($id);
         $user->password = Hash::make($request->password);
-        return redirect()->route('Admin.Approved.Users')->with('success','Password Changed');
+        return redirect()->route('Admin.Approved.Users')->with('success', 'Password Changed');
     }
 
     public function edit_user($id)
     {
-        $user = User::find($id);
+        $user = User::where('id', $id)->first();
         return view('admin.user.edit', compact('user'));
     }
 
@@ -84,6 +85,9 @@ class AdminDashboardController extends Controller
         $user =  User::find($id);
         $user->balance = $request->balance;
         $user->save();
+        $user_plan = UserPlans::where('user_id', $user->id)->first();
+        $user_plan->plan = $request->plan;
+        $user_plan->save();
         return redirect()->back()->with('success', 'User Details Updated');
     }
 

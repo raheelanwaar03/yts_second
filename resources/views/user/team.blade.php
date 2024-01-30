@@ -67,7 +67,7 @@
 
     <div class="top-bar">
         <i class="fas fa-arrow-left navigation-icon" style="color: #e2af28" onclick="goBack()"></i>
-        <h1>Total Team: ({{ total_team() }})</h1>
+        <h1 class="text-center">Total Team: ({{ total_team() }})</h1>
     </div>
 
     <div class="container">

@@ -41,21 +41,9 @@
                                 <p class="plan-parcent-info">Daily Profit</p>
                             </div>
                             <div class="plan__item-body">
-                                <ul class="plan__info">
-                                    <li>
-                                        <span class="title">Tasks:</span>
-                                        <span class="value"> 5</span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Referral Commission :</span>
-                                        <span class="value">(accourding to plan)</span>
-                                    </li>
-                                </ul>
+                                Price: (520)
                             </div>
                             <div class="plan__item-footer">
-                                <a href="{{ route('login') }}" class="btn btn-warning">
-                                    <p class="footer-info"> Invest</p>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -67,21 +55,9 @@
                             <p class="plan-parcent-info">Daily Profit</p>
                         </div>
                         <div class="plan__item-body">
-                            <ul class="plan__info">
-                                <li>
-                                    <span class="title">Tasks:</span>
-                                    <span class="value">10</span>
-                                </li>
-                                <li>
-                                    <span class="title">Referral Commission :</span>
-                                    <span class="value">(accourding to plan)</span>
-                                </li>
-                            </ul>
+                            Price: (1220)
                         </div>
                         <div class="plan__item-footer">
-                            <a href="{{ route('login') }}" class="btn btn-warning">
-                                <p class="footer-info"> Invest</p>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -92,21 +68,9 @@
                             <p class="plan-parcent-info">Daily Profit</p>
                         </div>
                         <div class="plan__item-body">
-                            <ul class="plan__info">
-                                <li>
-                                    <span class="title">Tasks:</span>
-                                    <span class="value"> 15</span>
-                                </li>
-                                <li>
-                                    <span class="title">Referral Commission :</span>
-                                    <span class="value">(accourding to plan)</span>
-                                </li>
-                            </ul>
+                            Price: (1820)
                         </div>
                         <div class="plan__item-footer">
-                            <a href="{{ route('login') }}" class="btn btn-warning">
-                                <p class="footer-info"> Invest</p>
-                            </a>
                         </div>
                     </div>
                 </div>

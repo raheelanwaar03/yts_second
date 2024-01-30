@@ -15,7 +15,7 @@
 
 
     <!-- Dashboard Section Starts Here -->
-    <div class="dashbaord-section padding-top padding-bottom">
+    <div class="dashbaord-section padding-top padding-bottom" style="margin-top: -150px">
         <div class="container">
             <div class="row sm">
                 <div class="col-lg-4 col-xl-4 col-xxl-3 col-xl-4">

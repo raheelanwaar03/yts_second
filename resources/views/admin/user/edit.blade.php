@@ -41,8 +41,13 @@
                                                     </div>
                                                     <div class="mb-3 col-md-6">
                                                         <label class="form-label">Level</label>
-                                                        <input type="text" name="balance" class="form-control"
+                                                        <input type="text" name="level" class="form-control"
                                                             value="{{ $user->level }}">
+                                                    </div>
+                                                    <div class="mb-3 col-md-6">
+                                                        <label class="form-label">Package</label>
+                                                        <input type="text" name="plan" class="form-control"
+                                                            value="{{ $user->trxIds->plan }}">
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Update</button>

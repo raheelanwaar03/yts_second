@@ -6,7 +6,7 @@ use App\Models\user\Withdraw;
 
 function total_team()
 {
-    $team = User::where('referral', auth()->user()->email)->get()->count();
+    $team = User::where('referral', auth()->user()->email)->where('status', 'approved')->get()->count();
     return $team;
 }
 

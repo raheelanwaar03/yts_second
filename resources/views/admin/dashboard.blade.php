@@ -198,6 +198,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-3 col-sm-6 same-card">
+                            <div class="card">
+                                <div class="card-body depostit-card">
+                                    <div class="depostit-card-media d-flex justify-content-between style-1">
+                                        <a href="{{ route('Admin.Del.Rej.Users') }}" class="btn btn-danger">Del Rej
+                                            Users</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

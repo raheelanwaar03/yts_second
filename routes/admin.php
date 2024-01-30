@@ -27,6 +27,7 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Make/User/Approve/{id}', [UserStatusController::class, 'approve_user'])->name('Make.User.Approve');
     Route::get('/Make/User/Rejected/{id}', [UserStatusController::class, 'rejected_user'])->name('Make.User.Rejected');
     Route::get('/Make/User/Pending/{id}', [UserStatusController::class, 'pending_user'])->name('Make.User.Pending');
+    Route::get('/Delete/Rejected/Users', [UserStatusController::class, 'del_rej_users'])->name('Del.Rej.Users');
     // task
     Route::get('/Add/Task', [TaskController::class, 'add_task'])->name('Add.Task');
     Route::post('/Store/Task', [TaskController::class, 'store_task'])->name('Store.Task');

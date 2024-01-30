@@ -305,4 +305,12 @@ class UserStatusController extends Controller
         return redirect()->back()->with('success', 'User has been Pending now');
     }
 
+    public function del_rej_users()
+    {
+        $users = User::where('status', 'rejected')->get();
+        foreach ($users as $user) {
+            $user->delete();
+        }
+        return redirect()->back()->with('success', 'Rejected Users Deleted');
+    }
 }

@@ -19,7 +19,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between pb-0">
                                         <div>
                                             <h6>All Users</h6>
-                                            <h3>500.00</h3>
+                                            <h3>{{ Total_user() }}</h3>
                                         </div>
                                         <div class="icon-box bg-primary-light">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -43,7 +43,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between pb-0">
                                         <div>
                                             <h6>Pending Users</h6>
-                                            <h3>1200.00</h3>
+                                            <h3>{{ pending_user() }}</h3>
                                         </div>
                                         <div class="icon-box bg-primary-light">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -67,7 +67,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between pb-0">
                                         <div>
                                             <h6>Approved Users</h6>
-                                            <h3>12000</h3>
+                                            <h3>{{ approved_user() }}</h3>
                                         </div>
                                         <div class="icon-box bg-danger-light">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -91,7 +91,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between style-1">
                                         <div>
                                             <h6>Rejected Users</h6>
-                                            <h3>20</h3>
+                                            <h3>{{ rejected_user() }}</h3>
                                         </div>
                                         <div class="icon-box bg-primary-light">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -116,7 +116,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between pb-0">
                                         <div>
                                             <h6>Today's Users</h6>
-                                            <h3>1200.00</h3>
+                                            <h3>{{ today_user() }}</h3>
                                         </div>
                                         <div class="icon-box bg-primary-light">
                                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -140,7 +140,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between pb-0">
                                         <div>
                                             <h6>Total Tasks</h6>
-                                            <h3>20</h3>
+                                            <h3>{{ total_tasks() }}</h3>
                                         </div>
                                         <div class="icon-box bg-primary-light">
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -173,7 +173,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between pb-0">
                                         <div>
                                             <h6>Given Withdraw</h6>
-                                            <h3>12000</h3>
+                                            <h3>{{ given_withdraw() }}</h3>
                                         </div>
                                         <div class="icon-box bg-danger-light">
                                             $
@@ -189,7 +189,7 @@
                                     <div class="depostit-card-media d-flex justify-content-between style-1">
                                         <div>
                                             <h6>Pending Withdraw</h6>
-                                            <h3>2000</h3>
+                                            <h3>{{ total_pending_withdraw() }}</h3>
                                         </div>
                                         <div class="icon-box bg-primary-light">
                                             $

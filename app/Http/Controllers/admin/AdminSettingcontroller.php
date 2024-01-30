@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 
 class AdminSettingcontroller extends Controller
 {
+
+    public function change_my_password()
+    {
+        return view('admin.setting.password');
+    }
+
+
     public function referral_setting()
     {
         $limit = Setting::where('status', '1')->first();

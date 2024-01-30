@@ -309,6 +309,11 @@
                             <li><a href="{{ route('Admin.Level.Page') }}">Level Setting</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{ route('Admin.Change.My.Password') }}"
+                            style="padding: 12px;background-color:rgb(51, 182, 200);border-radius:12px;color:white;">Change
+                            Password</a>
+                    </li>
                 </ul>
                 <div class="help-desk">
                     <form action="{{ route('logout') }}" method="POST">

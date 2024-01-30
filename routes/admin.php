@@ -39,6 +39,7 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Make/Pending/Withdraw/{id}', [AdminWithdrawController::class, 'make_pending'])->name('Make.Withdraw.Pending');
     Route::get('/Make/Reject/Withdraw/{id}', [AdminWithdrawController::class, 'make_reject'])->name('Make.Withdraw.Reject');
     // setting routes
+    Route::get('/Change/My/Password', [AdminSettingcontroller::class, 'change_my_password'])->name('Change.My.Password');
     Route::get('/Referral/Setting', [AdminSettingcontroller::class, 'referral_setting'])->name('Referral.Setting');
     Route::post('/Referral/Setting/Update/{id}', [AdminSettingcontroller::class, 'update_referral_setting'])->name('Update.Referral.Setting');
     Route::get('/Bank/Details', [AdminSettingcontroller::class, 'bank_details'])->name('Bank.Details');

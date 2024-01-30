@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('link');
             $table->float('price', 10, 5);
             $table->string('level');
+            $table->string('plan');
             $table->timestamps();
         });
     }

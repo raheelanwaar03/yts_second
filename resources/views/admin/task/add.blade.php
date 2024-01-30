@@ -30,6 +30,8 @@
                                             <th>Title</th>
                                             <th>Link</th>
                                             <th>Level</th>
+                                            <th>Plan</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +51,13 @@
                                                 </td>
                                                 <td>
                                                     <h6>{{ $item->level }}</h6>
+                                                </td>
+                                                <td>
+                                                    <h6>{{ $item->plan }}</h6>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('Admin.Delete.Task', $item->id) }}"
+                                                        class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                         @empty
@@ -112,6 +121,14 @@
                                     <option value="Level 8">Level 8</option>
                                     <option value="Level 9">Level 9</option>
                                     <option value="Level 10">Level 10</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-12 mb-3">
+                                <label class="form-label">Plan<span class="text-danger">*</span></label>
+                                <select name="plan" class="default-select style-1 form-control" required>
+                                    <option value="silver">Silver</option>
+                                    <option value="gold">Gold</option>
+                                    <option value="dimond">Dimond</option>
                                 </select>
                             </div>
                         </div>

@@ -67,6 +67,8 @@
 
 <body>
 
+    <x-alert />
+
     <div class="top-bar">
         <i class="fas fa-arrow-left back-icon" onclick="goBack()"></i>
         <h1 class="earn-now-heading">Earn Now</h1>
@@ -74,14 +76,16 @@
 
     <div class="container">
         <div class="task-container">
-            @foreach ($tasks as $task)
+            @forelse ($tasks as $task)
                 <div class="task">
                     <p class="task-description">{{ $task->title }}</p>
                     <a href="{{ route('User.Get.Task.Reward', $task->id) }}" class="link-btn text-decoration-none"
                         onclick="window.open('{{ $task->link }}', '_blank')">Get Reward</a>
                 </div>
                 <br>
-            @endforeach
+            @empty
+                <h4>No Tasks for you</h4>
+            @endforelse
         </div>
     </div>
 

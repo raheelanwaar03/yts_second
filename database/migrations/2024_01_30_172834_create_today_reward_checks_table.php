@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('spin_withdraws', function (Blueprint $table) {
+        Schema::create('today_reward_checks', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->string('title');
-            $table->string('amount');
-            $table->string('account');
-            $table->string('bank');
-            $table->string('status')->default('pending');
+            $table->string('task_id');
+            $table->string('price');
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('spin_withdraws');
+        Schema::dropIfExists('today_reward_checks');
     }
 };

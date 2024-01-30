@@ -84,8 +84,9 @@ class clean extends Command
         $task = new Task();
         $task->title = 'Read the latest blog post on web development trends.';
         $task->link = 'https://www.w3schools.com/';
-        $task->level = 'Level 0';
+        $task->level = 'Level 1';
         $task->price = '10';
+        $task->plan = 'gold';
         $task->save();
 
         $task = new Task();
@@ -93,6 +94,7 @@ class clean extends Command
         $task->link = 'https://www.facebook.com/';
         $task->level = 'Level 0';
         $task->price = '15';
+        $task->plan = 'silver';
         $task->save();
 
         $user = new User();

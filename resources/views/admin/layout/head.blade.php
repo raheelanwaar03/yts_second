@@ -265,7 +265,7 @@
                             <span class="nav-text">Task</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('Admin.Add.Task') }}">Add Task</a></li>
+                            <li><a href="{{ route('Admin.Add.Task') }}">Task</a></li>
                         </ul>
                     </li>
                     <li>

@@ -21,7 +21,15 @@ class TaskController extends Controller
         $task->price = $request->price;
         $task->link = $request->link;
         $task->level = $request->level;
+        $task->plan = $request->plan;
         $task->save();
         return redirect()->back()->with('success', 'Task added');
+    }
+
+    public function delete_task($id)
+    {
+        $task = Task::find($id);
+        $task->delete();
+        return redirect()->back()->with('success', 'Task Deleted');
     }
 }

@@ -30,6 +30,7 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     // task
     Route::get('/Add/Task', [TaskController::class, 'add_task'])->name('Add.Task');
     Route::post('/Store/Task', [TaskController::class, 'store_task'])->name('Store.Task');
+    Route::get('/Delete/Task/{id}', [TaskController::class, 'delete_task'])->name('Delete.Task');
     // Withdraw Routes
     Route::get('/Pending/Withdraw', [AdminWithdrawController::class, 'pending_withdraw'])->name('Withdraw.Pending.Requests');
     Route::get('/Approved/Withdraw', [AdminWithdrawController::class, 'approved_withdraw'])->name('Withdraw.Approved.Requests');

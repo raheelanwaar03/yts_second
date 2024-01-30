@@ -7,6 +7,7 @@ use App\Models\admin\Task;
 use App\Models\user\vistor;
 use App\Models\user\DailyTask;
 use App\Models\User;
+use App\Models\user\TodayRewardCheck;
 use App\Models\user\vistors;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,7 +16,9 @@ class UserTaskController extends Controller
 {
     public function all_tasks()
     {
-        $tasks = Task::get();
+        $user = User::where('id', auth()->user()->id)->with('trxIds')->first();
+
+        $tasks = Task::where('level', auth()->user()->level)->where('plan', $user->trxIds->plan)->get();
         return view('user.task', compact('tasks'));
     }
 
@@ -71,6 +74,28 @@ class UserTaskController extends Controller
             }
 
             return redirect()->back()->with('error', 'You have been rewarded before for this link');
+        }
+    }
+
+    public function get_reward($id)
+    {
+        $task = Task::find($id);
+        // check if user get this plan reward befor
+
+        $today_task = TodayRewardCheck::where('task_id', $task->id)->where('user_id', auth()->user()->id)->where('created_at', Carbon::today());
+        if ($today_task != null) {
+            return redirect()->back()->with('error', 'You have got this plan Reward before');
+        } else {
+            $user = User::find(auth()->user()->id);
+            $user->balance += $task->price;
+            $user->save();
+            // Add into history
+            $today_task = new TodayRewardCheck();
+            $today_task->user_id = auth()->user()->id;
+            $today_task->task_id = $task->id;
+            $today_task->price = $task->price;
+            $today_task->save();
+            return redirect()->back()->with('success', 'You got this task reward');
         }
     }
 }

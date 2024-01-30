@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('layouts.app')
 @section('content')
     <div class="inner-banner section-bg overflow-hidden">
         <div class="container">

@@ -1,100 +1,140 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BootStrap Link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+
+    <!-- Icon Link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/line-awesome.min.css') }}">
+
+    <!-- Plugings Link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/odometer.css') }}">
+
+    <!-- Custom Link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
+    <title>{{ env('APP_NAME') }} - {{ env('APP_NAME') }} Earn</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="preloader">
+        <div class="preinnner">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <x-alert />
+
+    <!-- Header Section Starts Here -->
+    <div class="header">
+        <div class="header-top">
+            <div class="container">
+                <div
+                    class="header__top__wrapper d-flex flex-wrap align-items-center justify-content-center justify-content-md-between text-center">
+                    <ul class="contacts d-flex flex-wrap justify-content-center">
+                        <li><a
+                                href="https://template.viserlab.com/cdn-cgi/l/email-protection#8befeee6e4cbece6eae2e7a5e8e4e6"><i
+                                    class="las la-envelope-open"></i> <span class="__cf_email__"
+                                    data-cfemail="3652535b5976515b575f5a1855595b">[help@gmail.com]</span></a></li>
+                        <li><a href="tel:129075"><i class="las la-phone-volume"></i> 123 - 456 - 7890</a></li>
+                    </ul>
+                    <div class="right__area d-flex flex-wrap align-items-center mt-3 mt-md-0">
+                        <select name="language" class="nice-select custom--scrollbar">
+                            <option>English</option>
+                        </select>
+                        <a href="{{ route('login') }}" class="user__thumb ms-3 me-3 me-lg-0">
+                            <img src="{{ asset('assets/images/dashboard/user.png') }}" alt="dashboard">
+                        </a>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div class="header-bottom-area">
+                    <div class="logo"><a href="{{ route('login') }}"><img
+                                src="{{ asset('assets/images/logo.png') }}" alt="logo"></a></div>
+                    <ul class="menu">
+                        <li>
+                            <a href="{{ url('/') }}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('User.Plan.Details') }}">Plan</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('User.Contact') }}">Contact</a>
+                        </li>
+                        @if (auth()->user())
+                            <li><a href="{{ route('User.Dashboard') }}">Dashboard</a></li>
+                        @endif
+                        <li class="d-none d-lg-block">
+                            <a href="#0" class="search--btn"><i class="fas fa-search"></i></a>
+                        </li>
+                        <li class="p-0 d-lg-none mt-3 mt-lg-0">
+                            @if (auth()->user())
+                                <div class="button__wrapper">
+                                    <a href="{{ route('register') }}" class="cmn--btn">Register</a>
+                                    <a href="{{ route('login') }}" class="cmn--btn">Login</a>
+                                </div>
+                            @else
+                                <div class="button__wrapper">
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="cmn--btn">Logout</button>
+                                    </form>
+                                </div>
+                            @endif
+                        </li>
+                    </ul> <!-- Menu End -->
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                    @if (auth()->user())
+                        <div class="button__wrapper d-none d-lg-block">
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="cmn--btn">Logout</button>
+                            </form>
+                        </div>
+                    @else
+                        <div class="button__wrapper d-none d-lg-block">
+                            <a href="{{ route('register') }}" class="cmn--btn">Register</a>
+                            <a href="{{ route('login') }}" class="cmn--btn">Login</a>
+                        </div>
+                    @endif
 
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+                    <div class="header-trigger-wrapper d-flex d-lg-none align-items-center">
+                        <div class="mobile-nav-right d-flex align-items-center"></div>
+                        <a href="#0" class="search--btn me-4 text--base"><i class="fas fa-search"></i></a>
+                        <div class="header-trigger d-block d--none">
+                            <span></span>
+                        </div>
+                    </div> <!-- Trigger End-->
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
+    <div class="search__form__wrapper">
+        <div class="form__inner">
+            <form class="search__form">
+                <div class="form-group">
+                    <input type="text" class="form-control form--control" placeholder="Search Here...">
+                    <button type="submit" class="cmn--btn btn">Search</button>
+                </div>
+            </form>
+            <button class="btn-close btn-close-white"></button>
         </div>
     </div>
-</nav>

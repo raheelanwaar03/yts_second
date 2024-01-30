@@ -69,7 +69,7 @@
 
     <x-alert />
 
-    <div class="top-bar">
+    <div class="top-bar" style="border:1px solid #e2af28">
         <i class="fas fa-arrow-left back-icon" onclick="goBack()"></i>
         <h1 class="text-center">Earn Now</h1>
     </div>

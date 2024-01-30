@@ -26,23 +26,23 @@ class UserStatusController extends Controller
 
         // Taking the admin commission
         $setting = Setting::where('status', '1')->first();
-        $silver = $setting->planA;
+        $silver = $setting->silver;
         $silver_Second_Commission = $silver * 15 / 100;
         $silver_Third_Commission = $silver * 5 / 100;
         // getting gold commission
-        $gold = $setting->planB;
+        $gold = $setting->gold;
         $gold_Second_Commission = $gold * 15 / 100;
         $gold_Third_Commission = $gold * 5 / 100;
         // Getting dimond Commissions
-        $dimond = $setting->planC;
+        $dimond = $setting->dimond;
         $dimond_Second_Commission = $dimond * 15 / 100;
         $dimond_Third_Commission = $dimond * 5 / 100;
 
-        $user = User::find($id);
+        $user = User::where('id',$id)->with('trxIds')->first();
         $user->status = 'approved';
         $user->save();
         // getting user package
-        $userPlan = $user->package;
+        $userPlan = $user->trxIds->plan;
 
         if ($userPlan == 'silver') {
             $firstUpliner = User::where('name', $user->referral)->where('status', 'approved')->first();

@@ -38,6 +38,13 @@ class RegisterationFeesController extends Controller
             'screen_shot' => 'required',
         ]);
 
+        // checking the length of num
+        $num = $request->sender_number;
+        $numLength = strlen($num);
+        if ($numLength <= 10) {
+            return redirect()->back()->with('error', 'Please enter 11 charcter num');
+        }
+
         // checking uniqe Trx id.
 
         $tidChecks = UserPlans::get();
@@ -47,6 +54,13 @@ class RegisterationFeesController extends Controller
                 if ($validated['trx_id'] == $tidCheck)
                     return redirect()->back()->with('error', 'This tid is used before');
             }
+        }
+
+
+        $user = User::find(auth()->user()->id);
+        if ($user->status == 'rejected') {
+            $user->status = 'pending';
+            $user->save();
         }
 
 

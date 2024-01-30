@@ -82,7 +82,7 @@ function today_user()
 
 function total_tasks()
 {
-    $tasks = Task::get();
+    $tasks = Task::get()->count();
     return $tasks;
 }
 

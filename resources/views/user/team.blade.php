@@ -75,6 +75,7 @@
             @forelse ($referrals as $user)
                 <div class="user-node">
                     <h3 class="user-name">Name: {{ $user->name }}</h3>
+                    <h5 class="user-name">Level: {{ $user->level }}</h5>
                     <p>Email: {{ $user->email }}</p>
                 </div>
             @empty

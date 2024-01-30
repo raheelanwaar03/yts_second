@@ -46,14 +46,16 @@
                                     placeholder="Your Mobile Number">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control form--control"
+                                <input type="password" name="password" id="password" class="form-control form--control"
                                     placeholder="Password">
-                                <span class="eye-icon"><i class="las la-eye"></i></span>
+                                <span class="eye-icon" onclick="togglePasswordVisibility()"><i
+                                        class="las la-eye"></i></span>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password_confirmation" class="form-control form--control"
-                                    placeholder="Password">
-                                <span class="eye-icon"><i class="las la-eye"></i></span>
+                                <input type="password" id="password_confirmation" name="password_confirmation"
+                                    class="form-control form--control" placeholder="Retype Password">
+                                <span class="eye-icon" onclick="togglepassword_confirmationVisibility()"><i
+                                        class="las la-eye"></i></span>
                             </div>
                             <input type="text" name="referral" value="{{ $referral }}" hidden>
                             <div class=" d-flex flex-wrap align-items-center">
@@ -73,4 +75,32 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            var eyeIcon = document.querySelector('.eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.innerHTML = '👁️';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.innerHTML = '👁️';
+            }
+        }
+
+        function togglepassword_confirmationVisibility() {
+            var passwordInput = document.getElementById('password_confirmation');
+            var eyeIcon = document.querySelector('.eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.innerHTML = '👁️';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.innerHTML = '👁️';
+            }
+        }
+    </script>
 @endsection

@@ -38,9 +38,10 @@
                                     placeholder="Your Email">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control form--control"
+                                <input type="password" id="password" name="password" class="form-control form--control"
                                     placeholder="Password">
-                                <span class="eye-icon"><i class="las la-eye"></i></span>
+                                <span class="eye-icon" onclick="togglePasswordVisibility()"><i
+                                        class="las la-eye"></i></span>
                             </div>
                             <div class=" d-flex flex-wrap align-items-center">
                                 <div class="form--check me-4">
@@ -51,11 +52,26 @@
                             </div>
                             <button type="submit" class="btn cmn--btn mt-4">Sign In Account</button>
                         </form>
-                        <p class="mt-4">Don't have on Account yet? <a class="ms-2 text--base" href="{{ route('register') }}">Create
+                        <p class="mt-4">Don't have on Account yet? <a class="ms-2 text--base"
+                                href="{{ route('register') }}">Create
                                 Account</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            var eyeIcon = document.querySelector('.eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.innerHTML = '👁️';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.innerHTML = '👁️';
+            }
+        }
+    </script>
 @endsection

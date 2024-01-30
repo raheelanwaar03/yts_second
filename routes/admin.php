@@ -45,6 +45,8 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Bank/Details', [AdminSettingcontroller::class, 'bank_details'])->name('Bank.Details');
     Route::post('/Update/Bank/Details/{id}', [AdminSettingcontroller::class, 'update_bank_details'])->name('Update.Bank.Details');
     Route::get('/Verification/Page', [AdminSettingcontroller::class, 'verification_page'])->name('Verification.Page');
+    Route::get('/Marquee/Text', [AdminSettingcontroller::class, 'marquee'])->name('Marquee.Text');
+    Route::post('/Update/Marquee/Text/{id}', [AdminSettingcontroller::class, 'update_marquee'])->name('Update.Marquee.Text');
     Route::post('/Update/Verification/Page/{id}', [AdminSettingcontroller::class, 'update_verification_page'])->name('Update.Verification.Text');
     Route::get('/Level/Page', [AdminSettingcontroller::class, 'level_page'])->name('Level.Page');
     Route::post('/Update/Level/Page/{id}', [AdminSettingcontroller::class, 'update_level'])->name('Update.Level');

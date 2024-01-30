@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\MarqueeText;
 use App\Models\EasyPaisaMangement;
 use App\Models\ReferralLevel;
 use App\Models\Setting;
@@ -11,12 +12,10 @@ use Illuminate\Http\Request;
 
 class AdminSettingcontroller extends Controller
 {
-
     public function change_my_password()
     {
         return view('admin.setting.password');
     }
-
 
     public function referral_setting()
     {
@@ -55,6 +54,20 @@ class AdminSettingcontroller extends Controller
     {
         $ver_text = VerificationText::where('status', '1')->first();
         return view('admin.setting.verification', compact('ver_text'));
+    }
+
+    public function marquee()
+    {
+        $marquee = MarqueeText::where('status', '1')->first();
+        return view('admin.setting.marqueeText', compact('marquee'));
+    }
+
+    public function update_marquee(Request $request, $id)
+    {
+        $marquee = MarqueeText::find($id);
+        $marquee->text = $request->text;
+        $marquee->save();
+        return redirect()->back()->with('success', 'Text Edited');
     }
 
     public function update_verification_page(Request $request, $id)

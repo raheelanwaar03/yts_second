@@ -8,8 +8,7 @@
                 class="shape shape2 d-none d-lg-block">
         </div>
         <marquee behavior="scroll" class="bg-warning text-dark p-2" style="font-size: 16px;" direction="left" scrollamount="7">
-            {{ env('APP_NAME') }} is a very good platform to invest your time and money. Contact Us on this number
-            (0346-7805896) if any query. It is a real earning platform. Refere this to your friends and family.
+           {{ $marquee->text }}
         </marquee>
     </div>
     <!-- Banner Section Ends Here -->

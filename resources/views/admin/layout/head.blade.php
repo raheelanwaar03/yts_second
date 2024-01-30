@@ -307,6 +307,7 @@
                             <li><a href="{{ route('Admin.Bank.Details') }}">Bank Details</a></li>
                             <li><a href="{{ route('Admin.Verification.Page') }}">Verfication Page</a></li>
                             <li><a href="{{ route('Admin.Level.Page') }}">Level Setting</a></li>
+                            <li><a href="{{ route('Admin.Marquee.Text') }}">Bar Text</a></li>
                         </ul>
                     </li>
                     <li>

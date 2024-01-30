@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\admin\MarqueeText;
 use App\Models\admin\Task;
 use App\Models\User;
 use App\Models\EasyPaisaMangement;
@@ -63,7 +64,14 @@ class clean extends Command
         $verificationText->status = 1;
         $verificationText->save();
 
-        //    set level according to thier referral
+        // add marquee
+        $text = new MarqueeText();
+        $text->text = ' OmegaEarn is a very good platform to invest your time and money. Contact Us on this number
+        (0346-7805896) if any query. It is a real earning platform. Refere this to your friends and family.';
+        $text->status = 1;
+        $text->save();
+
+        // set level according to thier referral
 
         $level = new ReferralLevel();
         $level->level1 = 1;

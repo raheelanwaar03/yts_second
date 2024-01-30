@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\MarqueeText;
 use App\Models\admin\Task;
 use App\Models\admin\TopUsers;
 use App\Models\Setting;
@@ -24,7 +25,8 @@ class UserDashboardController extends Controller
 
     public function dashboard()
     {
-        return view('user.dashboard');
+        $marquee = MarqueeText::where('status',1)->first();
+        return view('user.dashboard',compact('marquee'));
     }
 
     public function team()

@@ -1,12 +1,7 @@
 @extends('user.layout.app')
 
 @section('content')
-    <div class="inner-banner section-bg overflow-hidden">
-        <div class="shapes">
-            <img src="{{ asset('assets/images/banner/inner-bg.png') }}" alt="banner" class="shape shape1">
-            <img src="{{ asset('assets/images/banner/inner-thumb.png') }}" alt="banner"
-                class="shape shape2 d-none d-lg-block">
-        </div>
+    <div class="inner-banner overflow-hidden">
         <marquee behavior="scroll" class="bg-warning text-dark p-2" style="font-size: 16px;" direction="left" scrollamount="7">
            {{ $marquee->text }}
         </marquee>
@@ -15,7 +10,7 @@
 
 
     <!-- Dashboard Section Starts Here -->
-    <div class="dashbaord-section padding-top padding-bottom" style="margin-top: -150px">
+    <div class="dashbaord-section padding-top padding-bottom" style="margin-top: -200px">
         <div class="container">
             <div class="row sm">
                 <div class="col-lg-4 col-xl-4 col-xxl-3 col-xl-4">

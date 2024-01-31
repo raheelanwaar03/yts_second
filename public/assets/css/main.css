@@ -480,15 +480,15 @@ body {
 }
 
 .swal-success {
-    background-color: #0e6e15;
-    color: #fff;
+    background-color: #28ba32;
+    color: white;
     width: 200px;
     border-radius: 8px;
 }
 
 .swal-error {
-    background-color: #e32b0a;
-    color: #fff;
+    background-color: #b9351e;
+    color: white;
     width: 200px;
     border-radius: 8px;
 }

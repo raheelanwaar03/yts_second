@@ -479,6 +479,20 @@ body {
     background: #00001C;
 }
 
+.swal-success {
+    background-color: #0e6e15;
+    color: #fff;
+    width: 200px;
+    border-radius: 8px;
+}
+
+.swal-error {
+    background-color: #e32b0a;
+    color: #fff;
+    width: 200px;
+    border-radius: 8px;
+}
+
 h1,
 h2,
 h3,

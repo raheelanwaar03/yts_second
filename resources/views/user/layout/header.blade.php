@@ -108,7 +108,6 @@
                         </div>
                     @else
                         <div class="button__wrapper d-none d-lg-block">
-                            <a href="{{ route('register') }}" class="cmn--btn">Register</a>
                             <a href="{{ route('login') }}" class="cmn--btn">Login</a>
                         </div>
                     @endif

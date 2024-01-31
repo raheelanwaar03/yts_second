@@ -37,6 +37,10 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        if ($request->referral == 'default') {
+            return redirect()->route('register')->with('error', 'Plese register through referral link');
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

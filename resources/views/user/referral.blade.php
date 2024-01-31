@@ -1,37 +1,26 @@
 @extends('user.layout.app')
 
 @section('content')
-    <div class="inner-banner section-bg overflow-hidden">
-        <div class="container">
-            <div class="inner__banner__content text-center">
-                <h2 class="title">User Dashboard</h2>
-                <ul class="breadcums d-flex flex-wrap justify-content-center">
-                    <li><a href="{{ route('User.Dashboard') }}">Home</a>//</li>
-                    <li>Dashboard</li>
-                </ul>
-            </div>
-        </div>
-        <div class="shapes">
-            <img src="{{ asset('assets/images/banner/inner-bg.png') }}" alt="banner" class="shape shape1">
-            <img src="{{ asset('assets/images/banner/inner-thumb.png') }}" alt="banner"
-                class="shape shape2 d-none d-lg-block">
-        </div>
+    <div class="inner-banner overflow-hidden">
+        <marquee behavior="scroll" class="bg-warning text-dark p-2" style="font-size: 16px;" direction="left" scrollamount="7">
+            {{ $marquee->text }}
+        </marquee>
     </div>
     <!-- Banner Section Ends Here -->
 
 
     <!-- Dashboard Section Starts Here -->
-    <div class="dashbaord-section padding-top padding-bottom">
+    <div class="dashbaord-section padding-top padding-bottom" style="margin-top: -200px">
         <div class="container">
-            <div class="row">
+            <div class="row sm">
                 <div class="col-lg-4 col-xl-4 col-xxl-3 col-xl-4">
                     <div class="sidebar dashboard__sidebar">
                         <div class="dashboard-user text-center">
                             <div class="thumb"><img src="{{ asset('assets/images/dashboard/cc2.png') }}" alt="dashboard">
                             </div>
                             <div class="content mt-3">
-                                <h3 class="name">User</h3>
-                                <p class="text-white">email@gmail.com</p>
+                                <h3 class="name">{{ auth()->user()->name }}</h3>
+                                <p class="text-white">{{ auth()->user()->email }}</p>
                             </div>
                         </div>
                         <ul class="dashbard__tab tags">
@@ -60,12 +49,13 @@
                             <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
                                 <div class="dashboard__card">
                                     <div class="dashboard__card-content">
-                                        <p class="info">Referral Link</p>
-                                        <h3 class="title">
-                                            <span class="referral-link"
-                                                onclick="copyReferralLink()">{{ route('register', ['referral' => Auth::user()->name]) }}</span>
-                                            <span class="copy-icon" onclick="copyReferralLink()">📋</span>
-                                        </h3>
+                                        <h4 class="info">Referral Link</h4>
+                                        <p class="title">
+                                        <p style="word-wrap: break-word;" id="link">
+                                            {{ route('register', ['referral' => Auth::user()->name]) }}
+                                        </p>
+                                        <span class="copy-icon" onclick="copyReferralLink()">📋</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +68,7 @@
 
     <script>
         function copyReferralLink() {
-            let referralLink = document.querySelector('.referral-link').innerText;
+            let referralLink = document.querySelector('#link').innerText;
             navigator.clipboard.writeText(referralLink);
 
             // Show tooltip

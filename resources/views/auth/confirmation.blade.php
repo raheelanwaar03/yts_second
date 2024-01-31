@@ -53,6 +53,7 @@
 
     <div class="container">
         <div class="alert-message">
+            <img src="{{ asset('assets/images/logo.png') }}" height="250px" width="250px" alt="logo">
             <h2>Verfication Page</h2>
             <p>{{ $verification->text }}</p>
             <a href="{{ route('User.Dashboard') }}" class="okay-btn text-decoration-none">Okay</a>

@@ -2,9 +2,6 @@
 
 @section('content')
     <div class="inner-banner overflow-hidden">
-        <marquee behavior="scroll" class="bg-warning text-dark p-2" style="font-size: 16px;" direction="left" scrollamount="7">
-            {{ $marquee->text }}
-        </marquee>
     </div>
     <!-- Banner Section Ends Here -->
 

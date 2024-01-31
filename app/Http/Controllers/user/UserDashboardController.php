@@ -42,8 +42,7 @@ class UserDashboardController extends Controller
 
     public function link()
     {
-        $marquee = MarqueeText::where('status',1)->first();
-        return view('user.referral',compact('marquee'));
+        return view('user.referral');
     }
 
     public function plan()

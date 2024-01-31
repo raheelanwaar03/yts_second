@@ -9,7 +9,7 @@
                     <p>
                         {{ env('APP_NAME') }} Earn is a platform where you can earn daily profit by doing simple tasks.
                     </p>
-                    <a href="sign-in.html" class="cmn--btn">Get Started</a>
+                    <a href="{{ route('login') }}" class="cmn--btn">Get Started</a>
                 </div>
                 <div class="banner__thumb d-none d-lg-block">
                     <img src="{{ asset('assets/images/banner/thumb.png') }}" alt="banner">
@@ -52,8 +52,8 @@
                             <li> Work at your home</li>
                         </ul>
                         <div class="button__wrapper">
-                            <a href="about.html" class="cmn--btn">Know More</a>
-                            <a href="contact.html" class="cmn--btn2">Contact Us</a>
+                            <a href="{{ route('login') }}" class="cmn--btn">Know More</a>
+                            <a href="{{ route('login') }}" class="cmn--btn2">Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@
                         <p>Get referral commission accourding to your plan. The more you invest in our plans the more
                             commission you will get.</p>
                     </div>
-                    <a href="sign-up.html" class="cmn--btn">Get Started</a>
+                    <a href="{{ route('login') }}" class="cmn--btn">Get Started</a>
                 </div>
             </div>
         </div>

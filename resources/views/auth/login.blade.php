@@ -52,9 +52,7 @@
                             </div>
                             <button type="submit" class="btn cmn--btn mt-4">Sign In Account</button>
                         </form>
-                        <p class="mt-4">Don't have on Account yet? <a class="ms-2 text--base"
-                                href="{{ route('register') }}">Create
-                                Account</a></p>
+                        <p class="mt-4">Don't have on Account yet?</p>
                     </div>
                 </div>
             </div>

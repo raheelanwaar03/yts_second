@@ -55,7 +55,7 @@ class UserStatusController extends Controller
                 $referCount = $allUsers->count();
 
                 if ($allUsers != '') {
-                    if ($referCount <= 4) {
+                    if ($referCount <= 1) {
                         $firstUpliner->level = 'Level 0';
                         $firstUpliner->save();
                     }
@@ -135,7 +135,7 @@ class UserStatusController extends Controller
                 $referCount = $mainUser->count();
 
                 if ($mainUser != '') {
-                    if ($referCount <= 4) {
+                    if ($referCount <= 1) {
                         $firstUpliner->level = 'Level 0';
                         $firstUpliner->save();
                     }
@@ -215,7 +215,7 @@ class UserStatusController extends Controller
                 $referCount = $mainUser->count();
 
                 if ($mainUser != '') {
-                    if ($referCount <= 4) {
+                    if ($referCount <= 1) {
                         $firstUpliner->level = 'Level 0';
                         $firstUpliner->save();
                     }

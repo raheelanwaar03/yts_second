@@ -88,7 +88,7 @@ class UserDashboardController extends Controller
 
     public function success(Request $request)
     {
-        return redirect(route('User.Dashboard'))->with('success', 'Your Link submited successfully');
+        return redirect(route('User.Dashboard'))->with('success', 'Your Chennel will be promoted on Level 5');
     }
 
     public function edit()

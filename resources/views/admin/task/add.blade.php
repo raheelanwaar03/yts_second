@@ -111,6 +111,7 @@
                             <div class="col-xl-12 mb-3">
                                 <label class="form-label">Level<span class="text-danger">*</span></label>
                                 <select name="level" class="default-select style-1 form-control">
+                                    <option value="Level 0">Level 0</option>
                                     <option value="Level 1">Level 1</option>
                                     <option value="Level 2">Level 2</option>
                                     <option value="Level 3">Level 3</option>

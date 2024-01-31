@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->text('title');
-            $table->string('link');
+            $table->longText('link');
             $table->float('price', 10, 5);
             $table->string('level');
             $table->string('plan');

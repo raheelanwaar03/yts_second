@@ -45,6 +45,7 @@ class UserTaskController extends Controller
                 $user->save();
                 return redirect()->back()->with('success', 'Reward recived');
             }
+            return redirect()->back()->with('error', 'already recived');
         }
 
         $userReferal = User::where('referral', auth()->user()->name)->whereDate('created_at', '>=', $tenDaysAgo)->where('status', 'approved')->get();

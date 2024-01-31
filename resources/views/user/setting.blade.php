@@ -63,6 +63,20 @@
             color: #e2af28;
             font-size: 18px;
         }
+
+        .swal-success {
+            background-color: #28ba32;
+            color: white;
+            width: 350px;
+            border-radius: 8px;
+        }
+
+        .swal-error {
+            background-color: #b9351e;
+            color: white;
+            width: 350px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 

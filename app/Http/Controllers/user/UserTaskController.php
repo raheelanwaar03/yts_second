@@ -47,30 +47,32 @@ class UserTaskController extends Controller
             }
             return redirect()->back()->with('error', 'already recived');
         }
+        else
+        {
+            $userReferal = User::where('referral', auth()->user()->name)->whereDate('created_at', '>=', $tenDaysAgo)->where('status', 'approved')->get();
+            if ($userReferal->isEmpty()) {
+                return redirect()->back()->with('error', 'You have not add any user from last 10 days. Please add new user to get rewarded');
+            } else {
+                $product = Task::find($id);
+                $taskRewarad = $product->price;
+                // check user
+                $visitor = TodayRewardCheck::where('user_id', auth()->user()->id)->where('task_id', $id)->whereDate('created_at', '=', Carbon::today())->first();
+                if (!$visitor) {
+                    // storing product
+                    $visitor = new TodayRewardCheck();
+                    $visitor->user_id = auth()->user()->id;
+                    $visitor->task_id = $id;
+                    $visitor->price += $taskRewarad;
+                    $visitor->save();
 
-        $userReferal = User::where('referral', auth()->user()->name)->whereDate('created_at', '>=', $tenDaysAgo)->where('status', 'approved')->get();
-        if ($userReferal->isEmpty()) {
-            return redirect()->back()->with('error', 'You have not add any user from last 10 days. Please add new user to get rewarded');
-        } else {
-            $product = Task::find($id);
-            $taskRewarad = $product->price;
-            // check user
-            $visitor = TodayRewardCheck::where('user_id', auth()->user()->id)->where('task_id', $id)->whereDate('created_at', '=', Carbon::today())->first();
-            if (!$visitor) {
-                // storing product
-                $visitor = new TodayRewardCheck();
-                $visitor->user_id = auth()->user()->id;
-                $visitor->task_id = $id;
-                $visitor->price += $taskRewarad;
-                $visitor->save();
+                    $user->balance += $taskRewarad;
+                    $user->save();
 
-                $user->balance += $taskRewarad;
-                $user->save();
+                    return redirect()->back()->with('success', 'Reward recived');
+                }
 
-                return redirect()->back()->with('success', 'Reward recived');
+                return redirect()->back()->with('error', 'You have been rewarded before for this link');
             }
-
-            return redirect()->back()->with('error', 'You have been rewarded before for this link');
         }
     }
 }

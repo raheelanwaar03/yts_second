@@ -12,6 +12,18 @@ function total_team()
     return $team;
 }
 
+function withdraw()
+{
+    $pending_withdraw = Withdraw::where('user_id', auth()->user()->id)->get();
+    $total_withdraw = 0;
+    foreach ($pending_withdraw as $amount) {
+        $total_withdraw += $amount->amount;
+    }
+
+    return $total_withdraw;
+}
+
+
 function pending_withdraw()
 {
     $pending_withdraw = Withdraw::where('status', 'pending')->where('user_id', auth()->user()->id)->get();

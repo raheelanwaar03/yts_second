@@ -25,6 +25,8 @@
 
         .container {
             margin-top: 20px;
+            background-color: #e2af28;
+            padding: 20px;
         }
 
         .tree-container {
@@ -81,7 +83,7 @@
 
     <div class="top-bar">
         <i class="fas fa-arrow-left navigation-icon" style="color: #e2af28" onclick="goBack()"></i>
-        <h1>Total Team: ({{ total_team() }})</h1>
+        <h1>Total Withdraw: ({{ withdraw() }})</h1>
     </div>
 
     <div class="container">
@@ -92,12 +94,14 @@
                         <p>Date : {{ $item->created_at }}</p>
                         <p>Amount : {{ $item->amount }}</p>
                         @if ($item->status == 'pending')
-                            <p class="status-pending">Status: {{ $item->status }}</p>
+                            <p>Status: <span class="btn btn-sm btn-dark">
+                                    {{ $item->status }}</span></p>
                         @else
-                            <p class="status-approved">Status: {{ $item->status }}</p>
+                            <p class="status-approved">Status: <span class="btn btn-sm btn-success">
+                                    {{ $item->status }}
+                                </span></p>
                         @endif
                     </div>
-                    <button class="back-btn" onclick="goBack()">Back</button>
                 @empty
                     <h3>No Transcation</h3>
                 @endforelse

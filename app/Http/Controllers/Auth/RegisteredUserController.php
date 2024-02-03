@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\ContactUsSetting;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create($referral = 'default'): View
     {
-        return view('auth.register', compact('referral'));
+        $contact = ContactUsSetting::where('status', 1)->first();
+        return view('auth.register', compact('referral','contact'));
     }
 
     /**

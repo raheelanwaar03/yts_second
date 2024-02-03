@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\admin\ContactUsSetting;
 use App\Models\admin\MarqueeText;
 use App\Models\admin\Task;
 use App\Models\User;
@@ -70,6 +71,16 @@ class clean extends Command
         (0346-7805896) if any query. It is a real earning platform. Refere this to your friends and family.';
         $text->status = 1;
         $text->save();
+
+        // Contact us
+        $contact = new ContactUsSetting();
+        $contact->link = 'https://web.whatsapp.com/';
+        $contact->number = '0311-2233444';
+        $contact->email = 'test@email.com';
+        $contact->status = 1;
+        $contact->save();
+
+
 
         // set level according to thier referral
 

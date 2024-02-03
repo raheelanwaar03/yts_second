@@ -47,8 +47,8 @@
                     class="header__top__wrapper d-flex flex-wrap align-items-center justify-content-center justify-content-md-between text-center">
                     <ul class="contacts d-flex flex-wrap justify-content-center">
                         <li><a><i class="las la-envelope-open"></i> <span class="__cf_email__"
-                                    data-cfemail="3652535b5976515b575f5a1855595b">[{{ env('APP_EMAIL') }}]</span></a></li>
-                        <li><a href="tel:{{ env('APP_Number') }}"><i class="las la-phone-volume"></i>{{ env('APP_Number') }}</a></li>
+                                    data-cfemail="3652535b5976515b575f5a1855595b">[{{ $contact->email }}]</span></a></li>
+                        <li><a href="tel:{{ $contact->number }}"><i class="las la-phone-volume"></i>{{ $contact->number }}</a></li>
                     </ul>
                     <div class="right__area d-flex flex-wrap align-items-center mt-3 mt-md-0">
                         <select name="language" class="nice-select custom--scrollbar">

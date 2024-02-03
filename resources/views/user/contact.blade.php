@@ -28,11 +28,11 @@
                 <div class="col-lg-4 col-md-6 col-sm-10">
                     <div class="contact__info__item plan__item">
                         <div class="icon">
-                            <i class="las la-map-marker"></i>
+                            <i class="lab la-whatsapp"></i>
                         </div>
                         <div class="content">
-                            <h3 class="title">Office Address</h3>
-                            <p>Mian Address</p>
+                            <h3 class="title">What's app</h3>
+                            <a href="{{ $contact->link }}" target="_blank">Contact</a>
                         </div>
                     </div>
                 </div>
@@ -44,15 +44,7 @@
                         <div class="content">
                             <h3 class="title">Email Address</h3>
                             <ul class="contacts">
-                                <li><a
-                                        href="https://template.viserlab.com/cdn-cgi/l/email-protection#b8dcddd5d7f8dfd5d9d1d496dbd7d5"><span
-                                            class="__cf_email__"
-                                            data-cfemail="87efe2ebebe8a9e4fee5e2f5c7e0eae6eeeba9e4e8ea">[email&#160;protected]</span></a>
-                                </li>
-                                <li><a
-                                        href="https://template.viserlab.com/cdn-cgi/l/email-protection#b4d0d1d9dbf4d3d9d5ddd89ad7dbd9"><span
-                                            class="__cf_email__"
-                                            data-cfemail="d1b9b4bdbdbeffb2a8b3b4a391b6bcb0b8bdffb2bebc">[email&#160;protected]</span></a>
+                                <li><a href="mailto:{{ $contact->email }}"><span>[{{ $contact->email }}]</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -66,8 +58,7 @@
                         <div class="content">
                             <h3 class="title">Phone Number</h3>
                             <ul class="contacts">
-                                <li><a href="tel:02834">+10-928 4591 8725</a></li>
-                                <li><a href="tel:02834">+91-123 4356 9150</a></li>
+                                <li><a href="tel:{{ $contact->number }}">{{ $contact->number }}</a></li>
                             </ul>
                         </div>
                     </div>

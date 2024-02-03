@@ -308,6 +308,7 @@
                             <li><a href="{{ route('Admin.Verification.Page') }}">Verfication Page</a></li>
                             <li><a href="{{ route('Admin.Level.Page') }}">Level Setting</a></li>
                             <li><a href="{{ route('Admin.Marquee.Text') }}">Bar Text</a></li>
+                            <li><a href="{{ route('Admin.Contact.Us') }}">Contact Us</a></li>
                         </ul>
                     </li>
                     <li>

@@ -51,4 +51,6 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::post('/Update/Verification/Page/{id}', [AdminSettingcontroller::class, 'update_verification_page'])->name('Update.Verification.Text');
     Route::get('/Level/Page', [AdminSettingcontroller::class, 'level_page'])->name('Level.Page');
     Route::post('/Update/Level/Page/{id}', [AdminSettingcontroller::class, 'update_level'])->name('Update.Level');
+    Route::get('/Contact/Us/', [AdminSettingcontroller::class, 'contactUs'])->name('Contact.Us');
+    Route::post('/Updagte/Contact/Us/{id}', [AdminSettingcontroller::class, 'updateContactUs'])->name('Update.Contact.Us');
 });

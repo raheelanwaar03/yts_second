@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\ContactUsSetting;
 use App\Models\admin\MarqueeText;
 use App\Models\admin\Task;
 use App\Models\admin\TopUsers;
@@ -20,18 +21,20 @@ class UserDashboardController extends Controller
 
     public function welcome()
     {
-        return view('welcome');
+        $contact = ContactUsSetting::where('status', 1)->first();
+        return view('welcome', compact('contact'));
     }
 
     public function dashboard()
     {
-        $marquee = MarqueeText::where('status',1)->first();
-        return view('user.dashboard',compact('marquee'));
+        $contact = ContactUsSetting::where('status', 1)->first();
+        $marquee = MarqueeText::where('status', 1)->first();
+        return view('user.dashboard', compact('marquee', 'contact'));
     }
 
     public function team()
     {
-        $referrals = User::where('referral', auth()->user()->name)->where('status','approved')->get();
+        $referrals = User::where('referral', auth()->user()->name)->where('status', 'approved')->get();
         return view('user.team', compact('referrals'));
     }
 
@@ -42,7 +45,8 @@ class UserDashboardController extends Controller
 
     public function link()
     {
-        return view('user.referral');
+        $contact = ContactUsSetting::where('status', 1)->first();
+        return view('user.referral', compact('contact'));
     }
 
     public function plan()
@@ -52,7 +56,8 @@ class UserDashboardController extends Controller
 
     public function contact()
     {
-        return view('user.contact');
+        $contact = ContactUsSetting::where('status', 1)->first();
+        return view('user.contact',compact('contact'));
     }
 
     public function spin()
@@ -82,7 +87,8 @@ class UserDashboardController extends Controller
 
     public function promote()
     {
-        return view('user.promote');
+        $contact = ContactUsSetting::where('status', 1)->first();
+        return view('user.promote', compact('contact'));
     }
 
     public function success(Request $request)

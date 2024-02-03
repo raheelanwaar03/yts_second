@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\ContactUsSetting;
 use App\Models\admin\MarqueeText;
 use App\Models\EasyPaisaMangement;
 use App\Models\ReferralLevel;
@@ -99,5 +100,21 @@ class AdminSettingcontroller extends Controller
         $level->level10 = $request->level10;
         $level->save();
         return redirect()->back()->with('success', 'Level Setting Updated');
+    }
+
+    public function contactUs()
+    {
+        $contact = ContactUsSetting::where('status', 1)->first();
+        return view('admin.setting.contactUs', compact('contact'));
+    }
+
+    public function updateContactUs(Request $request, $id)
+    {
+        $contact = ContactUsSetting::find($id);
+        $contact->email = $request->email;
+        $contact->link = $request->link;
+        $contact->number = $request->number;
+        $contact->save();
+        return redirect()->back()->with('success','Details Changed');
     }
 }

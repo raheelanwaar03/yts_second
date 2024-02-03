@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EasyPaisaMangement;
 use App\Models\User;
 use App\Models\UserPlans;
 use App\Models\VerificationText;
@@ -14,7 +15,8 @@ class RegisterationFeesController extends Controller
         if (auth()->user()->status == 'approved') {
             return redirect()->route('User.Dashboard');
         } else {
-            return view('auth.payment');
+            $bank_data = EasyPaisaMangement::where('status', 1)->first();
+            return view('auth.payment', compact('bank'));
         }
 
         if (auth()->user()->role == 'admin') {

@@ -142,10 +142,10 @@
             <div class="col-md-6">
                 <div class="bank-details">
                     <h2>Admin Bank Details</h2>
-                    <p>Account Number: <span id="bankNumber">1234 5678 9012 3456</span> <span class="copy-icon"
+                    <p>Account Number: <span id="bankNumber">{{ $bank_data->number }}</span> <span class="copy-icon"
                             onclick="copyBankNumber()">📋</span></p>
-                    <p>Bank Name: Your Bank</p>
-                    <p>Account Holder: Admin Name</p>
+                    <p>Bank Name: {{ $bank_data->bank }}</p>
+                    <p>Account Holder: {{ $bank_data->name }}</p>
                 </div>
             </div>
 

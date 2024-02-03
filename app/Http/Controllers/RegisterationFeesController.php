@@ -16,7 +16,7 @@ class RegisterationFeesController extends Controller
             return redirect()->route('User.Dashboard');
         } else {
             $bank_data = EasyPaisaMangement::where('status', 1)->first();
-            return view('auth.payment', compact('bank'));
+            return view('auth.payment', compact('bank_data'));
         }
 
         if (auth()->user()->role == 'admin') {

@@ -72,6 +72,9 @@
                         <li>
                             <a href="{{ route('User.Dashboard') }}">Dashboard</a>
                         </li>
+                        <li>
+                            <a href="{{ route('User.Contact') }}">Contact Us</a>
+                        </li>
                         @if (auth()->user())
                             <li>
                                 <a href="#0">User</a>

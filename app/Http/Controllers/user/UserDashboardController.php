@@ -57,12 +57,13 @@ class UserDashboardController extends Controller
     public function contact()
     {
         $contact = ContactUsSetting::where('status', 1)->first();
-        return view('user.contact',compact('contact'));
+        return view('user.contact', compact('contact'));
     }
 
     public function spin()
     {
-        return view('user.spin');
+        $spin = SpinWin::where('user_id', auth()->user()->id)->whereDate('created_at',Carbon::today())->first();
+        return view('user.spin', compact('spin'));
     }
 
     public function spinWheel($amount)
@@ -76,6 +77,7 @@ class UserDashboardController extends Controller
         $spin = new SpinWin();
         $spin->user_id = auth()->user()->id;
         $spin->amount += $amount;
+        $spin->status = 'get';
         $spin->save();
         return redirect()->back()->with('success', 'Claimed');
     }

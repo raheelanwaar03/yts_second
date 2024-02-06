@@ -41,8 +41,13 @@
     <div class="container">
         <div class="wheel_box">
             <canvas id="spinWheel"></canvas>
+            @if ($spin == 'get')
             <button id="spin_btn">Spin</button>
             <i class="fa-solid fa-location-arrow"></i>
+            @else
+            <button id="spin_btn" disabled>Spin</button>
+            <i class="fa-solid fa-location-arrow"></i>
+            @endif
         </div>
         <div id="text">
             <p>Wheel Of Fortune</p>

@@ -93,8 +93,13 @@
             @forelse ($tasks as $task)
                 <div class="task">
                     <p class="task-description">{{ $task->title }}</p>
-                    <a href="{{ route('User.Get.Task.Reward', $task->id) }}" class="link-btn text-decoration-none"
-                        onclick="window.open('{{ $task->link }}', '_blank')">Get Reward</a>
+                    @if ($task->status == 'pending')
+                        <a href="{{ route('User.Get.Task.Reward', $task->id) }}" class="link-btn text-decoration-none"
+                            onclick="window.open('{{ $task->link }}', '_blank')">Get Reward</a>
+                    @else
+                        <a href="{{ route('User.Success.Task.Reward') }}" disabled
+                            class="btn btn-sm btn-dark text-decoration-none">Get Reward</a>
+                    @endif
                 </div>
                 <br>
             @empty

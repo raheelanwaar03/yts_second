@@ -127,7 +127,6 @@ class clean extends Command
         $user->role = 'admin';
         $user->save();
 
-
         $user = new User();
         $user->name = 'User';
         $user->email = 'user123@gmail.com';

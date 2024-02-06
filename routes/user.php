@@ -21,6 +21,7 @@ Route::name('User.')->prefix('User')->middleware('user', 'auth', 'fees')->group(
     // task and reward
     Route::get('/All/Tasks', [UserTaskController::class, 'all_tasks'])->name('All.Tasks');
     Route::get('/Get/Reward/{id}', [UserTaskController::class, 'index'])->name('Get.Task.Reward');
+    Route::get('/Success/Reward', [UserTaskController::class, 'success'])->name('Success.Task.Reward');
     // Spin routes
     Route::get('/Spin',[UserDashboardController::class,'spin'])->name('Spin');
     Route::get('/spin-wheel/{amount}',[UserDashboardController::class,'spinWheel'])->name('Spin.Wheel');

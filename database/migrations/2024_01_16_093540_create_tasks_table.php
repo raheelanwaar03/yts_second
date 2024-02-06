@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('price', 10, 5);
             $table->string('level');
             $table->string('plan');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

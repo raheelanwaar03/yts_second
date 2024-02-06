@@ -31,6 +31,8 @@ class UserTaskController extends Controller
         if (!$user->isAccount10DaysOld()) {
             $task = Task::find($id);
             $taskRewarad = $task->price;
+            $task->status = 'approved';
+            $task->save();
 
             $visitor = TodayRewardCheck::where('user_id', auth()->user()->id)->where('task_id', $id)->whereDate('created_at', '=', Carbon::today())->first();
             if (!$visitor) {
@@ -46,15 +48,15 @@ class UserTaskController extends Controller
                 return redirect()->back()->with('success', 'Reward recived');
             }
             return redirect()->back()->with('error', 'already recived');
-        }
-        else
-        {
+        } else {
             $userReferal = User::where('referral', auth()->user()->name)->whereDate('created_at', '>=', $tenDaysAgo)->where('status', 'approved')->get();
             if ($userReferal->isEmpty()) {
                 return redirect()->back()->with('error', 'You have not add any user from last 10 days. Please add new user to get rewarded');
             } else {
-                $product = Task::find($id);
-                $taskRewarad = $product->price;
+                $task = Task::find($id);
+                $taskRewarad = $task->price;
+                $task->status = 'approved';
+                $task->save();
                 // check user
                 $visitor = TodayRewardCheck::where('user_id', auth()->user()->id)->where('task_id', $id)->whereDate('created_at', '=', Carbon::today())->first();
                 if (!$visitor) {
@@ -63,6 +65,7 @@ class UserTaskController extends Controller
                     $visitor->user_id = auth()->user()->id;
                     $visitor->task_id = $id;
                     $visitor->price += $taskRewarad;
+                    $visitor->status = 'approved';
                     $visitor->save();
 
                     $user->balance += $taskRewarad;
@@ -74,5 +77,10 @@ class UserTaskController extends Controller
                 return redirect()->back()->with('error', 'You have been rewarded before for this link');
             }
         }
+    }
+
+    public function success()
+    {
+        return redirect()->back()->with('success', 'Already Recived');
     }
 }

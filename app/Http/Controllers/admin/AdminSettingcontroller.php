@@ -44,10 +44,11 @@ class AdminSettingcontroller extends Controller
 
     public function update_bank_details(Request $request, $id)
     {
-        $bank = EasyPaisaMangement::find($id);
+        $bank = EasyPaisaMangement::find($id);;
         $bank->name = $request->name;
         $bank->bank = $request->bank;
         $bank->number = $request->number;
+        $bank->save();
         return redirect()->back()->with('success', 'Details Updated');
     }
 

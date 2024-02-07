@@ -97,7 +97,7 @@
                         <a href="{{ route('User.Get.Task.Reward', $task->id) }}" class="link-btn text-decoration-none"
                             onclick="window.open('{{ $task->link }}', '_blank')">Get Reward</a>
                     @else
-                        <a href="{{ route('User.Success.Task.Reward') }}" disabled
+                        <a href="{{ route('User.Success.Task.Reward') }}"
                             class="btn btn-sm btn-dark text-decoration-none">Get Reward</a>
                     @endif
                 </div>
@@ -108,10 +108,10 @@
         </div>
     </div>
 
-    <!-- Add Bootstrap JS and Popper.js scripts (optional but recommended) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Add Font Awesome JS script (optional but recommended) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
 
     <script>
         function openLink(link) {

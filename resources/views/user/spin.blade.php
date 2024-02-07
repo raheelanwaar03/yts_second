@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Source Code Of Spin Wheel</title>
+    <title>Spin&Win</title>
     <!---------------  CSS  --------------------->
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <!---------------  Font Aewsome  --------------------->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <!---------------  Chart JS  --------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!---------------  Chart JS Plugin  --------------------->
@@ -42,11 +40,12 @@
         <div class="wheel_box">
             <canvas id="spinWheel"></canvas>
             @if ($spin == 'get')
-            <button id="spin_btn">Spin</button>
-            <i class="fa-solid fa-location-arrow"></i>
+                <a href="{{ route('User.Success') }}" id="spin_btn"
+                    style="font-size: 20px;text-decoration:none;padding-top:15px;padding-left:9px">spin</a>
+                <i class="fa-solid fa-location-arrow"></i>
             @else
-            <button id="spin_btn" disabled>Spin</button>
-            <i class="fa-solid fa-location-arrow"></i>
+                <button id="spin_btn" style="font-size: 20px;">Spin</button>
+                <i class="fa-solid fa-location-arrow"></i>
             @endif
         </div>
         <div id="text">

@@ -90,7 +90,9 @@
     <x-alert />
 
     <div class="top-bar">
-        <i class="fas fa-arrow-left back-icon" onclick="goBack()"></i>
+        <a href="{{ route('User.Dashboard') }}">
+            <i class="fas fa-arrow-left back-icon"></i>
+        </a>
         <h1>Withdraw Balance</h1>
     </div>
 
@@ -158,9 +160,7 @@
         </div>
     </div>
 
-    <!-- Add Bootstrap JS and Popper.js scripts (optional but recommended) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Add Font Awesome JS script (optional but recommended) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
     <script>

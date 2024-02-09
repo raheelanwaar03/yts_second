@@ -4,13 +4,9 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Task;
-use App\Models\user\vistor;
-use App\Models\user\DailyTask;
 use App\Models\User;
 use App\Models\user\TodayRewardCheck;
-use App\Models\user\vistors;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class UserTaskController extends Controller
 {
@@ -77,10 +73,5 @@ class UserTaskController extends Controller
                 return redirect()->back()->with('error', 'You have been rewarded before for this link');
             }
         }
-    }
-
-    public function success()
-    {
-        return redirect()->back()->with('success', 'Already Recived');
     }
 }

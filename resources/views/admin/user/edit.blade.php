@@ -50,7 +50,9 @@
                                                             value="{{ $user->trxIds->plan }}">
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                                                <a href="{{ route('Admin.Make.User.Approve', $user->id) }}"
+                                                    class="btn btn-success btn-sm">Approve</a>
                                             </form>
                                         </div>
                                     </div>

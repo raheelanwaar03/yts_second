@@ -71,6 +71,7 @@ class AdminDashboardController extends Controller
     {
         $user = User::find($id);
         $user->password = Hash::make($request->password);
+        $user->save();
         return redirect()->route('Admin.Approved.Users')->with('success', 'Password Changed');
     }
 

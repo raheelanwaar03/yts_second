@@ -47,7 +47,7 @@ class UserTaskController extends Controller
         } else {
             $userReferal = User::where('referral', auth()->user()->name)->whereDate('created_at', '>=', $tenDaysAgo)->where('status', 'approved')->get();
             if ($userReferal->isEmpty()) {
-                return redirect()->back()->with('error', 'You have not add any user from last 10 days. Please add new user to get rewarded');
+                return redirect()->route('User.Dashboard')->with('error', 'You have not add any user from last 10 days. Please add new user to get rewarded');
             } else {
                 $task = Task::find($id);
                 $taskRewarad = $task->price;

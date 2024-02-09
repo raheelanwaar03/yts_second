@@ -90,8 +90,10 @@
     <x-alert />
 
     <div class="top-bar">
-        <i class="fas fa-arrow-left back-icon" onclick="goBack()"></i>
-        <h1>Withdraw Balance</h1>
+        <a href="{{ route('User.Dashboard') }}">
+            <i class="fas fa-arrow-left back-icon"></i>
+        </a>
+        <h1>All Tasks</h1>
     </div>
     <div class="container">
         @forelse ($tasks as $task)

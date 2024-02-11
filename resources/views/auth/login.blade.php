@@ -48,7 +48,7 @@
                                     <input type="checkbox" name="remember" id="rem-me">
                                     <label for="rem-me">Remember Me</label>
                                 </div>
-                                <a href="#" class="forgot-pass text--base">Forgot Password</a>
+                                <a href="{{route('password.request')}}" class="forgot-pass text--base">Forgot Password</a>
                             </div>
                             <button type="submit" class="btn cmn--btn mt-4">Sign In Account</button>
                         </form>

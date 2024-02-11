@@ -51,7 +51,7 @@ function total_reward()
     $reward = SpinWin::where('user_id', auth()->user()->id)->get();
     $total_reward = 0;
     foreach ($reward as $money) {
-        $total_reward = $money->amount;
+        $total_reward += $money->amount;
     }
     return $total_reward;
 }

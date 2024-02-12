@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>User Team Tree</title>
+    <title>User Withdraw Recored</title>
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     <!-- Add Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Add Font Awesome CSS link -->
@@ -88,25 +89,30 @@
 
     <div class="container">
         <div class="transaction-list">
-            <div class="transaction-item">
-                @forelse ($history as $item)
+            @forelse ($history as $item)
+                <div class="transaction-item">
                     <div class="transaction-info">
                         <p>Date : {{ $item->created_at }}</p>
                         <p>Amount : {{ $item->amount }}</p>
                         @if ($item->status == 'pending')
                             <p>Status: <span class="btn btn-sm btn-dark">
                                     {{ $item->status }}</span></p>
-                        @else
+                        @elseif ($item->status == 'approved')
                             <p class="status-approved">Status: <span class="btn btn-sm btn-success">
                                     {{ $item->status }}
                                 </span></p>
+                        @else
+                        <p class="status-approved">Status: <span class="btn btn-sm btn-danger">
+                            {{ $item->status }}
+                        </span></p>
                         @endif
                     </div>
-                @empty
-                    <h3>No Transcation</h3>
-                @endforelse
-                <!-- Add more transaction items as needed -->
-            </div>
+                </div>
+                <hr>
+            @empty
+                <h3>No Transcation</h3>
+            @endforelse
+            <!-- Add more transaction items as needed -->
         </div>
     </div>
 

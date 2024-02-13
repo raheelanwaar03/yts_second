@@ -28,7 +28,7 @@
                                                 <div class="table-responsive">
                                                     <table id="example" class="display table">
                                                         <thead>
-                                                            <tr>
+                                                            <tr id="tr_">
                                                                 <th>Name</th>
                                                                 <th>Email</th>
                                                                 <th>Balance</th>
@@ -59,7 +59,8 @@
                                                                     <td>
                                                                         <a href="{{ route('Admin.Make.User.Approve', $item->id) }}"
                                                                             class="btn btn-sm btn-success">Approve</a>
-                                                                        <a href="{{ route('Admin.Make.User.Rejected', $item->id) }}"
+                                                                        <a href="javascript:void(0)"
+                                                                            onclick="rejectUser({{ $item->id }})"
                                                                             class="btn btn-sm btn-danger">Reject</a>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
@@ -98,4 +99,37 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function rejectUser(id) {
+
+            if (confirm("Are you sure!")) {
+
+                $.ajaxSetup({
+
+                    headers: {
+
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+
+                $.ajax({
+
+                    url: 'Admin/Make/User/Rejected' + id,
+                    type: 'GET',
+
+                    success: function(result) {
+                        // $("#" + result['tr']).slideUp("slow");
+                    }
+
+
+                });
+
+            }
+
+
+
+        }
+    </script>
 @endsection

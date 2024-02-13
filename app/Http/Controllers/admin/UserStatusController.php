@@ -284,8 +284,6 @@ class UserStatusController extends Controller
             }
         }
 
-
-
         return redirect()->back()->with('success', 'User Approved Successfully');
     }
 
@@ -294,7 +292,7 @@ class UserStatusController extends Controller
         $user = User::find($id);
         $user->status = 'rejected';
         $user->save();
-        return redirect()->back()->with('success', 'Rejected successfully');
+        return response()->json([['success'=>true]]);
     }
 
     public function pending_user($id)

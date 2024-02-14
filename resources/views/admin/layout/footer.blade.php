@@ -22,7 +22,7 @@
 
 <!-- tagify -->
 <script src="{{ asset('admin/vendor/tagify/dist/tagify.js') }}"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{ asset('admin/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('admin/vendor/datatables/js/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('admin/vendor/datatables/js/buttons.html5.min.js') }}"></script>

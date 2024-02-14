@@ -28,7 +28,7 @@
                                                 <div class="table-responsive">
                                                     <table id="example" class="display table">
                                                         <thead>
-                                                            <tr id="tr_">
+                                                            <tr>
                                                                 <th>Name</th>
                                                                 <th>Email</th>
                                                                 <th>Balance</th>
@@ -43,7 +43,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @forelse ($users as $item)
-                                                                <tr>
+                                                                <tr id="tr_{{ $item->id }}">
                                                                     <td>{{ $item->name }}</td>
                                                                     <td>{{ $item->email }}</td>
                                                                     <td>{{ $item->balance }}</td>
@@ -59,8 +59,8 @@
                                                                     <td>
                                                                         <a href="{{ route('Admin.Make.User.Approve', $item->id) }}"
                                                                             class="btn btn-sm btn-success">Approve</a>
-                                                                        <a href="javascript:void(0)"
-                                                                            onclick="rejectUser({{ $item->id }})"
+                                                                        <a href="{{ route('Make.User.Rejected', $item->id) }}"
+                                                                            {{-- onclick="rejectUser({{ $item->id }})" --}}
                                                                             class="btn btn-sm btn-danger">Reject</a>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
@@ -103,30 +103,25 @@
     <script type="text/javascript">
         function rejectUser(id) {
 
-            if (confirm("Are you sure!")) {
+            // if (confirm("Are you sure!")) {
 
-                $.ajaxSetup({
+            //     $.ajaxSetup({
 
-                    headers: {
+            //         headers: {
 
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //         }
+            //     });
+            //     $.ajax({
+            //         url: 'delete-user/' + id,
+            //         type: 'DELETE',
 
+            //         success: function(result) {
+            //             $("#" + result['tr']).slideUp("slow");
+            //         }
+            //     });
 
-                $.ajax({
-
-                    url: 'Admin/Make/User/Rejected' + id,
-                    type: 'GET',
-
-                    success: function(result) {
-                        // $("#" + result['tr']).slideUp("slow");
-                    }
-
-
-                });
-
-            }
+            // }
 
 
 

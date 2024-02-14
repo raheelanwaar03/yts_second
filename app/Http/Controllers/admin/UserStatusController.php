@@ -290,9 +290,9 @@ class UserStatusController extends Controller
     public function rejected_user($id)
     {
         $user = User::find($id);
-        $user->status = 'rejected';
-        $user->save();
-        return response()->json([['success'=>true]]);
+        return $user;
+        $user->delete();
+        return response()->json([['success' => true, 'tr' => 'tr_' . $id]]);
     }
 
     public function pending_user($id)

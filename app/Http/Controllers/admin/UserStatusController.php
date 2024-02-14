@@ -7,11 +7,14 @@ use App\Models\ReferralLevel;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserStatusController extends Controller
 {
-    public function approve_user($id)
+    public function approve_user(Request $request)
     {
+        $id = $request->input('user_id');
+
         $levelCheck = ReferralLevel::where('status', 1)->first();
         $level1 = $levelCheck->level1;
         $level2 = $levelCheck->level2;
@@ -47,7 +50,7 @@ class UserStatusController extends Controller
         if ($userPlan == 'silver') {
             $firstUpliner = User::where('name', $user->referral)->where('status', 'approved')->first();
             if ($firstUpliner == '') {
-                return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
             } else {
                 $firstUpliner->balance += $silver;
                 // giving upliner his level
@@ -106,7 +109,7 @@ class UserStatusController extends Controller
                 // getting user
                 $secondUpliner = User::where('name', $firstUpliner->referral)->where('status', 'approved')->first();
                 if ($secondUpliner == '') {
-                    return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                    return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
                 } else {
                     $secondUpliner->balance += $indirectCommission1;
                     $secondUpliner->save();
@@ -116,7 +119,7 @@ class UserStatusController extends Controller
                 // getting third person;
                 $thirdUpliner = User::where('name', $secondUpliner->referral)->where('status', 'approved')->first();
                 if ($thirdUpliner == '') {
-                    return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                    return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
                 } else {
                     $thirdUpliner->balance += $indirectCommission2;
                     $thirdUpliner->save();
@@ -127,7 +130,7 @@ class UserStatusController extends Controller
         if ($userPlan == 'gold') {
             $firstUpliner = User::where('name', $user->referral)->where('status', 'approved')->first();
             if ($firstUpliner == '') {
-                return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
             } else {
                 $firstUpliner->balance += $gold;
                 // giving upliner his level
@@ -186,7 +189,7 @@ class UserStatusController extends Controller
                 // getting user
                 $secondUpliner = User::where('name', $firstUpliner->referral)->where('status', 'approved')->first();
                 if ($secondUpliner == '') {
-                    return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                    return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
                 } else {
                     $secondUpliner->balance += $indirectCommission1;
                     $secondUpliner->save();
@@ -196,7 +199,7 @@ class UserStatusController extends Controller
                 // getting third person;
                 $thirdUpliner = User::where('name', $secondUpliner->referral)->where('status', 'approved')->first();
                 if ($thirdUpliner == '') {
-                    return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                    return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
                 } else {
                     $thirdUpliner->balance += $indirectCommission2;
                     $thirdUpliner->save();
@@ -207,7 +210,7 @@ class UserStatusController extends Controller
         if ($userPlan == 'dimond') {
             $firstUpliner = User::where('name', $user->referral)->where('status', 'approved')->first();
             if ($firstUpliner == '') {
-                return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
             } else {
                 $firstUpliner->balance += $dimond;
                 // giving upliner his level
@@ -266,7 +269,7 @@ class UserStatusController extends Controller
                 // getting user
                 $secondUpliner = User::where('name', $firstUpliner->referral)->where('status', 'approved')->first();
                 if ($secondUpliner == '') {
-                    return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                    return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
                 } else {
                     $secondUpliner->balance += $indirectCommission1;
                     $secondUpliner->save();
@@ -276,7 +279,7 @@ class UserStatusController extends Controller
                 // getting third person;
                 $thirdUpliner = User::where('name', $secondUpliner->referral)->where('status', 'approved')->first();
                 if ($thirdUpliner == '') {
-                    return redirect()->back()->with('success', 'Account has beed Approved successfully');
+                    return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
                 } else {
                     $thirdUpliner->balance += $indirectCommission2;
                     $thirdUpliner->save();
@@ -284,23 +287,32 @@ class UserStatusController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'User Approved Successfully');
+        return response()->json(['message' => 'User Approved Successfully', 'tr' => 'tr_' . $id]);
     }
 
-    public function rejected_user($id)
+    public function updateStatus(Request $request)
     {
-        $user = User::find($id);
-        return $user;
-        $user->delete();
-        return response()->json([['success' => true, 'tr' => 'tr_' . $id]]);
+        // Get user ID from the request
+        $userId = $request->input('user_id');
+
+        // Update user status from pending to reject
+        $user = User::findOrFail($userId);
+        $user->status = 'rejected';
+        $user->save();
+        // Return a JSON response indicating success
+        return response()->json(['message' => 'User Rejected', 'tr' => 'tr_' . $userId]);
     }
 
-    public function pending_user($id)
+    public function pendingStatus(Request $request)
     {
-        $user = User::find($id);
+        $userId = $request->input('user_id');
+
+        // Update user status from pending to reject
+        $user = User::findOrFail($userId);
         $user->status = 'pending';
         $user->save();
-        return redirect()->back()->with('success', 'User has been Pending now');
+        // Return a JSON response indicating success
+        return response()->json(['message' => 'User Pending', 'tr' => 'tr_' . $userId]);
     }
 
     public function del_rej_users()

@@ -24,7 +24,7 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/All/Top/Users/', [AdminDashboardController::class, 'all_top_user'])->name('All.Top.Users');
     Route::get('/Delete/Top/User/{id}', [AdminDashboardController::class, 'delete_top_user'])->name('Delete.Top.User');
     // Change user status
-    Route::get('/Make/User/Approve/{id}', [UserStatusController::class, 'approve_user'])->name('Make.User.Approve');
+    Route::get('/Make/User/Approve/', [UserStatusController::class, 'approve_user'])->name('Make.User.Approve');
 
     Route::get('/Make/User/Pending/{id}', [UserStatusController::class, 'pending_user'])->name('Make.User.Pending');
     Route::get('/Delete/Rejected/Users', [UserStatusController::class, 'del_rej_users'])->name('Del.Rej.Users');
@@ -55,4 +55,5 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::post('/Updagte/Contact/Us/{id}', [AdminSettingcontroller::class, 'updateContactUs'])->name('Update.Contact.Us');
 });
 
-Route::get('delete-user/{id}', [UserStatusController::class, 'rejected_user'])->name('Make.User.Rejected');
+Route::get('/pending-status', [UserStatusController::class,'pendingStatus'])->name('pending.status');
+Route::get('/reject-status', [UserStatusController::class,'updateStatus'])->name('reject.status');

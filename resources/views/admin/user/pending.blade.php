@@ -43,7 +43,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @forelse ($users as $item)
-                                                                <tr id="tr_{{ $item->id }}">
+                                                                <tr id="tr_{{ $item->trxIds->user_id }}">
                                                                     <td>{{ $item->name }}</td>
                                                                     <td>{{ $item->email }}</td>
                                                                     <td>{{ $item->balance }}</td>
@@ -57,17 +57,19 @@
                                                                             class="img-fluid" height="100px" width="100px">
                                                                     </td>
                                                                     <td>
-                                                                        <a href="{{ route('Admin.Make.User.Approve', $item->id) }}"
-                                                                            class="btn btn-sm btn-success">Approve</a>
-                                                                        <a href="{{ route('Make.User.Rejected', $item->id) }}"
-                                                                            {{-- onclick="rejectUser({{ $item->id }})" --}}
-                                                                            class="btn btn-sm btn-danger">Reject</a>
+                                                                        <button class="approveButton"
+                                                                            data-user-id="{{ $item->trxIds->user_id }}"
+                                                                            style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
+                                                                        <button class="rejectButton"
+                                                                            data-user-id="{{ $item->trxIds->user_id }}"
+                                                                            style="background-color:red;color:white;border:none;border-radius:5px;padding:5px;">Rejected</button>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>
                                                                 </tr>
 
                                                             @empty
+                                                                <h3>Empty</h3>
                                                             @endforelse
                                                         </tbody>
                                                         <tfoot>
@@ -87,10 +89,8 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                            <!-- /Default accordion -->
                                         </div>
                                     </div>
-                                    <!--/tab-content-->
                                 </div>
                             </div>
                         </div>
@@ -100,31 +100,42 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        function rejectUser(id) {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.rejectButton').click(function() {
+                var userId = $(this).data('user-id');
+                $.ajax({
+                    url: "{{ route('reject.status') }}",
+                    method: "GET",
+                    data: {
+                        user_id: userId
+                    },
+                    success: function(response) {
+                        $("#" + response['tr']).hide();
+                        alert(response.message);
+                    },
+                });
+            });
+        });
 
-            // if (confirm("Are you sure!")) {
+        // make user approve
 
-            //     $.ajaxSetup({
-
-            //         headers: {
-
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         }
-            //     });
-            //     $.ajax({
-            //         url: 'delete-user/' + id,
-            //         type: 'DELETE',
-
-            //         success: function(result) {
-            //             $("#" + result['tr']).slideUp("slow");
-            //         }
-            //     });
-
-            // }
-
-
-
-        }
+        $(document).ready(function() {
+            $('.approveButton').click(function() {
+                var userId = $(this).data('user-id');
+                $.ajax({
+                    url: "{{ route('Admin.Make.User.Approve') }}",
+                    method: "GET",
+                    data: {
+                        user_id: userId
+                    },
+                    success: function(response) {
+                        $("#" + response['tr']).hide();
+                        alert(response.message);
+                    },
+                });
+            });
+        });
     </script>
 @endsection

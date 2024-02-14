@@ -43,7 +43,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @forelse ($users as $item)
-                                                                <tr>
+                                                                <tr id="tr_{{ $item->trxIds->user_id }}">
                                                                     <td>{{ $item->name }}</td>
                                                                     <td>{{ $item->email }}</td>
                                                                     <td>{{ $item->balance }}</td>
@@ -59,10 +59,12 @@
                                                                             class="img-fluid" height="100px" width="100px">
                                                                     </td>
                                                                     <td>
-                                                                        <a href="{{ route('Admin.Make.User.Pending', $item->id) }}"
-                                                                            class="btn btn-sm btn-primary">Pending</a>
-                                                                        <a href="{{ route('Admin.Make.User.Rejected', $item->id) }}"
-                                                                            class="btn btn-sm btn-danger">Reject</a>
+                                                                        <button class="pendingButton"
+                                                                            data-user-id="{{ $item->trxIds->user_id }}"
+                                                                            style="background-color:blue;color:white;border:none;border-radius:5px;padding:6px;">Pending</button>
+                                                                        <button class="rejectButton"
+                                                                            data-user-id="{{ $item->trxIds->user_id }}"
+                                                                            style="background-color:red;color:white;border:none;border-radius:5px;padding:6px;">Rejected</button>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
                                                                         <a href="{{ route('Admin.Change.Password', $item->id) }}"
@@ -100,4 +102,43 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.rejectButton').click(function() {
+                var userId = $(this).data('user-id');
+                $.ajax({
+                    url: "{{ route('reject.status') }}",
+                    method: "GET",
+                    data: {
+                        user_id: userId
+                    },
+                    success: function(response) {
+                        $("#" + response['tr']).hide();
+                        alert(response.message);
+                    },
+                });
+            });
+        });
+
+        // make user approved
+
+        $(document).ready(function() {
+            $('.pendingButton').click(function() {
+                var userId = $(this).data('user-id');
+                $.ajax({
+                    url: "{{ route('pending.status') }}",
+                    method: "GET",
+                    data: {
+                        user_id: userId
+                    },
+                    success: function(response) {
+                        $("#" + response['tr']).slideUp("slow");
+                        alert(response.message);
+                    },
+                });
+            });
+        });
+    </script>
 @endsection

@@ -87,9 +87,6 @@
 </head>
 
 <body>
-
-    <x-alert />
-
     <div class="top-bar">
         <a href="{{ route('User.Dashboard') }}">
             <i class="fas fa-arrow-left back-icon"></i>
@@ -97,17 +94,31 @@
         <h1>All Tasks</h1>
     </div>
     <div class="container">
+
+        @if (session()->has('success'))
+            <div id="alert" class="alert alert-success alert-dismissible" role="alert">
+                <button class="btn-close" type="button" data-bs-dismiss="alert">
+                </button>
+                {{ session()->get('success') }}
+            </div>
+        @endif
+        @if (session()->has('error'))
+            <div id="alert" class="alert alert-danger alert-dismissible" role="alert">
+                <button class="btn-close" type="button" data-bs-dismiss="alert">
+                </button>
+                {{ session()->get('error') }}
+            </div>
+        @endif
+
+
         @forelse ($tasks as $task)
             <div class="container" style="border: 1px solid #e4f21c">
                 <div class="task-container">
                     <div class="task">
                         <p class="task-description">{{ $task->title }}</p>
-                        @if ($task->status == 'pending')
-                            <a href="{{ route('User.Get.Task.Reward', $task->id) }}" class="btn btn-sm btn-warning text-decoration-none"
-                                onclick="window.open('{{ $task->link }}', '_blank')">Get Reward</a>
-                        @else
-                            <button class="btn btn-sm btn-dark text-decoration-none">Reward Taken</button>
-                        @endif
+                        <a href="{{ route('User.Get.Task.Reward', $task->id) }}"
+                            class="btn btn-sm btn-warning text-decoration-none"
+                            onclick="window.open('{{ $task->link }}', '_blank')">Get Reward</a>
                     </div>
                     <br>
                 </div>

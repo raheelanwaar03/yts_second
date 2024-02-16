@@ -27,7 +27,6 @@ class UserTaskController extends Controller
         if (!$user->isAccount10DaysOld()) {
             $task = Task::find($id);
             $taskRewarad = $task->price;
-            $task->status = 'approved';
             $task->save();
 
             $visitor = TodayRewardCheck::where('user_id', auth()->user()->id)->where('task_id', $id)->whereDate('created_at', '=', Carbon::today())->first();
@@ -51,7 +50,7 @@ class UserTaskController extends Controller
             } else {
                 $task = Task::find($id);
                 $taskRewarad = $task->price;
-                $task->status = 'approved';
+
                 $task->save();
                 // check user
                 $visitor = TodayRewardCheck::where('user_id', auth()->user()->id)->where('task_id', $id)->whereDate('created_at', '=', Carbon::today())->first();

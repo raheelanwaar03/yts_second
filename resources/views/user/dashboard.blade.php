@@ -133,7 +133,7 @@
                 <div class="col-md-12">
                     <div class="d-flex justify-content-around align-items-center">
                         <a href="{{ route('User.All.Tasks') }}" class="btn btn-warning">Daily Earn</a>
-                        <a href="{{ route('User.Spin') }}" class="btn btn-warning">Plan & Earn</a>
+                        <a href="{{ route('User.Spin') }}" class="btn btn-warning">Play & Earn</a>
                     </div>
                 </div>
             </div>

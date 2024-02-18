@@ -107,7 +107,7 @@
                             var earningsData = {
                                 labels: ['Ali Raza', 'Muhammad Hassan', 'Zeshan khan', 'Skindar', 'Hamza'],
                                 datasets: [{
-                                    label: 'Last Weak Top Users',
+                                    label: 'Last Week Top Users',
                                     backgroundColor: '#ffc107',
                                     borderColor: '#ffc106',
                                     borderWidth: 1,

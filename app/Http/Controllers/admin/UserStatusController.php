@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\ReferralLevel;
 use App\Models\Setting;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class UserStatusController extends Controller
 {
@@ -43,6 +43,7 @@ class UserStatusController extends Controller
 
         $user = User::where('id', $id)->with('trxIds')->first();
         $user->status = 'approved';
+        $user->created_at = Carbon::today();
         $user->save();
         // getting user package
         $userPlan = $user->trxIds->plan;

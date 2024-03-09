@@ -60,7 +60,6 @@ class UserTaskController extends Controller
                     $visitor->user_id = auth()->user()->id;
                     $visitor->task_id = $id;
                     $visitor->price += $taskRewarad;
-                    $visitor->status = 'approved';
                     $visitor->save();
 
                     $user->balance += $taskRewarad;

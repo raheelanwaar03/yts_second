@@ -60,11 +60,9 @@
                                                                         <button class="approveButton"
                                                                             data-user-id="{{ $item->trxIds->user_id }}"
                                                                             style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
-
-                                                                        <button class="pendingButton"
+                                                                        <button class="rejectButton"
                                                                             data-user-id="{{ $item->trxIds->user_id }}"
-                                                                            style="background-color:blue;color:white;border:none;border-radius:5px;padding:6px;">Pending</button>
-
+                                                                            style="background-color:red;color:white;border:none;border-radius:5px;padding:5px;">Rejected</button>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>
@@ -105,16 +103,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.pendingButton').click(function() {
+            $('.rejectButton').click(function() {
                 var userId = $(this).data('user-id');
                 $.ajax({
-                    url: "{{ route('pending.status') }}",
+                    url: "{{ route('reject.status') }}",
                     method: "GET",
                     data: {
                         user_id: userId
                     },
                     success: function(response) {
-                        $("#" + response['tr']).slideUp("slow");
+                        $("#" + response['tr']).hide();
                         alert(response.message);
                     },
                 });

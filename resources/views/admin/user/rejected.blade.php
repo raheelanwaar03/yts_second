@@ -60,9 +60,11 @@
                                                                         <button class="approveButton"
                                                                             data-user-id="{{ $item->trxIds->user_id }}"
                                                                             style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
-                                                                            <button class="pendingButton"
+
+                                                                        <button class="pendingButton"
                                                                             data-user-id="{{ $item->trxIds->user_id }}"
                                                                             style="background-color:blue;color:white;border:none;border-radius:5px;padding:6px;">Pending</button>
+
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>

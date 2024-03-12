@@ -60,7 +60,7 @@
                                                                         <button class="approveButton"
                                                                             data-user-id="{{ $item->trxIds->user_id }}"
                                                                             style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
-                                                                        <button class="rejectButton"
+                                                                        <button class="pending"
                                                                             data-user-id="{{ $item->trxIds->user_id }}"
                                                                             style="background-color:red;color:white;border:none;border-radius:5px;padding:5px;">Rejected</button>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
@@ -103,10 +103,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.rejectButton').click(function() {
+            $('.pending').click(function() {
                 var userId = $(this).data('user-id');
                 $.ajax({
-                    url: "{{ route('reject.status') }}",
+                    url: "{{ route('pending.status') }}",
                     method: "GET",
                     data: {
                         user_id: userId

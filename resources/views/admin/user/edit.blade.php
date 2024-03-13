@@ -51,7 +51,7 @@
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-sm btn-primary">Update</button>
-                                                <button class="approveButton" data-user-id="{{ $item->trxIds->user_id }}"
+                                                <button class="approveButton" data-user-id="{{ $user->id }}"
                                                     style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
                                             </form>
                                         </div>

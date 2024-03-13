@@ -15,8 +15,6 @@ class UserStatusController extends Controller
     {
         $id = $request->input('user_id');
 
-        return $id;
-
         $levelCheck = ReferralLevel::where('status', 1)->first();
         $level1 = $levelCheck->level1;
         $level2 = $levelCheck->level2;

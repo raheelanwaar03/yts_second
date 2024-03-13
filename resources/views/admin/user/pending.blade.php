@@ -57,12 +57,10 @@
                                                                             class="img-fluid" height="100px" width="100px">
                                                                     </td>
                                                                     <td>
-                                                                        <button class="approveButton"
-                                                                            data-user-id="{{ $item->trxIds->user_id }}"
-                                                                            style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
-                                                                        <button class="rejectButton"
-                                                                            data-user-id="{{ $item->trxIds->user_id }}"
-                                                                            style="background-color:red;color:white;border:none;border-radius:5px;padding:5px;">Rejected</button>
+                                                                        <button class="approveButton btn btn-sm btn-success"
+                                                                            data-user-id="{{ $item->trxIds->user_id }}">Approved</button>
+                                                                        <button class="rejectButton btn btn-sm btn-danger"
+                                                                            data-user-id="{{ $item->trxIds->user_id }}">Rejected</button>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>

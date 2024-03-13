@@ -51,8 +51,8 @@
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-sm btn-primary">Update</button>
-                                                <button class="approveButton" data-user-id="{{ $user->id }}"
-                                                    style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
+                                                <a href="{{ route('Admin.Make.User.Approve') }}"
+                                                    class="btn btn-success btn-sm">Approve</a>
                                             </form>
                                         </div>
                                     </div>
@@ -64,24 +64,4 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        // make user approve
-        $(document).ready(function() {
-            $('.approveButton').click(function() {
-                var userId = $(this).data('user-id');
-                $.ajax({
-                    url: "{{ route('Admin.Make.User.Approve') }}",
-                    method: "GET",
-                    data: {
-                        user_id: userId
-                    },
-                    success: function(response) {
-                        $("#" + response['tr']).hide();
-                        alert(response.message);
-                    },
-                });
-            });
-        });
-    </script>
 @endsection

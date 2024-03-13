@@ -42,7 +42,6 @@ class UserStatusController extends Controller
         $dimond_Third_Commission = $dimond * 1.5 / 100;
 
         $user = User::where('id', $id)->with('trxIds')->first();
-        return $user;
         $user->status = 'approved';
         $user->created_at = Carbon::today();
         $user->save();

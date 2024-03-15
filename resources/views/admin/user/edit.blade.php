@@ -51,7 +51,7 @@
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-sm btn-primary">Update</button>
-                                                <a href="{{ route('Admin.Make.User.Approve') }}"
+                                                <a href="{{ route('Admin.Approve.User', $user->id) }}"
                                                     class="btn btn-success btn-sm">Approve</a>
                                             </form>
                                         </div>

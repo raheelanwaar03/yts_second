@@ -25,6 +25,7 @@ Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(funct
     Route::get('/Delete/Top/User/{id}', [AdminDashboardController::class, 'delete_top_user'])->name('Delete.Top.User');
     // Change user status
     Route::get('/Make/User/Approve/', [UserStatusController::class, 'approve_user'])->name('Make.User.Approve');
+    Route::get('/Approve/User/{id}', [UserStatusController::class, 'approved'])->name('Approve.User');
 
     Route::get('/Make/User/Pending/{id}', [UserStatusController::class, 'pending_user'])->name('Make.User.Pending');
     Route::get('/Delete/Rejected/Users', [UserStatusController::class, 'del_rej_users'])->name('Del.Rej.Users');

@@ -52,44 +52,42 @@
                                                                     <td>{{ $item->trxIds->sender_name ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->trx_id ?? 'null' }}</td>
-                                                                    @if ($item->trxIds->screen_shot)
                                                                     <td>
                                                                         <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
-                                                                            class="img-fluid" height="100px"
+                                                                            alt="Null" class="img-fluid" height="100px"
                                                                             width="100px">
                                                                     </td>
-                                                                    @else
-                                                                    <td>Empty</td>
-                                                                    @endif
-                                                                    <td>
-                                                                        <a href="{{ route('Admin.Approve.User', $item->id) }}"
-                                                                            class="btn btn-sm btn-primary">Approve</a>
-                                                                        <a href="{{ route('Admin.Make.User.Reject', $item->id) }}"
-                                                                            class="btn btn-sm btn-danger">Reject</a>
-                                                                        <a href="{{ route('Admin.Edit.User', $item->id) }}"
-                                                                            class="btn btn-sm btn-warning">Edit</a>
-                                                                    </td>
-                                                                </tr>
+                                                            @endif
+                                                            <td>
+                                                                <a href="{{ route('Admin.Approve.User', $item->id) }}"
+                                                                    class="btn btn-sm btn-primary">Approve</a>
+                                                                <a href="{{ route('Admin.Make.User.Reject', $item->id) }}"
+                                                                    class="btn btn-sm btn-danger">Reject</a>
+                                                                <a href="{{ route('Admin.Edit.User', $item->id) }}"
+                                                                    class="btn btn-sm btn-warning">Edit</a>
+                                                            </td>
+                                                            </tr>
 
                                                             @empty
                                                                 <h3>Empty</h3>
-                                                            @endforelse
-                                                        </tbody>
-                                                        <tfoot>
-                                                            <tr>
-                                                                <th>Name</th>
-                                                                <th>Email</th>
-                                                                <th>Balance</th>
-                                                                <th>Referral</th>
-                                                                <th>Plan</th>
-                                                                <th>Sender Name</th>
-                                                                <th>Sender Number</th>
-                                                                <th>Trx Id</th>
-                                                                <th>Screen Shot</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </tfoot>
-                                                    </table>
+                                                                @endforelse
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <tr>
+                                                                    <th>Name</th>
+                                                                    <th>Email</th>
+                                                                    <th>Balance</th>
+                                                                    <th>Referral</th>
+                                                                    <th>Plan</th>
+                                                                    <th>Sender Name</th>
+                                                                    <th>Sender Number</th>
+                                                                    <th>Trx Id</th>
+                                                                    <th>Screen Shot</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,5 +99,4 @@
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

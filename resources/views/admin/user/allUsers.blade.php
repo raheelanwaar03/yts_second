@@ -53,7 +53,7 @@
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->trx_id ?? 'null' }}</td>
                                                                     <td>
-                                                                        <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
+                                                                        <img src="{{ asset('images/' . $item->trxIds->screen_shot ?? '1234') }}"
                                                                             alt="Null" class="img-fluid" height="100px"
                                                                             width="100px">
                                                                     </td>

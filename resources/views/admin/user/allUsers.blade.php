@@ -52,7 +52,7 @@
                                                                     <td>{{ $item->trxIds->sender_name ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->trx_id ?? 'null' }}</td>
-                                                                    @if ($item->trxIds->screen_shot != '')
+                                                                    @if ($item->trxIds->screen_shot)
                                                                     <td>
                                                                         <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
                                                                             class="img-fluid" height="100px"

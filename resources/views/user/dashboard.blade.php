@@ -105,14 +105,14 @@
                         <script>
                             // Add your data here
                             var earningsData = {
-                                labels: ['Ali Raza', 'Muhammad Hassan', 'Zeshan khan', 'Skindar', 'Hamza'],
+                                labels: ['Hamza', 'Noor-Ul-Khan', 'Sultan', 'Muhaib', 'Ahmad'],
                                 datasets: [{
                                     label: 'Last Week Top Users',
                                     backgroundColor: '#ffc107',
                                     borderColor: '#ffc106',
                                     borderWidth: 1,
                                     data: [
-                                        100, 200, 300, 400, 500
+                                        1000, 700, 500, 350, 250
                                     ],
                                 }]
                             };

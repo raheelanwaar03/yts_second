@@ -18,6 +18,13 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard');
     }
 
+    public function all_users()
+    {
+        $users = User::with('trxIds')->get();
+        return view('admin.user.allUsers', compact('users'));
+    }
+
+
     public function pending_users()
     {
         $users = User::where('status', 'pending')->has('trxIds')

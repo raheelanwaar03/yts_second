@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::name('Admin.')->prefix('Admin')->middleware('admin', 'auth')->group(function () {
 
     Route::get('/Dashboard', [AdminDashboardController::class, 'dashboard'])->name('Dashboard');
+    Route::get('/All/Users', [AdminDashboardController::class, 'all_users'])->name('All.Users');
     Route::get('/Pending/Users', [AdminDashboardController::class, 'pending_users'])->name('Pending.Users');
     Route::get('/Approved/Users', [AdminDashboardController::class, 'approved_users'])->name('Approved.Users');
     Route::get('/Rejected/Users', [AdminDashboardController::class, 'rejected_users'])->name('Rejected.Users');

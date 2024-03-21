@@ -33,6 +33,7 @@
                                                                 <th>Email</th>
                                                                 <th>Balance</th>
                                                                 <th>Referral</th>
+                                                                <th>Status</th>
                                                                 <th>Plan</th>
                                                                 <th>Sender Name</th>
                                                                 <th>Sender Number</th>
@@ -48,6 +49,7 @@
                                                                     <td>{{ $item->email }}</td>
                                                                     <td>{{ $item->balance }}</td>
                                                                     <td>{{ $item->referral }}</td>
+                                                                    <td>{{ $item->status }}</td>
                                                                     <td>{{ $item->trxIds->plan ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_name ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
@@ -72,6 +74,7 @@
                                                                 <th>Email</th>
                                                                 <th>Balance</th>
                                                                 <th>Referral</th>
+                                                                <th>Status</th>
                                                                 <th>Plan</th>
                                                                 <th>Sender Name</th>
                                                                 <th>Sender Number</th>

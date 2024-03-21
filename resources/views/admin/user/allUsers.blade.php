@@ -43,30 +43,29 @@
                                                         </thead>
                                                         <tbody>
                                                             @forelse ($users as $item)
-                                                                <tr id="tr_{{ $item->trxIds->user_id }}">
+                                                                <tr>
                                                                     <td>{{ $item->name }}</td>
                                                                     <td>{{ $item->email }}</td>
                                                                     <td>{{ $item->balance }}</td>
                                                                     <td>{{ $item->referral }}</td>
-                                                                    <td>{{ $item->trxIds->plan ?? 'null'}}</td>
+                                                                    <td>{{ $item->trxIds->plan ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_name ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->trx_id ?? 'null' }}</td>
                                                                     @if ($item->trxIds->screen_shot == null)
-                                                                    <td>Empty</td>
+                                                                        <td>Empty</td>
                                                                     @else
-                                                                    <td>
-                                                                        <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
-                                                                            class="img-fluid" height="100px" width="100px">
-                                                                    </td>
+                                                                        <td>
+                                                                            <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
+                                                                                class="img-fluid" height="100px"
+                                                                                width="100px">
+                                                                        </td>
                                                                     @endif
                                                                     <td>
-                                                                        <button class="approveButton"
-                                                                            data-user-id="{{ $item->trxIds->user_id }}"
-                                                                            style="background-color:rgb(122, 222, 122);color:white;border:none;border-radius:7px;padding:5px;">Approved</button>
-                                                                        <button class="rejectButton"
-                                                                            data-user-id="{{ $item->trxIds->user_id }}"
-                                                                            style="background-color:red;color:white;border:none;border-radius:5px;padding:5px;">Rejected</button>
+                                                                        <a href="{{ route('Admin.Approve.User', $item->id) }}"
+                                                                            class="btn btn-sm btn-primary">Approve</a>
+                                                                        <a href="{{ route('Admin.Make.User.Reject', $item->id) }}"
+                                                                            class="btn btn-sm btn-danger">Reject</a>
                                                                         <a href="{{ route('Admin.Edit.User', $item->id) }}"
                                                                             class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>
@@ -103,43 +102,4 @@
             </div>
         </div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.rejectButton').click(function() {
-                var userId = $(this).data('user-id');
-                $.ajax({
-                    url: "{{ route('reject.status') }}",
-                    method: "GET",
-                    data: {
-                        user_id: userId
-                    },
-                    success: function(response) {
-                        $("#" + response['tr']).hide();
-                        alert(response.message);
-                    },
-                });
-            });
-        });
-
-        // make user approve
-
-        $(document).ready(function() {
-            $('.approveButton').click(function() {
-                var userId = $(this).data('user-id');
-                $.ajax({
-                    url: "{{ route('Admin.Make.User.Approve') }}",
-                    method: "GET",
-                    data: {
-                        user_id: userId
-                    },
-                    success: function(response) {
-                        $("#" + response['tr']).hide();
-                        alert(response.message);
-                    },
-                });
-            });
-        });
-    </script>
 @endsection

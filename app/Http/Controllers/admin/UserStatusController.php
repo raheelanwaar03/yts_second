@@ -569,6 +569,14 @@ class UserStatusController extends Controller
         return redirect()->back()->with('success', 'User Approved');
     }
 
+    public function reject($id)
+    {
+        $user = User::find($id);
+        $user->status = 'rejected';
+        $user->save();
+        return redirect()->back()->with('success','User Rejected!');
+    }
+
     public function updateStatus(Request $request)
     {
         // Get user ID from the request

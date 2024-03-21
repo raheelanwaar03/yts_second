@@ -52,14 +52,14 @@
                                                                     <td>{{ $item->trxIds->sender_name ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->trx_id ?? 'null' }}</td>
-                                                                    @if (!$item->trxIds->screen_shot)
-                                                                        <td>Empty</td>
+                                                                    @if ($item->trxIds->screen_shot != '')
+                                                                    <td>
+                                                                        <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
+                                                                            class="img-fluid" height="100px"
+                                                                            width="100px">
+                                                                    </td>
                                                                     @else
-                                                                        <td>
-                                                                            <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
-                                                                                class="img-fluid" height="100px"
-                                                                                width="100px">
-                                                                        </td>
+                                                                    <td>Empty</td>
                                                                     @endif
                                                                     <td>
                                                                         <a href="{{ route('Admin.Approve.User', $item->id) }}"

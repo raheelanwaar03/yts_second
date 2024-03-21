@@ -52,22 +52,13 @@
                                                                     <td>{{ $item->trxIds->sender_name ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->trx_id ?? 'null' }}</td>
-                                                                    @if ($item->trxIds->screen_shot)
-                                                                        <td>
-                                                                            <img src="{{ asset('images/' . $item->trxIds->screen_shot) }}"
-                                                                                alt="Null" class="img-fluid"
-                                                                                height="100px" width="100px">
-                                                                        </td>
-                                                                    @else
-                                                                        <td>Null</td>
-                                                                    @endif
-                                                                    <td>
-                                                                        <a href="{{ route('Admin.Approve.User', $item->id) }}"
-                                                                            class="btn btn-sm btn-primary">Approve</a>
-                                                                        <a href="{{ route('Admin.Make.User.Reject', $item->id) }}"
-                                                                            class="btn btn-sm btn-danger">Reject</a>
-                                                                        <a href="{{ route('Admin.Edit.User', $item->id) }}"
-                                                                            class="btn btn-sm btn-warning">Edit</a>
+                                                                    <td>Img Nulled</td>
+                                                                    <a href="{{ route('Admin.Approve.User', $item->id) }}"
+                                                                        class="btn btn-sm btn-primary">Approve</a>
+                                                                    <a href="{{ route('Admin.Make.User.Reject', $item->id) }}"
+                                                                        class="btn btn-sm btn-danger">Reject</a>
+                                                                    <a href="{{ route('Admin.Edit.User', $item->id) }}"
+                                                                        class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>
                                                                 </tr>
 

@@ -53,15 +53,15 @@
                                                                     <td>{{ $item->trxIds->sender_number ?? 'null' }}</td>
                                                                     <td>{{ $item->trxIds->trx_id ?? 'null' }}</td>
                                                                     <td>Img Nulled</td>
-                                                                    <a href="{{ route('Admin.Approve.User', $item->id) }}"
-                                                                        class="btn btn-sm btn-primary">Approve</a>
-                                                                    <a href="{{ route('Admin.Make.User.Reject', $item->id) }}"
-                                                                        class="btn btn-sm btn-danger">Reject</a>
-                                                                    <a href="{{ route('Admin.Edit.User', $item->id) }}"
-                                                                        class="btn btn-sm btn-warning">Edit</a>
+                                                                    <td>
+                                                                        <a href="{{ route('Admin.Approve.User', $item->id) }}"
+                                                                            class="btn btn-sm btn-primary">Approve</a>
+                                                                        <a href="{{ route('Admin.Make.User.Reject', $item->id) }}"
+                                                                            class="btn btn-sm btn-danger">Reject</a>
+                                                                        <a href="{{ route('Admin.Edit.User', $item->id) }}"
+                                                                            class="btn btn-sm btn-warning">Edit</a>
                                                                     </td>
                                                                 </tr>
-
                                                             @empty
                                                                 <h3>Empty</h3>
                                                             @endforelse

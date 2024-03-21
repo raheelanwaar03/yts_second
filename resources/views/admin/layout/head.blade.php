@@ -241,6 +241,7 @@
                             <span class="nav-text">Users</span>
                         </a>
                         <ul aria-expanded="false">
+                            <li><a href="{{ route('Admin.All.Users') }}">All Users</a></li>
                             <li><a href="{{ route('Admin.Todays.Users') }}">Today User</a></li>
                             <li><a href="{{ route('Admin.Pending.Users') }}">Pending User</a></li>
                             <li><a href="{{ route('Admin.Approved.Users') }}">Approved User</a></li>

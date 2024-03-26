@@ -105,7 +105,7 @@
                         <script>
                             // Add your data here
                             var earningsData = {
-                                labels: ['Hamza', 'Noor-Ul-Khan', 'Sultan', 'Muhaib', 'Ahmad'],
+                                labels: ['Usman', 'Zaid', 'Umer', 'Abubakar', 'Abdullah'],
                                 datasets: [{
                                     label: 'Last Week Top Users',
                                     backgroundColor: '#ffc107',
